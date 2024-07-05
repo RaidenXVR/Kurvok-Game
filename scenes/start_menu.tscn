@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjuxmj72clnir"]
+
+[ext_resource type="Texture2D" uid="uid://dpgo7u5vdp2ak" path="res://asset/menu_bg.png" id="1_7k3v3"]
+[ext_resource type="Script" path="res://scenes/start_menu.gd" id="1_c6ymv"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c6ymv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.870588, 0.870588, 0.870588, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7k3v3")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 360.0
+offset_right = 812.0
+offset_bottom = 630.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+text = "Start Game"
+
+[node name="Option" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

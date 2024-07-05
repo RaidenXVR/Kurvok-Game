@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=3 uid="uid://h6ptyappplkt"]
+
+[ext_resource type="Script" path="res://World/world.gd" id="1_5gqm4"]
+[ext_resource type="Script" path="res://World/maps.gd" id="2_mpmv5"]
+[ext_resource type="PackedScene" uid="uid://bswabc2fnfm68" path="res://player/player.tscn" id="3_n74gu"]
+[ext_resource type="Script" path="res://Scripts/Cam.gd" id="4_cheqg"]
+[ext_resource type="PackedScene" uid="uid://cl1hbfhai38lw" path="res://scenes/inventory_v_2.tscn" id="4_dnt1w"]
+[ext_resource type="Script" path="res://World/canvas.gd" id="5_qrmlj"]
+[ext_resource type="PackedScene" uid="uid://jd0jorwyudpg" path="res://scenes/moneyUI.tscn" id="7_14uhn"]
+[ext_resource type="PackedScene" uid="uid://b5s5vpwd8kmeh" path="res://Dialogue/dialogue.tscn" id="7_cyrdu"]
+[ext_resource type="PackedScene" uid="uid://dbvejb722ds20" path="res://scenes/healthBar.tscn" id="8_0npcj"]
+[ext_resource type="PackedScene" uid="uid://cdf8mfkneswa2" path="res://scenes/shop_gui.tscn" id="8_jxep8"]
+[ext_resource type="PackedScene" uid="uid://ovtthy7hgrfd" path="res://scenes/skill_cd.tscn" id="9_iqdv6"]
+[ext_resource type="Script" path="res://Scripts/Stats.gd" id="10_0fbf8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46nld"]
+bg_color = Color(0.2, 0.517647, 0.772549, 1)
+
+[sub_resource type="Resource" id="Resource_pe85t"]
+script = ExtResource("10_0fbf8")
+mhp = 20
+att = 5
+hp = 20
+def = 3
+max_mana = 100
+mana = 100
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+texture_filter = 1
+script = ExtResource("1_5gqm4")
+
+[node name="maps" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-1, 0)
+script = ExtResource("2_mpmv5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("5_qrmlj")
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("4_dnt1w")]
+visible = false
+
+[node name="Dialogue" parent="CanvasLayer" instance=ExtResource("7_cyrdu")]
+visible = false
+
+[node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource("8_0npcj")]
+process_mode = 3
+offset_left = 126.0
+offset_top = 11.0
+offset_right = 226.0
+offset_bottom = 16.0
+scale = Vector2(4, 4)
+
+[node name="MoneyUI" parent="CanvasLayer" instance=ExtResource("7_14uhn")]
+offset_left = 114.0
+offset_top = 76.0
+offset_right = 114.0
+offset_bottom = 76.0
+scale = Vector2(2, 2)
+
+[node name="ShopGUI" parent="CanvasLayer" instance=ExtResource("8_jxep8")]
+process_mode = 3
+visible = false
+
+[node name="Skill1CD" parent="CanvasLayer" instance=ExtResource("9_iqdv6")]
+offset_left = 695.0
+offset_top = 11.0
+offset_right = 791.0
+offset_bottom = 107.0
+step = 0.1
+
+[node name="Skill2CD" parent="CanvasLayer" instance=ExtResource("9_iqdv6")]
+offset_left = 804.0
+offset_top = 11.0
+offset_right = 900.0
+offset_bottom = 107.0
+step = 0.1
+
+[node name="Skill3CD" parent="CanvasLayer" instance=ExtResource("9_iqdv6")]
+offset_left = 915.0
+offset_top = 11.0
+offset_right = 1011.0
+offset_bottom = 107.0
+step = 0.1
+
+[node name="ManaBar" parent="CanvasLayer" instance=ExtResource("8_0npcj")]
+offset_left = 125.0
+offset_top = 48.0
+offset_right = 225.0
+offset_bottom = 53.0
+scale = Vector2(5, 4)
+theme_override_styles/fill = SubResource("StyleBoxFlat_46nld")
+
+[node name="Player" parent="." instance=ExtResource("3_n74gu")]
+position = Vector2(669, 369)
+safe_margin = 0.1
+knockPower = 300
+stats = SubResource("Resource_pe85t")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("4_cheqg")
+
+[connection signal="closed" from="CanvasLayer/Inventory" to="." method="_on_inventory_closed"]
+[connection signal="opened" from="CanvasLayer/Inventory" to="." method="_on_inventory_opened"]

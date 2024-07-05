@@ -1,0 +1,59 @@
+{
+    "activeFile": "D:/Fitran/Project/Game/Map/TS/ground.tsx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "D:/Fitran/Project/Game/Kurvok/map/grass.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "D:/Fitran/Project/Game/Kurvok/map/ground.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "D:/Fitran/Project/Game/Kurvok/map/market.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "D:/Fitran/Project/Game/Map/TS/BuildDeco.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "D:/Fitran/Project/Game/Map/TS/Building.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "D:/Fitran/Project/Game/Map/TS/Path_Tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "D:/Fitran/Project/Game/Map/TS/Roofs.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "D:/Fitran/Project/Game/Map/TS/ground.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "openFiles": [
+        "D:/Fitran/Project/Game/Kurvok/map/ground.tsx",
+        "D:/Fitran/Project/Game/Map/TS/BuildDeco.tsx",
+        "D:/Fitran/Project/Game/Map/TS/Building.tsx",
+        "D:/Fitran/Project/Game/Map/TS/ground.tsx",
+        "D:/Fitran/Project/Game/Map/TS/Path_Tileset.tsx",
+        "D:/Fitran/Project/Game/Map/TS/Roofs.tsx"
+    ],
+    "project": "Kurvok.tiled-project",
+    "recentFiles": [
+        "D:/Fitran/Project/Game/Kurvok/map/ground.tsx",
+        "D:/Fitran/Project/Game/Map/TS/BuildDeco.tsx",
+        "D:/Fitran/Project/Game/Map/TS/Building.tsx",
+        "D:/Fitran/Project/Game/Map/TS/Roofs.tsx",
+        "D:/Fitran/Project/Game/Map/TS/Path_Tileset.tsx",
+        "D:/Fitran/Project/Game/Map/TS/ground.tsx",
+        "D:/Fitran/Project/Game/Kurvok/map/market.tsx",
+        "D:/Fitran/Project/Game/Kurvok/map/grass.tsx"
+    ]
+}

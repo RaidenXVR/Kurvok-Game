@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtnipc4b4q7fi"]
+
+[ext_resource type="Script" path="res://player/Skills/skill_projectile.gd" id="1_77hu5"]
+
+[node name="SkillProjectile" type="Node2D"]
+script = ExtResource("1_77hu5")
+
+[node name="SkillingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SkillTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SkillingTimer" to="." method="_on_skilling_timer_timeout"]
+[connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

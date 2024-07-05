@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://b7o8t8tc8b5d4"]
+
+[ext_resource type="Script" path="res://addons/dialogue_nodes/objects/DialogueData.gd" id="1_8qlgb"]
+
+[resource]
+script = ExtResource("1_8qlgb")
+starts = {
+"1": &"0_1"
+}
+nodes = {
+"0_1": {
+"link": &"5_1",
+"offset": Vector2(0, 120),
+"start_id": "1"
+},
+"1_1": {
+"dialogue": "Hey, it's NPC1",
+"offset": Vector2(920, 180),
+"options": {
+0: {
+"condition": {},
+"link": &"1_2",
+"text": ""
+}
+},
+"size": Vector2(343.924, 370),
+"speaker": "NPC1"
+},
+"1_2": {
+"dialogue": "Now setting state",
+"offset": Vector2(1380, 200),
+"options": {
+0: {
+"condition": {},
+"link": &"4_1",
+"text": ""
+}
+},
+"size": Vector2(300, 370),
+"speaker": "NPC1"
+},
+"1_3": {
+"dialogue": "You already talked to me.",
+"offset": Vector2(1000, -360),
+"options": {
+0: {
+"condition": {},
+"link": "END",
+"text": ""
+}
+},
+"size": Vector2(300.001, 370),
+"speaker": "NPC1"
+},
+"4_1": {
+"link": "END",
+"offset": Vector2(1820, 240),
+"type": 0,
+"value": "true",
+"variable": "is_talked"
+},
+"5_1": {
+"false": &"1_1",
+"offset": Vector2(360, -40),
+"operator": 0,
+"true": &"1_3",
+"value1": "is_talked",
+"value2": "true"
+}
+}
+variables = {
+"is_talked": {
+"type": 1,
+"value": false
+}
+}
+comments = Array[String]([])
+strays = Array[String]([])
+characters = ""

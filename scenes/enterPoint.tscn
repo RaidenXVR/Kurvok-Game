@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ogvnsdbv0hpq"]
+
+[ext_resource type="Script" path="res://map/entry_point.gd" id="1_uyegt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12w5e"]
+size = Vector2(26, 62)
+
+[node name="EntryPoint" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_uyegt")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_12w5e")

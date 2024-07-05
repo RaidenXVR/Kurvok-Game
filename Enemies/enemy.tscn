@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://mrfsqk8sxn0l"]
+
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_stww7"]
+[ext_resource type="PackedScene" uid="uid://dbvejb722ds20" path="res://scenes/healthBar.tscn" id="3_6ushu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hmaq"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kk05"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_si2qm"]
+resource_local_to_scene = true
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnvmi"]
+resource_local_to_scene = true
+radius = 20.0
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+collision_layer = 60
+collision_mask = 20
+up_direction = Vector2(0, 1)
+safe_margin = 0.05
+script = ExtResource("1_stww7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3hmaq")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_4kk05")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+hframes = 7
+
+[node name="Navigation" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_path_custom_color = Color(0.886275, 0.364706, 0.364706, 1)
+debug_path_custom_line_width = 5.22
+
+[node name="HealthBar" parent="." instance=ExtResource("3_6ushu")]
+offset_left = -50.0
+offset_top = -33.3333
+offset_right = 49.0
+offset_bottom = -28.3333
+value = 50.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_si2qm")
+
+[node name="AttackBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+shape = SubResource("CircleShape2D_tnvmi")
+debug_color = Color(0.780392, 0, 0, 0.419608)
+
+[node name="PatternTimer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="timeout" from="PatternTimer" to="." method="_on_pattern_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

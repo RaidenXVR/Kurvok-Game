@@ -1,0 +1,208 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdf8mfkneswa2"]
+
+[ext_resource type="Script" path="res://scenes/shop_gui.gd" id="1_os266"]
+[ext_resource type="Texture2D" uid="uid://d2m0hb5ywib6j" path="res://asset/coin.png" id="2_3adkm"]
+
+[node name="ShopGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 26.0
+offset_right = -453.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_os266")
+
+[node name="ShopContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -25.5
+offset_right = 20.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Buy" type="TabBar" parent="ShopContainer"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("BuyList")
+tab_alignment = 1
+clip_tabs = false
+
+[node name="BuyList" type="ItemList" parent="ShopContainer/Buy"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 206.0
+offset_right = 423.0
+offset_bottom = 581.0
+allow_reselect = true
+fixed_icon_size = Vector2i(20, 20)
+
+[node name="EffectLabel" type="RichTextLabel" parent="ShopContainer/Buy"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 281.0
+offset_right = 724.0
+offset_bottom = 579.0
+bbcode_enabled = true
+scroll_active = false
+drag_and_drop_selection_enabled = false
+
+[node name="ItemIcon" type="TextureRect" parent="ShopContainer/Buy"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 20.0
+offset_right = 172.0
+offset_bottom = 148.0
+stretch_mode = 3
+
+[node name="ItemName" type="Label" parent="ShopContainer/Buy"]
+modulate = Color(1, 1, 1, 0.996078)
+layout_mode = 0
+offset_left = 44.0
+offset_top = 152.5
+offset_right = 172.0
+offset_bottom = 201.5
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ItemDescription" type="RichTextLabel" parent="ShopContainer/Buy"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 20.0
+offset_right = 716.0
+offset_bottom = 148.0
+
+[node name="GoldIcon" type="TextureRect" parent="ShopContainer/Buy"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 161.5
+offset_right = 487.0
+offset_bottom = 193.5
+texture = ExtResource("2_3adkm")
+expand_mode = 1
+
+[node name="Cost" type="Label" parent="ShopContainer/Buy"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 161.0
+offset_right = 374.0
+offset_bottom = 193.0
+vertical_alignment = 1
+
+[node name="Posession" type="Label" parent="ShopContainer/Buy"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 206.0
+offset_right = 724.0
+offset_bottom = 270.0
+
+[node name="Money" type="Label" parent="ShopContainer/Buy"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 162.0
+offset_right = 711.0
+offset_bottom = 194.0
+
+[node name="Sell" type="TabBar" parent="ShopContainer"]
+visible = false
+layout_mode = 2
+focus_neighbor_bottom = NodePath("SellList")
+tab_alignment = 1
+clip_tabs = false
+
+[node name="SellList" type="ItemList" parent="ShopContainer/Sell"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 206.0
+offset_right = 423.0
+offset_bottom = 581.0
+
+[node name="EffectLabel" type="RichTextLabel" parent="ShopContainer/Sell"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 281.0
+offset_right = 724.0
+offset_bottom = 579.0
+bbcode_enabled = true
+scroll_active = false
+drag_and_drop_selection_enabled = false
+
+[node name="ItemIcon" type="TextureRect" parent="ShopContainer/Sell"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 20.0
+offset_right = 172.0
+offset_bottom = 148.0
+stretch_mode = 3
+
+[node name="ItemName" type="Label" parent="ShopContainer/Sell"]
+modulate = Color(1, 1, 1, 0.996078)
+layout_mode = 0
+offset_left = 44.0
+offset_top = 152.5
+offset_right = 172.0
+offset_bottom = 201.5
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ItemDescription" type="RichTextLabel" parent="ShopContainer/Sell"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 20.0
+offset_right = 716.0
+offset_bottom = 148.0
+
+[node name="GoldIcon" type="TextureRect" parent="ShopContainer/Sell"]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 161.5
+offset_right = 487.0
+offset_bottom = 193.5
+texture = ExtResource("2_3adkm")
+expand_mode = 1
+
+[node name="Cost" type="Label" parent="ShopContainer/Sell"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 161.0
+offset_right = 374.0
+offset_bottom = 193.0
+vertical_alignment = 1
+
+[node name="Posession" type="Label" parent="ShopContainer/Sell"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 206.0
+offset_right = 724.0
+offset_bottom = 270.0
+
+[node name="Money" type="Label" parent="ShopContainer/Sell"]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 162.0
+offset_right = 711.0
+offset_bottom = 194.0
+
+[node name="MerchantSprite" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 721.0
+offset_top = 17.0
+offset_right = 1121.0
+offset_bottom = 617.0
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="gui_input"]
+[connection signal="tab_selected" from="ShopContainer" to="." method="_on_shop_container_tab_changed"]
+[connection signal="item_activated" from="ShopContainer/Buy/BuyList" to="." method="selected_item_buy"]
+[connection signal="item_selected" from="ShopContainer/Buy/BuyList" to="." method="_on_buy_list_item_selected"]
+[connection signal="item_activated" from="ShopContainer/Sell/SellList" to="." method="selected_item_sell"]
+[connection signal="item_selected" from="ShopContainer/Sell/SellList" to="." method="_on_sell_list_item_selected"]

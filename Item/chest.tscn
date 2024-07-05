@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://rdn5uj1o0222"]
+
+[ext_resource type="Script" path="res://Item/chestNode.gd" id="1_cnyae"]
+[ext_resource type="Texture2D" uid="uid://b13yhi4k6h2j4" path="res://Item/chest.png" id="3_jut3h"]
+
+[sub_resource type="Animation" id="Animation_a04nb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(5, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_oby0j"]
+resource_name = "open"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(4, 4), Vector2i(4, 5), Vector2i(4, 6), Vector2i(4, 7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2qf6"]
+_data = {
+"RESET": SubResource("Animation_a04nb"),
+"open": SubResource("Animation_oby0j")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfwny"]
+size = Vector2(40, 30)
+
+[node name="Chest" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_cnyae")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_jut3h")
+hframes = 12
+vframes = 8
+frame = 65
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c2qf6")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(1.165, 1.165)
+shape = SubResource("RectangleShape2D_vfwny")

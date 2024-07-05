@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Data" load_steps=4 format=3]
+
+[ext_resource type="Resource" path="res://Saves/Save0/Get The Baguette.tres" id="1_kyv0r"]
+[ext_resource type="Script" path="res://Scripts/Data.gd" id="1_q2liy"]
+[ext_resource type="Resource" path="res://Saves/Save0/playerInventory.tres" id="1_wqim0"]
+
+[resource]
+script = ExtResource("1_q2liy")
+chest_states = {
+"westArea_chest1": true
+}
+player_inventory = ExtResource("1_wqim0")
+items_equiped = Array[int]([])
+main_quest_state = "MQ Name"
+enemy_slain = {}
+money = 10
+current_skill_tree = 0
+current_skill_equipped = 3
+available_quests = Array[Resource("res://Scripts/Quest.gd")]([])
+ongoing_quests = Array[Resource("res://Scripts/Quest.gd")]([ExtResource("1_kyv0r")])
+completed_quests = Array[Resource("res://Scripts/Quest.gd")]([])
+map_name = "DebugArea"
+player_position = Vector2(311.052, 1110.83)

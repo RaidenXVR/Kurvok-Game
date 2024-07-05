@@ -1,0 +1,26 @@
+{
+	"maps": {
+		"westEnterance": {
+			"east": [
+				1470,
+				286
+			],
+			"west": [
+				-53,
+				527
+			],
+			"south": [
+				0,
+				0
+			]
+		},
+		"MidWest": {
+			"east": [],
+			"west": [-27,485]
+		},
+		"market": {
+			"east": [1465,716],
+			"west": []
+		}
+	}
+}

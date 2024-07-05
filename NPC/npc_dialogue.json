@@ -1,0 +1,200 @@
+{
+	"npc1": {
+		"non-quest-dialog": [
+			{
+				"char": "npc1",
+				"dialogue": "dialogue npc1",
+				"options": {
+					"option1_name": [
+						{
+							"char": "Layla",
+							"dialogue": "option1",
+							"options": []
+						},
+						{
+							"char": "npc1",
+							"dialogue": "reaponse option1",
+							"options": []
+						}
+					],
+					"option2_name": [
+						{
+							"char": "Layla",
+							"dialogue": "option2",
+							"options": []
+						},
+						{
+							"char": "npc1",
+							"dialogue": "reaponse option2",
+							"options": []
+						}
+					]
+				}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "after dialogue",
+				"options": []
+			},
+			{
+				"char": "npc1",
+				"dialogue": "end dialogue",
+				"options": []
+			}
+		],
+		"quest-dialog": {
+			"pre-quest": [
+				{
+					"char": "npc1",
+					"dialogue": "pre quest dialog",
+					"options": {
+						"Accept Quest": [
+							{
+								"char": "Layla",
+								"dialogue": "Accept Quest",
+								"options": []
+							},
+							{
+								"char": "npc1",
+								"dialogue": "quest accepted",
+								"options": []
+							}
+						],
+						"Decline Quest": [
+							{
+								"char": "Layla",
+								"dialogue": "Decline Quest",
+								"options": []
+							},
+							{
+								"char": "npc1",
+								"dialogue": "quest declined",
+								"options": []
+							}
+						]
+					},
+					"special_var": {
+						"Accept Quest": "accept quest",
+						"Decline Quest": "decline quest"
+					}
+				},
+				{
+					"char": "Layla",
+					"dialogue": "after pre quests dialogue",
+					"options": []
+				},
+				{
+					"char": "npc1",
+					"dialogue": "npc after pre quests dialogue",
+					"options": []
+				}
+			],
+			"quest-accepted": [],
+			"in-quest": [
+				{
+					"char": "Layla",
+					"dialogue": "in quest dialogue",
+					"options": []
+				},
+				{
+					"char": "npc1",
+					"dialogue": "npc in quests dialogue",
+					"options": []
+				}
+			],
+			"post-quest": [
+				{
+					"char": "Layla",
+					"dialogue": "post quest dialogue",
+					"options": []
+				},
+				{
+					"char": "npc1",
+					"dialogue": "npc post quests dialogue",
+					"options": []
+				}
+			]
+		}
+	},
+	"npc2": {
+		"quest-dialog": {
+			"pre-quest": [
+				{
+					"char": "npc2",
+					"dialogue": "pre quest dialog npc2",
+					"options": {
+						"Accept Quest": [
+							{
+								"char": "Layla",
+								"dialogue": "Accept Quest",
+								"options": []
+							},
+							{
+								"char": "npc2",
+								"dialogue": "quest accepted",
+								"options": []
+							}
+						],
+						"Decline Quest": [
+							{
+								"char": "Layla",
+								"dialogue": "Decline Quest",
+								"options": []
+							},
+							{
+								"char": "npc2",
+								"dialogue": "quest declined",
+								"options": []
+							}
+						]
+					},
+					"special_var": {
+						"Accept Quest": "accept quest",
+						"Decline Quest": "decline quest"
+					}
+				},
+				{
+					"char": "npc2",
+					"dialogue": "npc after pre quests dialogue npc2",
+					"options": []
+				}
+			],
+			"in-quest": [
+				{
+					"char": "npc2",
+					"dialogue": "check for talk quest completed npc2",
+					"options": {
+
+					},
+					"special_var": {
+
+					}
+				}
+			],
+			"post-quest": [
+				{
+					"char": "Layla",
+					"dialogue": "post talk quest dialogue npc2",
+					"options": []
+				},
+				{
+					"char": "npc2",
+					"dialogue": "npc post quests dialogue npc2",
+					"options": []
+				}
+			]
+		},
+		"non-quest-dialog": [
+			{
+				"char": "Layla",
+				"dialogue": "non quest dialogue npc2",
+				"options": []
+			},
+			{
+				"char": "npc2",
+				"dialogue": "second non quests dialogue npc2",
+				"options": []
+			}
+		]
+	}
+}

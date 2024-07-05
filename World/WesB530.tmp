@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://h6ptyappplkt"]
+
+[ext_resource type="PackedScene" uid="uid://duoup4ctmg2rp" path="res://map/westEnterance.tscn" id="1_hh5d3"]
+[ext_resource type="Script" path="res://World/maps.gd" id="1_udqeb"]
+[ext_resource type="PackedScene" uid="uid://bswabc2fnfm68" path="res://player/player.tscn" id="2_mg8kx"]
+[ext_resource type="Script" path="res://Scripts/Cam.gd" id="3_vclts"]
+
+[node name="WestArea" type="Node2D"]
+
+[node name="maps" type="Node2D" parent="."]
+script = ExtResource("1_udqeb")
+
+[node name="westEnterance" parent="maps" instance=ExtResource("1_hh5d3")]
+
+[node name="Player" parent="." instance=ExtResource("2_mg8kx")]
+position = Vector2(1073, 298)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("3_vclts")

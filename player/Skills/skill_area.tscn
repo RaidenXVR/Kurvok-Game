@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy33e7hc8ad0k"]
+
+[ext_resource type="Script" path="res://player/Skills/skill_area.gd" id="1_3x1dl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_itcfv"]
+radius = 150.0
+
+[node name="SkillArea" type="Node2D"]
+script = ExtResource("1_3x1dl")
+
+[node name="AttackBox" type="Area2D" parent="."]
+collision_layer = 68
+collision_mask = 100
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackBox"]
+build_mode = 1
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+shape = SubResource("CircleShape2D_itcfv")
+disabled = true
+debug_color = Color(0.54902, 0.192157, 0.890196, 0.537255)
+
+[node name="SkillingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SkillTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="timeout" from="SkillingTimer" to="." method="_on_skilling_timer_timeout"]
+[connection signal="timeout" from="SkillTimer" to="." method="_on_skill_timer_timeout"]

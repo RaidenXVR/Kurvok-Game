@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl1hbfhai38lw"]
+
+[ext_resource type="Script" path="res://scenes/inventory.gd" id="1_5ob2e"]
+[ext_resource type="PackedScene" uid="uid://cip074xhh35wc" path="res://scenes/slots.tscn" id="1_7kps4"]
+[ext_resource type="Texture2D" uid="uid://v7qb0hqwk6dv" path="res://asset/frame5(1).png" id="2_4ocvy"]
+[ext_resource type="PackedScene" uid="uid://dho3meokokk33" path="res://scenes/equipment_slots.tscn" id="3_26pus"]
+[ext_resource type="Texture2D" uid="uid://c82hra0kvbk7p" path="res://asset/frame4.png" id="3_hwl8y"]
+[ext_resource type="Texture2D" uid="uid://c0tmpuqlmbxn2" path="res://asset/frame3.png" id="3_yk1qi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ppkb5"]
+texture = ExtResource("2_4ocvy")
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 20.0
+region_rect = Rect2(0, 6, 356, 316)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3rkf8"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("3_yk1qi")
+
+[node name="InventoryV2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ob2e")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ppkb5")
+tab_alignment = 1
+
+[node name="Consumables" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("Slots")
+
+[node name="Slots" parent="TabContainer/Consumables" instance=ExtResource("1_7kps4")]
+layout_mode = 1
+offset_left = 69.0
+offset_top = 40.0
+offset_right = -321.0
+offset_bottom = -37.0
+
+[node name="ItemFrame" type="TextureRect" parent="TabContainer/Consumables"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 850.0
+offset_top = 13.0
+offset_right = 1100.0
+offset_bottom = 263.0
+texture = ExtResource("3_hwl8y")
+expand_mode = 1
+
+[node name="ItemIcon" type="TextureRect" parent="TabContainer/Consumables"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 874.0
+offset_top = 42.0
+offset_right = 1074.0
+offset_bottom = 242.0
+expand_mode = 1
+
+[node name="ItemDesc" type="RichTextLabel" parent="TabContainer/Consumables"]
+layout_mode = 0
+offset_left = 838.0
+offset_top = 273.0
+offset_right = 1112.0
+offset_bottom = 561.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_3rkf8")
+bbcode_enabled = true
+
+[node name="Key Items" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Slots" parent="TabContainer/Key Items" instance=ExtResource("1_7kps4")]
+layout_mode = 1
+offset_left = 69.0
+offset_top = 40.0
+offset_right = -321.0
+offset_bottom = -37.0
+
+[node name="ItemFrame" type="TextureRect" parent="TabContainer/Key Items"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 850.0
+offset_top = 13.0
+offset_right = 1100.0
+offset_bottom = 263.0
+texture = ExtResource("3_hwl8y")
+expand_mode = 1
+
+[node name="ItemIcon" type="TextureRect" parent="TabContainer/Key Items"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 874.0
+offset_top = 42.0
+offset_right = 1074.0
+offset_bottom = 242.0
+expand_mode = 1
+
+[node name="ItemDesc" type="RichTextLabel" parent="TabContainer/Key Items"]
+layout_mode = 0
+offset_left = 838.0
+offset_top = 273.0
+offset_right = 1112.0
+offset_bottom = 561.0
+
+[node name="Equipment" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Slots" parent="TabContainer/Equipment" instance=ExtResource("3_26pus")]
+layout_mode = 1
+offset_left = 69.0
+offset_top = 40.0
+offset_right = -543.0
+offset_bottom = -37.0
+
+[node name="ItemFrame" type="TextureRect" parent="TabContainer/Equipment"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 850.0
+offset_top = 13.0
+offset_right = 1100.0
+offset_bottom = 263.0
+texture = ExtResource("3_hwl8y")
+expand_mode = 1
+
+[node name="ItemIcon" type="TextureRect" parent="TabContainer/Equipment"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 874.0
+offset_top = 42.0
+offset_right = 1074.0
+offset_bottom = 242.0
+expand_mode = 1
+
+[node name="ItemDesc" type="RichTextLabel" parent="TabContainer/Equipment"]
+layout_mode = 0
+offset_left = 838.0
+offset_top = 273.0
+offset_right = 1112.0
+offset_bottom = 561.0
+
+[node name="Quests" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Map" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Status" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[connection signal="tab_changed" from="TabContainer" to="." method="_on_tab_container_tab_changed"]

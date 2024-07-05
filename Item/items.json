@@ -1,0 +1,26 @@
+{
+	"1": {
+		"name": "Baguette",
+		"effect": {
+			"heal": 2
+		},
+		"category": "consumable",
+		"texture": "res://Item/texture/1.png",
+		"buy": 10,
+		"sell": 8,
+		"description": "A long hard bread that usually served along with soup or made into a sandwich... It's hard by itself."
+	},
+	"2": {
+		"name": "Apple Pie",
+		"effect": {
+			"heal": 3,
+			"atk": 4,
+			"def": -2
+		},
+		"category": "consumable",
+		"texture": "",
+		"buy": 15,
+		"sell": 12,
+		"description": "A pie made from apple. What do you expect?."
+	}
+}

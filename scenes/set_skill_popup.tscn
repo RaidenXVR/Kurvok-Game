@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3 uid="uid://boa8k17k5377v"]
+
+[ext_resource type="Script" path="res://scenes/set_skill_popup.gd" id="1_ku5vw"]
+
+[sub_resource type="Curve" id="Curve_6vwx1"]
+_data = [Vector2(0.393248, 0.329138), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_usp2f"]
+curve = SubResource("Curve_6vwx1")
+
+[node name="SetSkillPopup" type="Control"]
+custom_minimum_size = Vector2(1000, 550)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -240.0
+offset_right = 480.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ku5vw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CurveTexture_usp2f")
+
+[node name="SkillsContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(540, 350)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -240.0
+offset_right = 540.0
+offset_bottom = 110.0
+grow_vertical = 2
+focus_mode = 2
+columns = 3
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 245.0
+offset_right = 978.0
+offset_bottom = 534.0
+autowrap_mode = 3
+
+[node name="SkillIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 672.0
+offset_top = 35.0
+offset_right = 872.0
+offset_bottom = 235.0
+expand_mode = 1
+
+[node name="EquippedSkill1" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.041
+anchor_top = 0.789
+anchor_right = 0.115
+anchor_bottom = 0.935
+offset_left = -6.0
+offset_top = 0.0499878
+offset_bottom = -0.250061
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquippedSkill2" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 196.0
+offset_top = 434.0
+offset_right = 276.0
+offset_bottom = 514.0
+pivot_offset = Vector2(40, 40)
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EquippedSkill3" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 350.0
+offset_top = 434.0
+offset_right = 430.0
+offset_bottom = 514.0
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PassiveSkill" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_left = 483.0
+offset_top = 434.0
+offset_right = 563.0
+offset_bottom = 514.0
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="pressed" from="EquippedSkill1" to="." method="_on_equipped_skill_1_button_down"]
+[connection signal="pressed" from="EquippedSkill2" to="." method="_on_equipped_skill_2_button_down"]
+[connection signal="pressed" from="EquippedSkill3" to="." method="_on_equipped_skill_3_button_down"]
+[connection signal="pressed" from="PassiveSkill" to="." method="_on_passive_skill_button_down"]

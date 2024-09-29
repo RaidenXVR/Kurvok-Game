@@ -1,6 +1,10 @@
 {
 	"npc1": {
-		"non-quest-dialog": [
+		"actors": [
+			"Layla",
+			"npc1"
+		],
+		"non-quest-dialogue": [
 			{
 				"char": "npc1",
 				"dialogue": "dialogue npc1",
@@ -42,11 +46,11 @@
 				"options": []
 			}
 		],
-		"quest-dialog": {
+		"Get The Baguette": {
 			"pre-quest": [
 				{
 					"char": "npc1",
-					"dialogue": "pre quest dialog",
+					"dialogue": "Get The Baguette pre quest dialogue",
 					"options": {
 						"Accept Quest": [
 							{
@@ -71,12 +75,13 @@
 								"dialogue": "quest declined",
 								"options": []
 							}
-						]
-					},
-					"special_var": {
-						"Accept Quest": "accept quest",
-						"Decline Quest": "decline quest"
+						],
+						"special_var": {
+						"Accept Quest": "accept",
+						"Decline Quest": "decline"
 					}
+					},
+					
 				},
 				{
 					"char": "Layla",
@@ -89,39 +94,127 @@
 					"options": []
 				}
 			],
-			"quest-accepted": [],
 			"in-quest": [
 				{
 					"char": "Layla",
-					"dialogue": "in quest dialogue",
+					"dialogue": "Get The Baguette in quest dialogue",
 					"options": []
 				},
 				{
 					"char": "npc1",
-					"dialogue": "npc in quests dialogue",
+					"dialogue": "Get The Baguette npc in quests dialogue",
 					"options": []
 				}
 			],
 			"post-quest": [
 				{
 					"char": "Layla",
-					"dialogue": "post quest dialogue",
+					"dialogue": "Get The Baguette post quest dialogue",
 					"options": []
 				},
 				{
 					"char": "npc1",
-					"dialogue": "npc post quests dialogue",
+					"dialogue": "Get The Baguette npc post quests dialogue",
 					"options": []
 				}
 			]
-		}
+		},
+		"Kill Tentacle": {
+			"pre-quest": [
+				{
+					"char": "npc1",
+					"dialogue": "Kill Tentacle pre quest dialogue",
+					"options": {
+						"Accept Quest": [
+							{
+								"char": "Layla",
+								"dialogue": "Accept Quest",
+								"options": []
+							},
+							{
+								"char": "npc1",
+								"dialogue": "quest accepted",
+								"options": []
+							}
+						],
+						"Decline Quest": [
+							{
+								"char": "Layla",
+								"dialogue": "Decline Quest",
+								"options": []
+							},
+							{
+								"char": "npc1",
+								"dialogue": "quest declined",
+								"options": []
+							}
+						],
+						"special_var": {
+						"Accept Quest": "accept",
+						"Decline Quest": "decline"
+					}
+					},
+					
+				},
+				{
+					"char": "Layla",
+					"dialogue": "after pre quests dialogue",
+					"options": []
+				},
+				{
+					"char": "npc1",
+					"dialogue": "npc after pre quests dialogue",
+					"options": []
+				}
+			],
+			"in-quest": [
+				{
+					"char": "Layla",
+					"dialogue": "Kill Tentacle in quest dialogue",
+					"options": []
+				},
+				{
+					"char": "npc1",
+					"dialogue": "Kill Tentacle npc in quests dialogue",
+					"options": []
+				}
+			],
+			"post-quest": [
+				{
+					"char": "Layla",
+					"dialogue": "Kill Tentacle post quest dialogue",
+					"options": []
+				},
+				{
+					"char": "npc1",
+					"dialogue": "Kill Tentacle npc post quests dialogue",
+					"options": []
+				}
+			]
+		},
+		"Talk To Him For Me": [
+			{
+				"char": "Layla",
+				"dialogue": "For quest Talk To Him For Me",
+				"options": []
+			},
+			{
+				"char": "npc1",
+				"dialogue": "Response For quest Talk To Him For Me",
+				"options": []
+			}
+		]
 	},
 	"npc2": {
-		"quest-dialog": {
+		"actors": [
+			"Layla",
+			"npc2"
+		],
+		"Talk To Him For Me": {
 			"pre-quest": [
 				{
 					"char": "npc2",
-					"dialogue": "pre quest dialog npc2",
+					"dialogue": "Talk To Him For Me pre quest dialog npc2",
 					"options": {
 						"Accept Quest": [
 							{
@@ -146,12 +239,13 @@
 								"dialogue": "quest declined",
 								"options": []
 							}
-						]
-					},
-					"special_var": {
-						"Accept Quest": "accept quest",
-						"Decline Quest": "decline quest"
+						],
+						"special_var": {
+						"Accept Quest": "accept",
+						"Decline Quest": "decline"
 					}
+					},
+					
 				},
 				{
 					"char": "npc2",
@@ -162,7 +256,7 @@
 			"in-quest": [
 				{
 					"char": "npc2",
-					"dialogue": "check for talk quest completed npc2",
+					"dialogue": "Talk To Him For Me check for talk quest completed npc2",
 					"options": {
 
 					},
@@ -174,17 +268,17 @@
 			"post-quest": [
 				{
 					"char": "Layla",
-					"dialogue": "post talk quest dialogue npc2",
+					"dialogue": "Talk To Him For Me post talk quest dialogue npc2",
 					"options": []
 				},
 				{
 					"char": "npc2",
-					"dialogue": "npc post quests dialogue npc2",
+					"dialogue": "Talk To Him For Me npc post quests dialogue npc2",
 					"options": []
 				}
 			]
 		},
-		"non-quest-dialog": [
+		"non-quest-dialogue": [
 			{
 				"char": "Layla",
 				"dialogue": "non quest dialogue npc2",
@@ -194,6 +288,180 @@
 				"char": "npc2",
 				"dialogue": "second non quests dialogue npc2",
 				"options": []
+			}
+		]
+	},
+	"Galien": {
+		"actors": [
+			"Layla",
+			"Galien"
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Galien",
+				"dialogue": "Keep moving, girl.",
+				"options": {
+
+				}
+			}
+		]
+	},
+	"Merilda": {
+		"actors": [
+			"Layla",
+			"Merilda"
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Merilda",
+				"dialogue": "If you have some questions, go to the Information Center.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Merilda",
+				"dialogue": "It's right there on the left side.",
+				"options": {
+
+				}
+			}
+		]
+	},
+	"Parsefal": {
+		"actors": [
+			"Layla",
+			"Parsefal"
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Parsefal",
+				"dialogue": "If you need something, go inside.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Parsefal",
+				"dialogue": "I'm on break right now, don't disturb me.",
+				"options": {
+
+				}
+			}
+		]
+	},
+	"Yvette": {
+		"actors": [
+			"Layla",
+			"Yvette"
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Yvette",
+				"dialogue": "It's another eventless day here in Kurvok.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Yvette",
+				"dialogue": "But at least I'm still alive.",
+				"options": {
+
+				}
+			}
+		],
+		"Ask Around": [
+			{
+				"char": "Layla",
+				"dialogue": "Hey, sorry to bother you, can I ask about something?",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Yvette",
+				"dialogue": "What is it? Are you new to this city? If you have something to ask, go to Information Center near the gate.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "Ah, no, I'm just an adventurer. I just want to ask if there's anything big happened recently?",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Yvette",
+				"dialogue": "Anything big? Well, the market seems to held a bazaar, that's something big for me.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "No, like, something from the Empire?",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Yvette",
+				"dialogue": "Ah, so that's what you mean..",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Yvette",
+				"dialogue": "Well, the Prince issues a warning about a so called 'Hero' to come.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Yvette",
+				"dialogue": "If you see anyone harrassing demons or even attacking them, please tell the nearest guard.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Character...",
+				"dialogue": "The guards are being deployed more than usual to prevent any attack to citizens.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "A-ah, I see... Thank you for your information. I will report if I see them.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Yvette",
+				"dialogue": "Sure thing, Adventurer. Just be careful and keep nice to everybody.",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(I need to be careful not to reveal my identity.)",
+				"options": {
+
+				}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(How the heck even the Prince know I'm coming here!)",
+				"options": {
+
+				}
 			}
 		]
 	}

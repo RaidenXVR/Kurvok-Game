@@ -26,6 +26,7 @@ var can_talk:bool = false
 var can_shop
 var temp_area: Area2D
 var talk_count: int = 0
+var slide_amount = 0.0
 
 
 func _ready():
@@ -53,7 +54,7 @@ func handleInput():
 		animation.stop()
 		
 	#Switch to run
-	if Input.is_action_pressed("run"):
+	if Input.is_action_pressed("run") and not is_stunned:
 		speed = 230
 		animation.speed_scale = 2
 	else:
@@ -70,13 +71,13 @@ func handleInput():
 	#attack logic
 	if Input.is_action_just_pressed("attack"):
 		animation.play("attack"+lastAnimDir)
-		is_attacking = true
-		is_stunned = true
+		# is_attacking = true
+		# is_stunned = true
 		attack_box.monitoring = true
 		await animation.animation_finished
 		attack_box.monitoring = false
-		is_stunned = false
-		is_attacking = false
+		# is_stunned = false
+		# is_attacking = false
 
 func updateAnimation():
 	if is_attacking: return
@@ -211,7 +212,7 @@ func _on_attack_box_area_entered(area:Area2D):
 
 func take_damage(damage):
 	if is_damaged: return
-	if is_stunned: return
+	# if is_stunned: return
 	stats.take_damage(damage)
 	player_healthbar.health = stats.hp
 	if stats.hp < 0:

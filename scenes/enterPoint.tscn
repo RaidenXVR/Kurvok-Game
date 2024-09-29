@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://map/entry_point.gd" id="1_uyegt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12w5e"]
-size = Vector2(26, 62)
+size = Vector2(26, 40)
 
 [node name="EntryPoint" type="StaticBody2D"]
 collision_layer = 2

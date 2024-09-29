@@ -10,6 +10,9 @@ class_name InventoryItems
 @export var effects:Dictionary
 @export var item_id: String
 @export var amount:int
+@export var description:String
+@export var sub_category: String
+@export var is_equipped: bool = false
 var item_data
 
 func init(id, am):
@@ -22,6 +25,7 @@ func init(id, am):
 	var found_item
 	if item_data.has(str(item_id)):
 		found_item =  item_data[str(item_id)]
+		
 	else:
 		return
 
@@ -29,6 +33,10 @@ func init(id, am):
 	category = found_item["category"]
 	effects = found_item["effect"]
 	texture = found_item["texture"]
+	description = found_item["description"]
+	
+	if category == "equipment":
+		sub_category = found_item["sub_category"]
 	
 
 func effect():

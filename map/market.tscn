@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpx2dd7k4devf"]
+[gd_scene load_steps=9 format=3 uid="uid://bpx2dd7k4devf"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="3_c4uhe"]
 [ext_resource type="PackedScene" uid="uid://ogvnsdbv0hpq" path="res://scenes/enterPoint.tscn" id="3_xhodb"]
+[ext_resource type="PackedScene" uid="uid://cekp460asv1va" path="res://scenes/door.tscn" id="5_g060d"]
 [ext_resource type="Texture2D" uid="uid://b0jmyfgr7cfn4" path="res://Tilesets/00088.png" id="grass"]
 [ext_resource type="Texture2D" uid="uid://d3saf8ac5su4f" path="res://Tilesets/pandamaru_mv_market1_by_schwarzenacht_d9k7nz7.png" id="market"]
 
@@ -1822,13 +1823,17 @@ layer_1/tile_data = PackedInt32Array(524296, 524289, 4, 524297, 589825, 4, 52429
 layer_2/name = "itemProps"
 layer_2/tile_data = PackedInt32Array(720917, 65537, 3, 720919, 65537, 2)
 script = ExtResource("3_c4uhe")
-west_map = null
 east_map = "westEnterance"
-north_map = null
-south_map = null
 
 [node name="EntryPoint" type="Node2D" parent="."]
 
 [node name="eastPoint" parent="EntryPoint" instance=ExtResource("3_xhodb")]
 position = Vector2(1465, 716)
 scale = Vector2(3, 3)
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="Door" parent="Doors" instance=ExtResource("5_g060d")]
+position = Vector2(688, 729)
+map_destination = "NorthGate"
+door_destination = "Door_Info"

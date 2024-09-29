@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b0lo5n87jg5op" path="res://asset/diabg.png" id="1_6lg4y"]
 [ext_resource type="Script" path="res://Dialogue/dialogue.gd" id="1_t5x8s"]
-[ext_resource type="FontFile" uid="uid://c5e7dfiiyk0hv" path="res://asset/NormalFont.ttf" id="2_x3ti6"]
+[ext_resource type="FontFile" uid="uid://fh25nfwwou4i" path="res://asset/Heartbound_font.ttf" id="3_gb2io"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tlo1g"]
 texture = ExtResource("1_6lg4y")
@@ -59,7 +59,30 @@ offset_top = 7.0
 offset_right = 1073.0
 offset_bottom = 249.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_x3ti6")
+theme_override_fonts/font = ExtResource("3_gb2io")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NameLabel" type="Panel" parent="."]
+top_level = true
+custom_minimum_size = Vector2(102, 23)
+layout_mode = 0
+offset_left = 120.0
+offset_top = 420.0
+offset_right = 336.0
+offset_bottom = 516.0
+scale = Vector2(1.1, 1)
+theme_override_styles/panel = SubResource("StyleBoxTexture_tlo1g")
+
+[node name="Label" type="Label" parent="NameLabel"]
+texture_filter = 2
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gb2io")
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -75,18 +98,18 @@ texture = SubResource("GradientTexture2D_03kig")
 
 [node name="LeftPortrait" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 99.0
-offset_right = 451.0
-offset_bottom = 699.0
+offset_left = 180.0
+offset_top = 100.0
+offset_right = 580.0
+offset_bottom = 700.0
 expand_mode = 1
 stretch_mode = 2
 
 [node name="RightPortrait" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 844.0
+offset_left = 720.0
 offset_top = 99.0
-offset_right = 1244.0
+offset_right = 1120.0
 offset_bottom = 699.0
 expand_mode = 1
 stretch_mode = 2

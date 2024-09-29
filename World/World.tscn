@@ -1,20 +1,60 @@
-[gd_scene load_steps=15 format=3 uid="uid://h6ptyappplkt"]
+[gd_scene load_steps=21 format=3 uid="uid://h6ptyappplkt"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_5gqm4"]
 [ext_resource type="Script" path="res://World/maps.gd" id="2_mpmv5"]
 [ext_resource type="PackedScene" uid="uid://bswabc2fnfm68" path="res://player/player.tscn" id="3_n74gu"]
+[ext_resource type="PackedScene" uid="uid://k531a6l3m0q8" path="res://scenes/menu_v_2.tscn" id="4_bl51d"]
 [ext_resource type="Script" path="res://Scripts/Cam.gd" id="4_cheqg"]
-[ext_resource type="PackedScene" uid="uid://cl1hbfhai38lw" path="res://scenes/inventory_v_2.tscn" id="4_dnt1w"]
 [ext_resource type="Script" path="res://World/canvas.gd" id="5_qrmlj"]
 [ext_resource type="PackedScene" uid="uid://jd0jorwyudpg" path="res://scenes/moneyUI.tscn" id="7_14uhn"]
 [ext_resource type="PackedScene" uid="uid://b5s5vpwd8kmeh" path="res://Dialogue/dialogue.tscn" id="7_cyrdu"]
 [ext_resource type="PackedScene" uid="uid://dbvejb722ds20" path="res://scenes/healthBar.tscn" id="8_0npcj"]
 [ext_resource type="PackedScene" uid="uid://cdf8mfkneswa2" path="res://scenes/shop_gui.tscn" id="8_jxep8"]
-[ext_resource type="PackedScene" uid="uid://ovtthy7hgrfd" path="res://scenes/skill_cd.tscn" id="9_iqdv6"]
+[ext_resource type="PackedScene" uid="uid://ovtthy7hgrfd" path="res://UI/skill_cd.tscn" id="9_iqdv6"]
 [ext_resource type="Script" path="res://Scripts/Stats.gd" id="10_0fbf8"]
+[ext_resource type="PackedScene" uid="uid://b4m2b4owup3tl" path="res://scenes/info_container.tscn" id="10_c45xd"]
+[ext_resource type="Texture2D" uid="uid://jd3kug7n44aw" path="res://asset/LaylaFainted.png" id="11_ueend"]
+[ext_resource type="FontFile" uid="uid://b0a4rck3bbjt7" path="res://asset/joystix monospace.otf" id="12_kfswe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46nld"]
 bg_color = Color(0.2, 0.517647, 0.772549, 1)
+
+[sub_resource type="Animation" id="Animation_q1j30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_i2rv5"]
+resource_name = "fainted"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ye1j"]
+_data = {
+"RESET": SubResource("Animation_q1j30"),
+"fainted": SubResource("Animation_i2rv5")
+}
 
 [sub_resource type="Resource" id="Resource_pe85t"]
 script = ExtResource("10_0fbf8")
@@ -39,7 +79,7 @@ script = ExtResource("2_mpmv5")
 process_mode = 3
 script = ExtResource("5_qrmlj")
 
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource("4_dnt1w")]
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("4_bl51d")]
 visible = false
 
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource("7_cyrdu")]
@@ -93,19 +133,171 @@ offset_bottom = 53.0
 scale = Vector2(5, 4)
 theme_override_styles/fill = SubResource("StyleBoxFlat_46nld")
 
+[node name="Popup" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.5
+offset_top = -33.0
+offset_right = 117.5
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.243137, 0.243137, 0.243137, 0.537255)
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusContainer" type="HFlowContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(470, 170)
+layout_direction = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -529.0
+offset_top = -184.0
+offset_right = -59.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Info" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 520.0
+offset_right = 426.0
+offset_bottom = 707.0
+
+[node name="InfoContainer" parent="CanvasLayer/Info" instance=ExtResource("10_c45xd")]
+layout_mode = 1
+offset_top = 0.0
+offset_right = 0.0
+
+[node name="GameOver" type="Control" parent="CanvasLayer"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverText" type="Label" parent="CanvasLayer/GameOver"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 350.0
+offset_top = -100.0
+offset_right = 890.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(270, 50)
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("12_kfswe")
+theme_override_font_sizes/font_size = 70
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="KeyText" type="Label" parent="CanvasLayer/GameOver"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 370.0
+offset_top = 550.0
+offset_right = 910.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(270, 50)
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("12_kfswe")
+theme_override_font_sizes/font_size = 20
+text = "press any key..."
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.0156863, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GameOver"]
+visible = false
+z_index = 1
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("11_ueend")
+offset = Vector2(0, -25)
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameOver"]
+libraries = {
+"": SubResource("AnimationLibrary_3ye1j")
+}
+
 [node name="Player" parent="." instance=ExtResource("3_n74gu")]
 position = Vector2(669, 369)
 safe_margin = 0.1
-knockPower = 300
+knockPower = 200
 stats = SubResource("Resource_pe85t")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 0
+limit_smoothed = true
+position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("4_cheqg")
 
-[connection signal="closed" from="CanvasLayer/Inventory" to="." method="_on_inventory_closed"]
-[connection signal="opened" from="CanvasLayer/Inventory" to="." method="_on_inventory_opened"]
+[node name="StatusTimers" type="Node2D" parent="."]
+
+[connection signal="closed" from="CanvasLayer/Menu" to="." method="_on_menu_closed"]
+[connection signal="open_popup" from="CanvasLayer/Menu" to="." method="do_pop_up"]
+[connection signal="opened" from="CanvasLayer/Menu" to="." method="_on_menu_opened"]

@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=9 format=3 uid="uid://ce32ru5l65rtp"]
+
+[ext_resource type="Script" path="res://scenes/effect.gd" id="1_3sv2n"]
+[ext_resource type="SpriteFrames" uid="uid://cch2vobd24tmc" path="res://Enemies/enemies/tentacle_anim.tres" id="1_df6is"]
+[ext_resource type="Script" path="res://Enemies/enemy_attack.gd" id="1_oe14g"]
+[ext_resource type="Script" path="res://Scripts/Stats.gd" id="2_320yf"]
+[ext_resource type="Script" path="res://Enemies/enemyData.gd" id="2_okrry"]
+
+[sub_resource type="Resource" id="Resource_yx52v"]
+script = ExtResource("1_3sv2n")
+effect_type = 2
+duration = 3
+tick_duration = 0
+damage_or_modifier = 0
+
+[sub_resource type="Resource" id="Resource_lrn2m"]
+script = ExtResource("1_oe14g")
+attack_type = 1
+effect = SubResource("Resource_yx52v")
+speed_mod = 60
+stun_duration = 0.5
+shape_radius = 30
+num_projectile = 0
+is_full_circle_division = false
+distance_for_aoe = 200
+distance_for_slash = 80
+slash_shape_offset = 20
+
+[sub_resource type="Resource" id="Resource_now3r"]
+script = ExtResource("2_320yf")
+mhp = 20
+att = 5
+hp = 20
+def = 3
+max_mana = 10
+mana = null
+
+[resource]
+script = ExtResource("2_okrry")
+enemy_type = "Tentacle"
+enemy_stats = SubResource("Resource_now3r")
+speed = 30
+knockPower = 300
+detect_radius = 200
+col_hitbox_radius = 15
+move_delay = 1.0
+move_pattern = Array[Dictionary]([])
+attack_radius = 20
+attack_delay = 2.0
+attack_patterns = Array[ExtResource("1_oe14g")]([SubResource("Resource_lrn2m")])
+default_shape_radius = 20
+enemy_sprite_frames = ExtResource("1_df6is")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://h53rw4clpyfo"]
+
+[ext_resource type="Script" path="res://player/Skills/skill.gd" id="1_poe65"]
+
+[node name="Skill" type="Node2D"]
+script = ExtResource("1_poe65")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="SkillingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SkillCD" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_attack_box_body_entered"]
+[connection signal="timeout" from="SkillingTimer" to="." method="_on_skilling_timer_timeout"]
+[connection signal="timeout" from="SkillCD" to="." method="_on_skill_timer_timeout"]

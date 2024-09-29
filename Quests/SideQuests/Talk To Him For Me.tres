@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://drvy4i46bwqkm"]
+
+[ext_resource type="Script" path="res://Scripts/Quest.gd" id="1_ss2cy"]
+
+[resource]
+script = ExtResource("1_ss2cy")
+quest_name = "Talk To Him For Me"
+quest_description = "Talk to npc1 for npc2, and come back to npc2."
+quest_requirement = Array[String](["Get The Baguette", "Kill Tentacle"])
+type = 2
+giver = "npc2"
+target = {
+"npc1": 1
+}
+current_target_amount = {
+"npc1": 0
+}
+rewards = {
+"money": 1000
+}
+state = 0
+is_main_quest = false

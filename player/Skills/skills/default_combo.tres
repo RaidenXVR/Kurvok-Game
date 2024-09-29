@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=6 format=3 uid="uid://ckl7jdbnl1fma"]
+
+[ext_resource type="Resource" uid="uid://ncx65vbitwnl" path="res://player/Skills/combo_steps/normal.tres" id="1_fl1vx"]
+[ext_resource type="Script" path="res://player/Skills/skill_res.gd" id="1_poby3"]
+[ext_resource type="Resource" uid="uid://bdhbaf271cjwq" path="res://player/Skills/combo_steps/wide_normal.tres" id="2_6qt7r"]
+[ext_resource type="Resource" uid="uid://c1hed4u5is0k1" path="res://player/Skills/combo_steps/stab.tres" id="3_pkgmj"]
+[ext_resource type="Texture2D" uid="uid://d0fvfas05au6q" path="res://asset/stone_sword.png" id="4_nj3t4"]
+
+[resource]
+script = ExtResource("1_poby3")
+skill_name = "Normal Attack"
+icon = ExtResource("4_nj3t4")
+skill_category = 3
+skill_type = 0
+skill_shape = 1
+cooldown = 0.0
+shape_size = Vector2(0, 0)
+force = 300
+skill_stun_duration = 0.2
+skill_description = ""
+mana_consumption = 0
+is_reverse = false
+offset_up = Vector2(0, 0)
+offset_down = Vector2(0, 0)
+offset_left = Vector2(0, 0)
+offset_right = Vector2(0, 0)
+projectiles_count = 1
+is_full_circle_division = false
+is_variable_size = false
+duration_variable_size = 0.0
+max_radius = 0
+min_radius = 0
+combo_steps = Array[Resource("res://player/Skills/combo.gd")]([ExtResource("1_fl1vx"), ExtResource("2_6qt7r"), ExtResource("3_pkgmj")])

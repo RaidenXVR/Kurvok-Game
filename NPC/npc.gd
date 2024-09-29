@@ -4,7 +4,9 @@ class_name NPC
 
 @export var texture_img:Texture2D
 @export var isNPCCanMove:bool = true
-@export var npc_quest: String
+@export var facing_dir: Vector2
+@export var npc_quest: Array[Quest]
+@export var is_main_npc: bool
 @onready var sprite_npc = $Sprite2D
 @onready var animation_player = $AnimationPlayer
 
@@ -29,9 +31,25 @@ func _ready():
 		timer.connect("timeout",_on_timer_timeout)
 		timer.one_shot = true
 		timer.start(2)
+	else:
+		set_physics_process(false)
+	CutsceneManager.cutscene_started.connect(_on_started_cutscene_signal)
+	CutsceneManager.finished_doing_cutscene.connect(_on_finished_cutscene_signal)
+	match facing_dir:
+		Vector2(1,0):
+			animation_player.play("idleRight")
+		Vector2(-1,0):
+			animation_player.play("idleLeft")
+		Vector2(0,-1):
+			animation_player.play("idleUp")
+		Vector2(0,1):
+			animation_player.play("idleDown")
+
+	animation_player.stop()
+
 
 func _physics_process(_delta):
-	if isNPCCanMove:
+	if isNPCCanMove and not CutsceneManager.doing_cutscene:
 		if is_moving:
 			velocity = target_coor.normalized() *speed
 			colliding = move_and_slide()
@@ -75,7 +93,6 @@ func random_desti():
 			animation_player.play("idle"+last_dir)
 	distance_must_travel = 48* rand_dis
 	target_coor = Vector2(rand_x*tileSize,rand_y*tileSize)
-	# print(target_coor)
 
 
 func _on_timer_timeout():
@@ -96,31 +113,69 @@ func talk():
 	var dialogue_node = get_tree().root.get_node("World").get_node("CanvasLayer").find_child("Dialogue")
 	var dialogue = dialogs[self.name]
 	var dialog
-	if npc_quest != "":
-		QuestManager.set_available_quests(npc_quest)
-		var where = QuestManager.check_where_quest(npc_quest)
+	if len(npc_quest) != 0:
+		if (not QuestManager.set_available_quests(npc_quest[0])) and QuestManager.check_where_quest(npc_quest[0].quest_name) == 2:
+			npc_quest.remove_at(0)
+			if len(npc_quest) != 0:  # Add this check to prevent infinite recursion
+				talk()
+			return
+
+		var where = QuestManager.check_where_quest(npc_quest[0].quest_name)
 		match where:
 			0:
-				var temp_diag = dialogue["quest-dialog"]
+				var temp_diag = dialogue[npc_quest[0].quest_name]
 				dialog = temp_diag["pre-quest"]
-				dialogue_node.starter(dialog,self.name, npc_quest)
+				dialogue_node.starter(dialog,self.name, npc_quest[0])
 
 			1:
-				if QuestManager.check_quest(npc_quest):
-					dialog = dialogue["quest-dialog"]["post-quest"]
-					QuestManager.set_complete_quests(npc_quest)
+				if QuestManager.check_quest(npc_quest[0]):
+					dialog = dialogue[npc_quest[0].quest_name]["post-quest"]
+					QuestManager.set_complete_quests(npc_quest[0])
+					npc_quest.remove_at(0)
 					dialogue_node.starter(dialog,self.name)
 				else:
-					dialog = dialogue["quest-dialog"]["in-quest"]
+					dialog = dialogue[npc_quest[0].quest_name]["in-quest"]
 					dialogue_node.starter(dialog,self.name)
 			_:
-				dialog = dialogue["non-quest-dialog"]
+				dialog = dialogue["non-quest-dialogue"]
 				dialogue_node.starter(dialog,self.name)
-				QuestManager.check_target(self.name, 1)
+				# QuestManager.check_target(self.name, 1)
+
+	elif is_main_npc:
+		var quests = QuestManager.current_main_quest.get_quest_by_giver(name) as Array[Quest]
+		if quests:
+			for q in quests:
+				QuestManager.current_main_quest.check_quest(q)
 
 
 	else:
-		dialog = dialogue["non-quest-dialog"]
+		dialog = dialogue["non-quest-dialogue"]
 		dialogue_node.starter(dialog,self.name)
-		print("else")
-		QuestManager.check_target(self.name, 1)
+		# QuestManager.check_target(self.name, 1)
+	
+	if QuestManager.check_talk(name) == 1:
+		var quests_for_npc: Array[Quest] = QuestManager.get_talk_quest(name)
+		if quests_for_npc:
+			for q in quests_for_npc:
+				dialog = dialogue[q.quest_name]
+				dialogue_node.starter(dialog, name)
+				QuestManager.check_talk(name,true)
+	# QuestManager.check_talk(name)
+	if not isNPCCanMove:
+		match facing_dir:
+			Vector2(1,0):
+				animation_player.play("idleRight")
+			Vector2(-1,0):
+				animation_player.play("idleLeft")
+			Vector2(0,-1):
+				animation_player.play("idleUp")
+			Vector2(0,1):
+				animation_player.play("idleDown")
+				
+
+
+func _on_started_cutscene_signal():
+	set_physics_process(false)
+
+func _on_finished_cutscene_signal():
+	set_physics_process(true)

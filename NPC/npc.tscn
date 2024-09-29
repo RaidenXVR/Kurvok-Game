@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ilwasm3kpj5b"]
+[gd_scene load_steps=13 format=3 uid="uid://ilwasm3kpj5b"]
 
-[ext_resource type="Texture2D" uid="uid://cc8hihvr6pwp0" path="res://NPC/sprite/npc1Walk.png" id="1_gd6mc"]
 [ext_resource type="Script" path="res://NPC/npc.gd" id="1_se7om"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4sc0"]
-size = Vector2(50, 50)
+size = Vector2(48, 48)
 
 [sub_resource type="Animation" id="Animation_7mvjb"]
 length = 0.001
@@ -17,7 +16,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [Vector2i(0, 3)]
 }
 
@@ -33,7 +32,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [Vector2i(0, 2)]
 }
 
@@ -49,7 +48,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [Vector2i(0, 1)]
 }
 
@@ -65,7 +64,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [Vector2i(0, 3)]
 }
 
@@ -81,7 +80,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [Vector2i(0, 0)]
 }
 
@@ -171,12 +170,12 @@ _data = {
 }
 
 [node name="NPC" type="CharacterBody2D"]
+z_index = 1
 y_sort_enabled = true
 collision_layer = 10
 collision_mask = 10
 up_direction = Vector2(0, 1)
 script = ExtResource("1_se7om")
-texture_img = ExtResource("1_gd6mc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true

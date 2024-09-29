@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ComboStep" load_steps=2 format=3 uid="uid://dr3mu7c3s3ns"]
+
+[ext_resource type="Script" path="res://player/Skills/combo.gd" id="1_yv6fs"]
+
+[resource]
+script = ExtResource("1_yv6fs")
+shape = 1
+radius = 100
+height = 0
+rotation_offset = 0.0
+offset_up = Vector2(0, -11.5)
+offset_down = Vector2(0, -11.5)
+offset_left = Vector2(0, -11.5)
+offset_right = Vector2(0, -11.5)

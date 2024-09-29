@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4bqhjob0a6rj"]
+
+[ext_resource type="Script" path="res://scenes/sign.gd" id="1_bgv7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk62j"]
+size = Vector2(48, 24)
+
+[node name="Sign" type="StaticBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_bgv7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sk62j")

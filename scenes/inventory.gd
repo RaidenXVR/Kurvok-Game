@@ -1,5 +1,6 @@
 extends Control
 
+
 @onready var inventory: Inventory = GameData.player_inventory
 @onready var slots: Array = $TabContainer/Consumables/Slots.get_children()
 @onready var tab_container: TabContainer = get_node("TabContainer")
@@ -61,10 +62,12 @@ func return_relevant_items(item_id):
 				rel_slot.append(slot)
 	return rel_slot
 
+
+
 func _on_tab_container_tab_changed(tab:int):
 	var tab_title = tab_container.get_tab_title(tab)
 	if tab_title not in ["Map", "Status", "Quests"]:
-		var slots_path = "/root/World/CanvasLayer/Inventory/TabContainer/%s/Slots"%[tab_title] 
+		var slots_path = "/root/World/CanvasLayer/Menu/TabContainer/%s/Slots"%[tab_title] 
 		slots = get_node(slots_path).get_children()
 	emit_signal("tab_changed",	tab_title.to_lower())
 	current_tab = tab_title.to_lower()

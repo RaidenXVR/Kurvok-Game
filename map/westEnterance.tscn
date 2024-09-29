@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://duoup4ctmg2rp"]
+[gd_scene load_steps=26 format=3 uid="uid://duoup4ctmg2rp"]
 
 [ext_resource type="Script" path="res://map/map.gd" id="6_8v7dh"]
 [ext_resource type="PackedScene" uid="uid://ogvnsdbv0hpq" path="res://scenes/enterPoint.tscn" id="7_x4b7t"]
 [ext_resource type="PackedScene" uid="uid://rdn5uj1o0222" path="res://Item/chest.tscn" id="8_e8arf"]
 [ext_resource type="PackedScene" uid="uid://ilwasm3kpj5b" path="res://NPC/npc.tscn" id="9_tno7b"]
 [ext_resource type="Texture2D" uid="uid://b13yhi4k6h2j4" path="res://Item/chest.png" id="9_ux3gi"]
+[ext_resource type="Script" path="res://Scripts/Quest.gd" id="11_04qc3"]
 [ext_resource type="Texture2D" uid="uid://0gqojw3wqgk6" path="res://Tilesets/Capital_SignsMonumensStatuesLampsFountains 3.png" id="BuildDeco"]
 [ext_resource type="Texture2D" uid="uid://umhuwah5038c" path="res://Tilesets/Building.png" id="Building"]
 [ext_resource type="Texture2D" uid="uid://dph761iuc6tlk" path="res://Tilesets/fsm_Town01_A2.png" id="ground"]
@@ -3494,6 +3495,26 @@ sources/2 = SubResource("TileSetAtlasSource_2")
 sources/3 = SubResource("TileSetAtlasSource_3")
 sources/4 = SubResource("TileSetAtlasSource_4")
 
+[sub_resource type="Resource" id="Resource_tspk1"]
+script = ExtResource("11_04qc3")
+quest_name = "Get The Baguette"
+quest_description = "Get some baguette for npc1. Quite a lot actually."
+quest_requirement = Array[String]([])
+type = 1
+giver = "npc1"
+target = {
+"1": 5
+}
+current_target_amount = {
+"1": 0
+}
+rewards = {
+"1": 3,
+"money": 200
+}
+state = 0
+is_main_quest = false
+
 [node name="westEnterance" type="TileMap"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_0")
@@ -3508,10 +3529,8 @@ layer_2/name = "Deco"
 layer_2/y_sort_enabled = true
 layer_2/tile_data = PackedInt32Array(65550, 131074, 13, 65559, 327682, 1, 65565, 131074, 13, 131086, 131074, 14, 131087, 65537, 13, 131088, 131073, 13, 131089, 196609, 13, 131091, 589826, 11, 131093, 393217, 4, 131095, 524290, 13, 131097, 393217, 4, 131099, 589826, 11, 131101, 131074, 14, 196622, 131074, 15, 196623, 65537, 14, 196624, 131073, 14, 196625, 196609, 14, 196627, 786434, 15, 196629, 393217, 5, 196631, 524290, 14, 196633, 393217, 5, 196635, 786434, 15, 196637, 131074, 15, 393217, 2, 6, 393220, 2, 6, 393221, 262146, 0, 393222, 524290, 13, 393223, 524290, 13, 393224, 262146, 0, 393225, 2, 6, 393228, 2, 6, 393236, 131074, 13, 458753, 655362, 15, 458756, 655362, 15, 458758, 524290, 14, 458759, 524290, 14, 458761, 655362, 15, 458764, 655362, 15, 458772, 131074, 14, 524308, 131074, 15, 720916, 131074, 13, 786446, 131074, 13, 786452, 131074, 14, 851982, 131074, 14, 851988, 131074, 15, 917518, 131074, 15, 917528, 720897, 2, 983064, 720897, 3, 1114126, 131074, 13, 1114132, 131074, 13, 1179649, 131074, 9, 1179652, 131074, 9, 1179657, 131074, 9, 1179660, 131074, 9, 1179662, 131074, 14, 1179668, 131074, 14, 1179671, 65537, 0, 1179673, 65537, 0, 1245198, 131074, 15, 1245204, 131074, 15, 1245207, 65537, 1, 1245209, 65537, 1)
 script = ExtResource("6_8v7dh")
-west_map = "res://map/market.tscn"
-east_map = "res://map/MidWest.tscn"
-north_map = null
-south_map = null
+west_map = "market"
+east_map = "MidWest"
 
 [node name="EntryPoint" type="Node2D" parent="."]
 
@@ -3532,4 +3551,4 @@ chest_texture = ExtResource("9_ux3gi")
 [node name="npc1" parent="." instance=ExtResource("9_tno7b")]
 visibility_layer = 3
 position = Vector2(904, 280)
-npc_quest = "Get The Baguette"
+npc_quest = Array[ExtResource("11_04qc3")]([SubResource("Resource_tspk1")])

@@ -3,6 +3,7 @@ extends Area2D
 
 var npc_name: String
 var quest
+var quest_from_other
 
 
 func _ready():
@@ -10,7 +11,7 @@ func _ready():
 
 
 func talk():
-	quest = get_parent().npc_quest
+	quest = get_parent().npc_quest[0]
 	var inv_node = get_tree().root.get_node("World").get_node("CanvasLayer").get_node("Inventory")
 	var file_diag = FileAccess.get_file_as_string("res://NPC/npc_dialogue.json")
 	var quest_file = FileAccess.get_file_as_string("res://NPC/quests.json")

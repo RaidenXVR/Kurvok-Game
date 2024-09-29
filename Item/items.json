@@ -8,19 +8,67 @@
 		"texture": "res://Item/texture/1.png",
 		"buy": 10,
 		"sell": 8,
-		"description": "A long hard bread that usually served along with soup or made into a sandwich... It's hard by itself."
+		"description": "A long hard bread that usually served along with soup or made into a sandwich... It's hard on the outside, but surprisingly soft on the inside."
 	},
 	"2": {
 		"name": "Apple Pie",
 		"effect": {
 			"heal": 3,
-			"atk": 4,
-			"def": -2
+			"buff":{
+				"atk":1
+				},
+			"duration":10
 		},
 		"category": "consumable",
 		"texture": "",
-		"buy": 15,
+		"buy": 20,
+		"sell": 15,
+		"description": "A sweet, buttery, flaky pie with apple tart inside. The scent will make you want to eat more. It makes you slightly more powerful for a moment."
+	},
+	"3":{
+		"name":"Steel Armor",
+		"effect":{
+			"buff":{"def":2}
+		},
+		"category":"equipment",
+		"sub_category":"armor",
+		"texture":"",
+		"buy":300,
+		"sell":100,
+		"description":"A normal steel armor, it's durable, but quite heavy."
+	},
+	"4":{
+		"name":"Holy Sword of Generosity",
+		"effect":{
+			"buff":{
+				"atk":4, 
+				"max_mana":20}
+		},
+		"category":"equipment",
+		"sub_category":"weapon",
+		"texture":"res://Item/texture/holy_sword.png",
+		"buy": null,
+		"sell": null,
+		"description":"The Holy Sword of Generosity, a sword that was given to humanity to fight against evil. It chooses who worthy enough to wield it, and currently, it is you."
+	},
+	"5":{
+		"name":"Mana Armor Uniform",
+		"effect":{},
+		"category":"key",
+		"texture":"",
+		"buy":null,
+		"sell":null,
+		"description":"A really expensive and high quality armor made out of Mana Thread from Mana Crystal. It is your uniform given by the Prince. It will self-heal whenever it get damaged. It can also absorb other armor to strengthen it."
+	},
+	"6":{
+		"name":"Cheese Cake",
+		"effect":{
+			"buff":{"atk":4, "def":1},
+			"duration": 30},
+		"texture":"res://Item/texture/6.png",
+		"category":"consumable",
+		"buy":20,
 		"sell": 12,
-		"description": "A pie made from apple. What do you expect?."
+		"description":"A cake made out of soft sweet bread and layered with sweet and savory cheese. Take one bite and you will crave for more."
 	}
 }

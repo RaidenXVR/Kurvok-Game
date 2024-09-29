@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://3pktq6csa0vw"]
+
+[ext_resource type="Script" path="res://Scripts/Quest.gd" id="1_j3fj6"]
+
+[resource]
+script = ExtResource("1_j3fj6")
+quest_name = "Kill Two Tentacle"
+quest_description = ""
+quest_requirement = Array[String]([])
+type = 0
+giver = ""
+target = {
+"Tentacle": 2
+}
+current_target_amount = {
+"Tentacle": 0
+}
+rewards = {}
+state = 0
+is_main_quest = false

@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=10 format=3 uid="uid://buawabulf5ng8"]
+
+[ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_1cggp"]
+[ext_resource type="Script" path="res://Cutscene/CSMovePlayer.gd" id="1_k4nba"]
+[ext_resource type="Script" path="res://Cutscene/CSMoveObject.gd" id="2_foydb"]
+[ext_resource type="Script" path="res://Cutscene/CSOpenDialogue.gd" id="3_sd1bt"]
+[ext_resource type="Resource" uid="uid://dx4j1bpfralty" path="res://Quests/MainQuests/FirstMainQuests.tres" id="4_66paa"]
+
+[sub_resource type="Resource" id="Resource_vg0wh"]
+script = ExtResource("1_k4nba")
+player_init_pos = Vector2(0, 0)
+move_grid_amount = Array[int]([4, 2])
+direction = Array[Vector2]([Vector2(1, 0), Vector2(-1, 0)])
+speed = 120
+
+[sub_resource type="Resource" id="Resource_2h37s"]
+script = ExtResource("3_sd1bt")
+cutscene_name = "test cutscene"
+dialogue_phase = "phase1"
+
+[sub_resource type="Resource" id="Resource_0e3p8"]
+script = ExtResource("2_foydb")
+object_name = "npc1"
+object_root = "maps/DebugArea"
+start_pos_relative = Vector2(5, 2)
+move_grid_amount = Array[int]([3, 1])
+direction = Array[Vector2]([Vector2(0, -1), Vector2(-1, 0)])
+speed = 120
+
+[sub_resource type="Resource" id="Resource_dnjpg"]
+script = ExtResource("3_sd1bt")
+cutscene_name = "test cutscene"
+dialogue_phase = "phase2"
+
+[resource]
+script = ExtResource("1_1cggp")
+cutscene_name = "test cutscene"
+cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
+main_quest_to_set = ExtResource("4_66paa")
+player_facing = Vector2(0, 1)
+cutscene_to_do = [SubResource("Resource_vg0wh"), SubResource("Resource_2h37s"), SubResource("Resource_0e3p8"), SubResource("Resource_dnjpg")]

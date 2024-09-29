@@ -24,7 +24,7 @@ extends Control
 
 
 #other
-@onready var inven = get_tree().root.get_node("/root/World/CanvasLayer/Inventory")
+@onready var inven = get_tree().root.get_node("/root/World/CanvasLayer/Menu")
 @onready var canvas = get_parent()
 
 var _item_ids : Array[String] = []

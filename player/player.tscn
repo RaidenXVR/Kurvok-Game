@@ -1,11 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bswabc2fnfm68"]
+[gd_scene load_steps=18 format=3 uid="uid://bswabc2fnfm68"]
 
 [ext_resource type="Script" path="res://player/playerv2.gd" id="1_2l7u8"]
 [ext_resource type="Texture2D" uid="uid://bwaltmnxfmw5w" path="res://asset/LaylaWalk.png" id="3_6f8ut"]
 [ext_resource type="Texture2D" uid="uid://01mlnwfsxvqa" path="res://asset/LaylaAttackWeapon.png" id="4_gucgr"]
-[ext_resource type="PackedScene" uid="uid://y1jbwcpi2mjq" path="res://player/Skills/skill_thrust.tscn" id="4_yhpor"]
-[ext_resource type="PackedScene" uid="uid://dtnipc4b4q7fi" path="res://player/Skills/skill_projectile.tscn" id="5_8o0ry"]
-[ext_resource type="PackedScene" uid="uid://dy33e7hc8ad0k" path="res://player/Skills/skill_area.tscn" id="6_y6oet"]
+[ext_resource type="PackedScene" uid="uid://h53rw4clpyfo" path="res://player/Skills/skill.tscn" id="7_4juxo"]
 
 [sub_resource type="Animation" id="Animation_s1dod"]
 length = 0.001
@@ -311,10 +309,14 @@ _data = {
 size = Vector2(13, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0e1h"]
-size = Vector2(30, 21)
+size = Vector2(30, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7coc"]
+radius = 25.0
+height = 80.0
 
 [node name="Player" type="CharacterBody2D"]
-y_sort_enabled = true
+z_index = 1
 texture_filter = 1
 scale = Vector2(1.5, 1.5)
 collision_layer = 43
@@ -333,21 +335,25 @@ hframes = 9
 vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+callback_mode_method = 1
 libraries = {
 "": SubResource("AnimationLibrary_wd5ch")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -6.5)
+visible = false
+position = Vector2(0.5, -7.15)
 shape = SubResource("RectangleShape2D_o4ij6")
 
 [node name="Hitbox" type="Area2D" parent="."]
 visible = false
+position = Vector2(0, -11.5)
 collision_layer = 8
-collision_mask = 8
+collision_mask = 128
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_b0e1h")
 
 [node name="Timer" type="Timer" parent="."]
@@ -358,7 +364,7 @@ one_shot = true
 
 [node name="AttackSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-2, 3.33333)
+position = Vector2(0, 3)
 texture = ExtResource("4_gucgr")
 offset = Vector2(2, -32)
 hframes = 6
@@ -366,35 +372,41 @@ vframes = 4
 frame = 1
 
 [node name="AttackBox" type="Area2D" parent="."]
-position = Vector2(0, -11.5)
-collision_layer = 68
+collision_layer = 0
 collision_mask = 68
-monitoring = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackBox"]
-rotation = -0.523599
-
-[node name="Skill1" parent="." instance=ExtResource("4_yhpor")]
-position = Vector2(0.135414, 0.261411)
-
-[node name="Skill2" parent="." instance=ExtResource("5_8o0ry")]
-
-[node name="Skill3" parent="." instance=ExtResource("6_y6oet")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+shape = SubResource("CapsuleShape2D_t7coc")
+disabled = true
+debug_color = Color(0.796078, 0.380392, 0.498039, 0.419608)
 
 [node name="LookDir" type="RayCast2D" parent="."]
 position = Vector2(0, -11.5)
 target_position = Vector2(0, 0)
 collision_mask = 2
+hit_from_inside = true
 
 [node name="ComboTimer" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 0.4
 one_shot = true
 
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
+[node name="ComboTimer2" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Skills" type="Node2D" parent="."]
+
+[node name="Skill1" parent="Skills" instance=ExtResource("7_4juxo")]
+
+[node name="Skill2" parent="Skills" instance=ExtResource("7_4juxo")]
+
+[node name="Skill3" parent="Skills" instance=ExtResource("7_4juxo")]
+
+[node name="Effects" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="unstun"]
 [connection signal="timeout" from="hurtTimer" to="." method="unHurt"]
-[connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]
 [connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
 [connection signal="timeout" from="ComboTimer" to="." method="_on_combo_timer_timeout"]
+[connection signal="timeout" from="ComboTimer2" to="." method="_on_combo_timer_2_timeout"]

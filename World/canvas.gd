@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var inv = $Inventory
+@onready var inv = $Menu
 @onready var dia_box = $Dialogue
 @onready var shop_gui = $ShopGUI
 @onready var player_healthbar = $PlayerHealthBar
@@ -23,8 +23,12 @@ func _ready():
 
 
 func _input(event):
-	if event.is_action_pressed("inventory") and not is_shopping:
-		if inv.is_open:
+	if event.is_action_pressed("menu") and not is_shopping:
+		if inv.is_menu_open and inv.is_status_open:
+			inv.get_node("StatusButton/Container/SetSkills/SetSkillPopup").visible = false
+			inv.get_node("StatusButton/Container/SetSkills/SetSkillPopup").current_slot = 4
+			inv.is_status_open = false
+		elif inv.is_menu_open:
 			inv.close()
 			player_healthbar.visible = true
 			manabar.visible = true
@@ -32,6 +36,9 @@ func _input(event):
 			skill_2_gui.visible = true
 			skill_3_gui.visible = true
 			gold.visible = true
+			$Info.visible = true
+			$StatusContainer.visible = true
+			
 		else:
 			gold.visible = false
 			player_healthbar.visible = false
@@ -39,6 +46,8 @@ func _input(event):
 			skill_1_gui.visible = false
 			skill_2_gui.visible = false
 			skill_3_gui.visible = false
+			$Info.visible = false
+			$StatusContainer.visible = false
 			inv.open()
 
 func set_alpha(is_on_top:bool):

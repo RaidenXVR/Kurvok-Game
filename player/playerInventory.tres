@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=98 format=3 uid="uid://c7avwer0a534p"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=108 format=3 uid="uid://c7avwer0a534p"]
 
 [ext_resource type="Script" path="res://Scripts/InventoryScript.gd" id="1_etdre"]
 [ext_resource type="Script" path="res://Scripts/InventorySlot.gd" id="2_tditt"]
@@ -303,6 +303,56 @@ script = ExtResource("2_tditt")
 amount = 0
 maxAmount = 0
 
+[sub_resource type="Resource" id="Resource_8w20p"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_ntdyy"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_csrir"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_rbnrp"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_cdvwa"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_m1ugw"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_rbapn"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_ptt60"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_epb04"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
+[sub_resource type="Resource" id="Resource_8jnk3"]
+script = ExtResource("2_tditt")
+amount = 0
+maxAmount = 0
+
 [sub_resource type="Resource" id="Resource_x2md2"]
 script = ExtResource("2_tditt")
 amount = 0
@@ -482,4 +532,4 @@ maxAmount = 0
 script = ExtResource("1_etdre")
 consume_slots = Array[ExtResource("2_tditt")]([SubResource("Resource_83tvs"), SubResource("Resource_osa0g"), SubResource("Resource_2cbmh"), SubResource("Resource_uvhbi"), SubResource("Resource_rmdc8"), SubResource("Resource_3vvgb"), SubResource("Resource_clfwk"), SubResource("Resource_8hcrf"), SubResource("Resource_jamb2"), SubResource("Resource_mor30"), SubResource("Resource_c2rhj"), SubResource("Resource_5dpol"), SubResource("Resource_kulwc"), SubResource("Resource_26mwd"), SubResource("Resource_7dp2d"), SubResource("Resource_pmg6m"), SubResource("Resource_ka3pj"), SubResource("Resource_ia64t"), SubResource("Resource_hxlld"), SubResource("Resource_ngnuf"), SubResource("Resource_ye3p5"), SubResource("Resource_o21i5"), SubResource("Resource_vkhrt"), SubResource("Resource_4d0m6"), SubResource("Resource_vwtrc"), SubResource("Resource_ifsxm"), SubResource("Resource_e2i0n"), SubResource("Resource_jfn52"), SubResource("Resource_td85a"), SubResource("Resource_u1d8d"), SubResource("Resource_1x7wl"), SubResource("Resource_tkvhs"), SubResource("Resource_g22m0"), SubResource("Resource_2snbv"), SubResource("Resource_u4jkw")])
 key_slots = Array[ExtResource("2_tditt")]([SubResource("Resource_x2md2"), SubResource("Resource_dtjls"), SubResource("Resource_4wt00"), SubResource("Resource_xe56o"), SubResource("Resource_pwfmv"), SubResource("Resource_oimca"), SubResource("Resource_2vvrf"), SubResource("Resource_73asi"), SubResource("Resource_btelh"), SubResource("Resource_2ij2s"), SubResource("Resource_4hy8j"), SubResource("Resource_orvmd"), SubResource("Resource_h7bg6"), SubResource("Resource_hgxro"), SubResource("Resource_5246d"), SubResource("Resource_a2lda"), SubResource("Resource_3hjsq"), SubResource("Resource_vpl3s"), SubResource("Resource_5unrk"), SubResource("Resource_y7r0y"), SubResource("Resource_gnrju"), SubResource("Resource_06tdg"), SubResource("Resource_iyigs"), SubResource("Resource_gwj4x"), SubResource("Resource_hprnd"), SubResource("Resource_8t6od"), SubResource("Resource_sko53"), SubResource("Resource_0jrgf"), SubResource("Resource_ss2wb"), SubResource("Resource_fjjuc"), SubResource("Resource_xmcy7"), SubResource("Resource_a0661"), SubResource("Resource_7mivx"), SubResource("Resource_d7736"), SubResource("Resource_002xu")])
-equip_slots = Array[ExtResource("2_tditt")]([SubResource("Resource_hqjey"), SubResource("Resource_h5ml6"), SubResource("Resource_edprx"), SubResource("Resource_rxoyw"), SubResource("Resource_gnpy3"), SubResource("Resource_dmktp"), SubResource("Resource_mytcj"), SubResource("Resource_clu7g"), SubResource("Resource_6nlbh"), SubResource("Resource_fypj4"), SubResource("Resource_efbwu"), SubResource("Resource_v4a5y"), SubResource("Resource_j5vpy"), SubResource("Resource_0ruei"), SubResource("Resource_u2gr8"), SubResource("Resource_w0u0r"), SubResource("Resource_ejhvi"), SubResource("Resource_583w6"), SubResource("Resource_sxesd"), SubResource("Resource_63ery"), SubResource("Resource_kmqhj"), SubResource("Resource_55aji"), SubResource("Resource_6qx7a"), SubResource("Resource_fpql2"), SubResource("Resource_i14xb")])
+equip_slots = Array[ExtResource("2_tditt")]([SubResource("Resource_hqjey"), SubResource("Resource_h5ml6"), SubResource("Resource_edprx"), SubResource("Resource_rxoyw"), SubResource("Resource_gnpy3"), SubResource("Resource_dmktp"), SubResource("Resource_mytcj"), SubResource("Resource_clu7g"), SubResource("Resource_6nlbh"), SubResource("Resource_fypj4"), SubResource("Resource_efbwu"), SubResource("Resource_v4a5y"), SubResource("Resource_j5vpy"), SubResource("Resource_0ruei"), SubResource("Resource_u2gr8"), SubResource("Resource_w0u0r"), SubResource("Resource_ejhvi"), SubResource("Resource_583w6"), SubResource("Resource_sxesd"), SubResource("Resource_63ery"), SubResource("Resource_kmqhj"), SubResource("Resource_55aji"), SubResource("Resource_6qx7a"), SubResource("Resource_fpql2"), SubResource("Resource_i14xb"), SubResource("Resource_8w20p"), SubResource("Resource_ntdyy"), SubResource("Resource_csrir"), SubResource("Resource_rbnrp"), SubResource("Resource_cdvwa"), SubResource("Resource_m1ugw"), SubResource("Resource_rbapn"), SubResource("Resource_ptt60"), SubResource("Resource_epb04"), SubResource("Resource_8jnk3")])

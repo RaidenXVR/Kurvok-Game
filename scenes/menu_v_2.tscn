@@ -1,0 +1,518 @@
+[gd_scene load_steps=8 format=3 uid="uid://k531a6l3m0q8"]
+
+[ext_resource type="PackedScene" uid="uid://cip074xhh35wc" path="res://scenes/slots.tscn" id="1_5i664"]
+[ext_resource type="Script" path="res://scenes/menu.gd" id="1_o5ian"]
+[ext_resource type="Texture2D" uid="uid://c1sy15yklc1mw" path="res://Actors/Layla.png" id="2_aum4k"]
+[ext_resource type="Texture2D" uid="uid://c82hra0kvbk7p" path="res://asset/frame4.png" id="2_jlwna"]
+[ext_resource type="Texture2D" uid="uid://c0tmpuqlmbxn2" path="res://asset/frame3.png" id="3_b0pb3"]
+[ext_resource type="PackedScene" uid="uid://boa8k17k5377v" path="res://scenes/set_skill_popup.tscn" id="3_k6g5f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iyl05"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("3_b0pb3")
+
+[node name="MenuV2" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5ian")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 722.0
+color = Color(0.0745098, 0.0745098, 0.0745098, 0.415686)
+
+[node name="StatusButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 30.0
+offset_right = 1270.0
+offset_bottom = 100.0
+focus_neighbor_left = NodePath("Container/SetSkills")
+text = "Status
+"
+
+[node name="Container" type="Control" parent="StatusButton"]
+layout_mode = 1
+anchor_left = -6.056
+anchor_top = -0.429
+anchor_right = -0.167
+anchor_bottom = 9.857
+offset_left = 0.0800781
+offset_top = 0.0300007
+offset_right = 0.0600014
+offset_bottom = 0.00994873
+
+[node name="TextureRect" type="TextureRect" parent="StatusButton/Container"]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 0
+offset_left = 29.0
+offset_top = 42.0
+offset_right = 429.0
+offset_bottom = 642.0
+texture = ExtResource("2_aum4k")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StatusButton/Container"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 35.0
+offset_right = 1032.0
+offset_bottom = 480.0
+
+[node name="HP" type="Label" parent="StatusButton/Container/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "HP: "
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="MP" type="Label" parent="StatusButton/Container/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "MP:"
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="Atk" type="Label" parent="StatusButton/Container/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Attack:"
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="Def" type="Label" parent="StatusButton/Container/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Defense:"
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="MAtk" type="Label" parent="StatusButton/Container/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "M. Attack:"
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="MDef" type="Label" parent="StatusButton/Container/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "M. Defense:"
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="Money" type="Label" parent="StatusButton/Container/VBoxContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Money: "
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="Skill" type="Label" parent="StatusButton/Container/VBoxContainer"]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Skill Equiped: "
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StatusButton/Container"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 478.0
+offset_right = 789.0
+offset_bottom = 598.0
+
+[node name="Skill1" type="TextureRect" parent="StatusButton/Container/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Skill2" type="TextureRect" parent="StatusButton/Container/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Skill3" type="TextureRect" parent="StatusButton/Container/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+expand_mode = 1
+
+[node name="SetSkills" type="Button" parent="StatusButton/Container"]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 493.0
+offset_right = 1013.0
+offset_bottom = 557.0
+text = "Set Skills"
+
+[node name="SetSkillPopup" parent="StatusButton/Container/SetSkills" instance=ExtResource("3_k6g5f")]
+visible = false
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.593
+anchor_top = -2.328
+anchor_right = -1.593
+anchor_bottom = -2.328
+offset_left = -500.074
+offset_top = -275.008
+offset_right = 499.926
+offset_bottom = 274.992
+
+[node name="ItemButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 110.0
+offset_right = 1270.0
+offset_bottom = 180.0
+text = "Items"
+
+[node name="Container" type="Control" parent="ItemButton"]
+visible = false
+clip_children = 1
+layout_mode = 1
+anchor_left = -6.056
+anchor_top = -1.571
+anchor_right = -0.167
+anchor_bottom = 8.249
+offset_left = 0.0800781
+offset_top = -0.0299911
+offset_right = 0.0600014
+offset_bottom = 32.5699
+
+[node name="Slots" parent="ItemButton/Container" instance=ExtResource("1_5i664")]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 100.0
+offset_right = -303.0
+offset_bottom = -100.0
+
+[node name="ItemFrame" type="TextureRect" parent="ItemButton/Container"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 85.0
+offset_right = 1035.0
+offset_bottom = 335.0
+texture = ExtResource("2_jlwna")
+expand_mode = 1
+
+[node name="ItemIcon" type="TextureRect" parent="ItemButton/Container"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 810.0
+offset_top = 115.0
+offset_right = 1010.0
+offset_bottom = 315.0
+expand_mode = 1
+
+[node name="ItemDesc" type="RichTextLabel" parent="ItemButton/Container"]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 345.0
+offset_right = 1049.0
+offset_bottom = 633.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_iyl05")
+bbcode_enabled = true
+
+[node name="KeyItemButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 190.0
+offset_right = 1270.0
+offset_bottom = 260.0
+text = "Key Items"
+
+[node name="Container" type="Control" parent="KeyItemButton"]
+visible = false
+layout_mode = 1
+anchor_left = -6.056
+anchor_top = -2.714
+anchor_right = 1.056
+anchor_bottom = 7.571
+offset_left = 0.0800781
+offset_top = -0.019989
+offset_right = -220.08
+offset_bottom = 0.0299683
+
+[node name="Slots" parent="KeyItemButton/Container" instance=ExtResource("1_5i664")]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 100.0
+offset_right = -303.0
+offset_bottom = -100.0
+
+[node name="ItemFrame" type="TextureRect" parent="KeyItemButton/Container"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 85.0
+offset_right = 1035.0
+offset_bottom = 335.0
+texture = ExtResource("2_jlwna")
+expand_mode = 1
+
+[node name="ItemIcon" type="TextureRect" parent="KeyItemButton/Container"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 810.0
+offset_top = 115.0
+offset_right = 1010.0
+offset_bottom = 315.0
+expand_mode = 1
+
+[node name="ItemDesc" type="RichTextLabel" parent="KeyItemButton/Container"]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 345.0
+offset_right = 1049.0
+offset_bottom = 633.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+
+[node name="EquipButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 270.0
+offset_right = 1270.0
+offset_bottom = 340.0
+text = "Equipment"
+
+[node name="Container" type="Control" parent="EquipButton"]
+visible = false
+layout_mode = 1
+anchor_left = -6.056
+anchor_top = -3.857
+anchor_right = 1.056
+anchor_bottom = 6.429
+offset_left = 0.0800781
+offset_top = -0.00997925
+offset_right = -220.08
+offset_bottom = -0.0300293
+
+[node name="Slots" parent="EquipButton/Container" instance=ExtResource("1_5i664")]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 100.0
+offset_right = -303.0
+offset_bottom = -100.0
+
+[node name="ItemFrame" type="TextureRect" parent="EquipButton/Container"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 785.0
+offset_top = 85.0
+offset_right = 1035.0
+offset_bottom = 335.0
+texture = ExtResource("2_jlwna")
+expand_mode = 1
+
+[node name="ItemIcon" type="TextureRect" parent="EquipButton/Container"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 810.0
+offset_top = 115.0
+offset_right = 1010.0
+offset_bottom = 315.0
+expand_mode = 1
+
+[node name="ItemDesc" type="RichTextLabel" parent="EquipButton/Container"]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 345.0
+offset_right = 1049.0
+offset_bottom = 633.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
+
+[node name="QuestButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 350.0
+offset_right = 1270.0
+offset_bottom = 420.0
+text = "Quests"
+
+[node name="Container" type="Control" parent="QuestButton"]
+visible = false
+layout_mode = 1
+anchor_left = -6.056
+anchor_top = -5.0
+anchor_right = 1.056
+anchor_bottom = 5.286
+offset_left = 0.0800781
+offset_right = -226.08
+offset_bottom = -0.019989
+
+[node name="TabContainer" type="TabContainer" parent="QuestButton/Container"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 127.0
+offset_right = 391.0
+offset_bottom = 662.0
+
+[node name="Main Quest" type="Button" parent="QuestButton/Container/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestButton/Container/TabContainer/Main Quest"]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 500.0
+
+[node name="OngoingContainer" type="VBoxContainer" parent="QuestButton/Container/TabContainer/Main Quest/VBoxContainer"]
+custom_minimum_size = Vector2(330, 31)
+layout_mode = 2
+
+[node name="Ongoing" type="Button" parent="QuestButton/Container/TabContainer/Main Quest/VBoxContainer/OngoingContainer"]
+custom_minimum_size = Vector2(330, 31)
+layout_mode = 2
+toggle_mode = true
+alignment = 0
+
+[node name="CompletedContainer" type="VBoxContainer" parent="QuestButton/Container/TabContainer/Main Quest/VBoxContainer"]
+layout_mode = 2
+
+[node name="Completed" type="Button" parent="QuestButton/Container/TabContainer/Main Quest/VBoxContainer/CompletedContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Completed Main Quests
+"
+alignment = 0
+
+[node name="Side Quests" type="Button" parent="QuestButton/Container/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestButton/Container/TabContainer/Side Quests"]
+layout_mode = 0
+offset_right = 328.0
+offset_bottom = 507.0
+
+[node name="OngoingContainer" type="VBoxContainer" parent="QuestButton/Container/TabContainer/Side Quests/VBoxContainer"]
+custom_minimum_size = Vector2(330, 31)
+layout_mode = 2
+
+[node name="Ongoing" type="Button" parent="QuestButton/Container/TabContainer/Side Quests/VBoxContainer/OngoingContainer"]
+custom_minimum_size = Vector2(330, 31)
+layout_mode = 2
+toggle_mode = true
+text = "Ongoing Quests"
+alignment = 0
+
+[node name="CompletedContainer" type="VBoxContainer" parent="QuestButton/Container/TabContainer/Side Quests/VBoxContainer"]
+layout_mode = 2
+
+[node name="Completed" type="Button" parent="QuestButton/Container/TabContainer/Side Quests/VBoxContainer/CompletedContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Completed Quests
+"
+alignment = 0
+
+[node name="Details" type="VBoxContainer" parent="QuestButton/Container"]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 133.0
+offset_right = 933.0
+offset_bottom = 666.0
+
+[node name="QuestName" type="Label" parent="QuestButton/Container/Details"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="QuestButton/Container/Details"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Description" type="Label" parent="QuestButton/Container/Details"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+
+[node name="HSeparator2" type="HSeparator" parent="QuestButton/Container/Details"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Targets" type="VBoxContainer" parent="QuestButton/Container/Details"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 430.0
+offset_right = 1270.0
+offset_bottom = 500.0
+text = "Save"
+
+[node name="OptionsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 510.0
+offset_right = 1270.0
+offset_bottom = 580.0
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1095.0
+offset_top = 630.0
+offset_right = 1264.0
+offset_bottom = 684.0
+text = "Exit"
+
+[connection signal="button_down" from="StatusButton" to="." method="_on_status_button_button_down"]
+[connection signal="button_down" from="StatusButton/Container/SetSkills" to="." method="_on_set_skills_button_down"]
+[connection signal="button_down" from="ItemButton" to="." method="_on_item_button_button_down"]
+[connection signal="button_down" from="KeyItemButton" to="." method="_on_key_item_button_button_down"]
+[connection signal="button_down" from="EquipButton" to="." method="_on_equip_button_button_down"]
+[connection signal="button_down" from="QuestButton" to="." method="_on_quest_button_button_down"]
+[connection signal="tab_selected" from="QuestButton/Container/TabContainer" to="." method="_on_quest_tab_selected"]
+[connection signal="toggled" from="QuestButton/Container/TabContainer/Main Quest/VBoxContainer/OngoingContainer/Ongoing" to="." method="_on_quest_button_toggled" binds= [NodePath("QuestButton/Container/TabContainer/Main Quest/VBoxContainer/OngoingContainer")]]
+[connection signal="toggled" from="QuestButton/Container/TabContainer/Main Quest/VBoxContainer/CompletedContainer/Completed" to="." method="_on_quest_button_toggled" binds= [NodePath("QuestButton/Container/TabContainer/Main Quest/VBoxContainer/CompletedContainer")]]
+[connection signal="toggled" from="QuestButton/Container/TabContainer/Side Quests/VBoxContainer/OngoingContainer/Ongoing" to="." method="_on_quest_button_toggled" binds= [NodePath("QuestButton/Container/TabContainer/Side Quests/VBoxContainer/OngoingContainer")]]
+[connection signal="toggled" from="QuestButton/Container/TabContainer/Side Quests/VBoxContainer/CompletedContainer/Completed" to="." method="_on_quest_button_toggled" binds= [NodePath("QuestButton/Container/TabContainer/Side Quests/VBoxContainer/CompletedContainer")]]
+[connection signal="button_down" from="SaveButton" to="." method="_on_save_button_button_down"]

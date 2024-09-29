@@ -12,7 +12,7 @@ extends Node2D
 var player:Player
 var can_skill = true
 var is_skilling = false
-var knockPower = 250
+var knockPower = 100
 var skill_state = SkillTree.Skill_Tree.LIGHTNING
 var drag_force = 0
 var vel
@@ -34,8 +34,16 @@ func _process(_delta):
 	if !can_skill:
 		skill_1_cd_gui.value = snapped(skill_cd.time_left,0.1)
 	if is_skilling:
-		player.velocity = vel - (vel*drag_force)
-		drag_force += 0.04
+		if skilling_timer.time_left > 0.001:
+			player.velocity = vel
+			drag_force += 0.1
+				
+		else:
+			if drag_force >1:
+				drag_force = 1
+			player.velocity = vel - (vel*drag_force)
+			drag_force += 0.1
+
 		player.move_and_slide()
 
 
@@ -56,6 +64,7 @@ func lightning_thrust(lastAnimDir): #Movement/Basic
 	is_skilling = true
 	can_skill = false
 	player.animation.stop()
+	player.animation.animation_finished.emit()
 	attack_box_polygon.polygon = [Vector2(25,0),Vector2(0,-60), Vector2(-25,0)]
 	match lastAnimDir:
 		"Down":	
@@ -99,7 +108,7 @@ func lightning_thrust(lastAnimDir): #Movement/Basic
 	attack_box_shape.disabled = true
 	attack_box_polygon.disabled = false
 	skill_1_cd_gui.max_value = 3.0
-	skilling_timer.start(0.1)
+	skilling_timer.start(0.2)
 	skill_cd.start(3)
 	skill_1_cd_gui.texture_over = cd_gui_0
 	player.doing_skill_1 = true

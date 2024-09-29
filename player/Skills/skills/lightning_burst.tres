@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://cnhmwkc0c50vx"]
+
+[ext_resource type="Script" path="res://player/Skills/skill_res.gd" id="1_eknqe"]
+[ext_resource type="Texture2D" uid="uid://d2m0hb5ywib6j" path="res://asset/coin.png" id="1_x0i1s"]
+
+[resource]
+script = ExtResource("1_eknqe")
+skill_name = "Lightning Burst"
+icon = ExtResource("1_x0i1s")
+skill_category = 2
+skill_type = 0
+skill_shape = 0
+cooldown = 5.0
+shape_size = Vector2(0, 0)
+force = 300
+skill_stun_duration = 0.5
+skill_description = "An area magic that damage and stun enemy in the area of effect. "
+mana_consumption = 8
+is_reverse = false
+offset_up = Vector2(0, 0)
+offset_down = Vector2(0, 0)
+offset_left = Vector2(0, 0)
+offset_right = Vector2(0, 0)
+projectiles_count = 1
+is_full_circle_division = false
+is_variable_size = false
+duration_variable_size = 0.0
+max_radius = 150
+min_radius = 0
+combo_steps = Array[Resource("res://player/Skills/combo.gd")]([])

@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=7 format=3 uid="uid://c4eep1uy7inoy"]
+
+[ext_resource type="Texture2D" uid="uid://bklcy6a575pwm" path="res://UI/mana_up.png" id="1_byjyd"]
+[ext_resource type="Script" path="res://player/Skills/skill_res.gd" id="1_dwnwc"]
+[ext_resource type="Script" path="res://scenes/effect.gd" id="2_i0c2x"]
+[ext_resource type="Script" path="res://scenes/projectile_setting.gd" id="3_fljxf"]
+
+[sub_resource type="Resource" id="Resource_fh8uu"]
+script = ExtResource("2_i0c2x")
+effect_type = 0
+duration = 2
+tick_duration = 0
+damage_or_modifier = 0
+
+[sub_resource type="Resource" id="Resource_rfmfi"]
+script = ExtResource("3_fljxf")
+projectile_speed = 1000
+pro_anim_offset = Vector2(-15, 0)
+projectile_radius = 15
+state = 0
+effect = SubResource("Resource_fh8uu")
+
+[resource]
+script = ExtResource("1_dwnwc")
+skill_name = "Thunder Eagle"
+icon = ExtResource("1_byjyd")
+skill_category = 1
+skill_type = 0
+skill_shape = 0
+cooldown = 3.5
+shape_size = Vector2(0, 0)
+force = 1000
+skill_stun_duration = 0.2
+skill_description = "A magic that shoots forward a lightning eagle that flew quickly. It can stun enemy on hit."
+mana_consumption = 5
+is_reverse = false
+offset_up = Vector2(0, 0)
+offset_down = Vector2(0, 0)
+offset_left = Vector2(0, 0)
+offset_right = Vector2(0, 0)
+projectiles_count = 1
+is_full_circle_division = false
+projectile_res = SubResource("Resource_rfmfi")
+is_variable_size = false
+duration_variable_size = 0.0
+max_radius = 0
+min_radius = 0
+combo_steps = Array[Resource("res://player/Skills/combo.gd")]([])

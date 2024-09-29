@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4m2b4owup3tl"]
+
+[ext_resource type="Script" path="res://scenes/info_container.gd" id="1_cc6ga"]
+
+[node name="InfoContainer" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 518.0
+offset_right = -994.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cc6ga")

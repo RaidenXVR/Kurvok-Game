@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://3sd4vw08asx"]
+
+[ext_resource type="Script" path="res://player/Skills/skill_res.gd" id="1_01n5r"]
+[ext_resource type="Texture2D" uid="uid://bayhs72a7y4at" path="res://asset/Item_03.png" id="1_xp8ef"]
+
+[resource]
+script = ExtResource("1_01n5r")
+skill_name = "Lightning Thrust"
+icon = ExtResource("1_xp8ef")
+skill_category = 0
+skill_type = 0
+skill_shape = 1
+cooldown = 3.0
+shape_size = Vector2(25, 80)
+force = 1200
+skill_stun_duration = 0.2
+skill_description = "Thrust forward quickly, going through enemies while damaging them. Be careful of where you land though."
+mana_consumption = 3
+is_reverse = false
+offset_up = Vector2(0, 0)
+offset_down = Vector2(0, 0)
+offset_left = Vector2(0, 0)
+offset_right = Vector2(0, 0)
+projectiles_count = 1
+is_full_circle_division = false
+is_variable_size = false
+duration_variable_size = 0.0
+max_radius = 0
+min_radius = 0
+combo_steps = Array[Resource("res://player/Skills/combo.gd")]([])

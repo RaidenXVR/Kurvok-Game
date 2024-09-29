@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MainQuest" load_steps=3 format=3 uid="uid://dx4j1bpfralty"]
+
+[ext_resource type="Script" path="res://Scripts/MainQuest.gd" id="1_g0p51"]
+[ext_resource type="Resource" uid="uid://3pktq6csa0vw" path="res://Quests/MainQuests/MainQuestQuests/FirstMainQuest/Kill Two Tentacle.tres" id="1_pipiw"]
+
+[resource]
+script = ExtResource("1_g0p51")
+main_quest_name = "First Main Quest"
+on_going_quests = Array[Resource("res://Scripts/Quest.gd")]([ExtResource("1_pipiw")])
+completed_quests = Array[Resource("res://Scripts/Quest.gd")]([])
+requirements = Array[Dictionary]([])

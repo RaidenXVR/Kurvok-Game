@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ComboStep" load_steps=2 format=3 uid="uid://ncx65vbitwnl"]
+
+[ext_resource type="Script" path="res://player/Skills/combo.gd" id="1_25nvj"]
+
+[resource]
+script = ExtResource("1_25nvj")
+shape = 0
+radius = 25
+height = 80
+rotation_offset = 90.0
+offset_up = Vector2(0, -40)
+offset_down = Vector2(0, 25)
+offset_left = Vector2(-30, -11.5)
+offset_right = Vector2(30, -11.5)

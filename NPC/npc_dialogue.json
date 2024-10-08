@@ -1,8 +1,8 @@
 {
 	"npc1": {
 		"actors": [
-			"Layla",
-			"npc1"
+			{"Layla":"female"},
+			{"npc1":"male"}
 		],
 		"non-quest-dialogue": [
 			{
@@ -207,8 +207,8 @@
 	},
 	"npc2": {
 		"actors": [
-			"Layla",
-			"npc2"
+			{"Layla":"female"},
+			{"npc2":"male"}
 		],
 		"Talk To Him For Me": {
 			"pre-quest": [
@@ -293,8 +293,8 @@
 	},
 	"Galien": {
 		"actors": [
-			"Layla",
-			"Galien"
+			{"Layla":"female"},
+			{"Galien":"male"}
 		],
 		"non-quest-dialogue": [
 			{
@@ -308,8 +308,8 @@
 	},
 	"Merilda": {
 		"actors": [
-			"Layla",
-			"Merilda"
+			{"Layla":"female"},
+			{"Merilda":"female"}
 		],
 		"non-quest-dialogue": [
 			{
@@ -330,8 +330,8 @@
 	},
 	"Parsefal": {
 		"actors": [
-			"Layla",
-			"Parsefal"
+			{"Layla":"female"},
+			{"Parsefal":"male"}
 		],
 		"non-quest-dialogue": [
 			{
@@ -352,8 +352,8 @@
 	},
 	"Yvette": {
 		"actors": [
-			"Layla",
-			"Yvette"
+			{"Layla":"female"},
+			{"Yvette":"female"}
 		],
 		"non-quest-dialogue": [
 			{

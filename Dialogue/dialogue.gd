@@ -21,6 +21,8 @@ var objective
 var amount
 var quest_type
 var is_option: bool = false
+var actors_gender: Dictionary
+var audio_stream = AudioStream.new()
 
 @onready var leftActor = $LeftPortrait
 @onready var rightActor = $RightPortrait
@@ -29,8 +31,12 @@ var is_option: bool = false
 @onready var name_tag = $NameLabel/Label
 @onready var type_timer: Timer = $TypingTimer
 @onready var options = $Options
+@onready var audio_player: AudioStreamPlayer = AudioManager.audio_players["sfx"]
 @onready var player_hpbar = get_tree().root.get_node("/root/World/CanvasLayer/PlayerHealthBar")
 @onready var gold = get_tree().root.get_node("/root/World/CanvasLayer/MoneyUI")
+
+var female_typing = preload("res://Audio/dia5.wav")
+var male_typing = preload("res://Audio/dia6.wav")
 
 func _ready():
 
@@ -72,24 +78,28 @@ func starter(dialog, name_npc:String, q:Quest = null, is_cutscene: bool = false,
 
 	if not is_cutscene:
 		if len(dialogs[name_npc]["actors"]) >= 2:
-			actorL = dialogs[name_npc]["actors"][0]
-			actorR = dialogs[name_npc]["actors"][1]
-
+			actorL = dialogs[name_npc]["actors"][0].keys()[0]
+			actorR = dialogs[name_npc]["actors"][1].keys()[0]
+			actors_gender[actorL] = (dialogs[name_npc]["actors"][0].values()[0])
+			actors_gender[actorR] = (dialogs[name_npc]["actors"][1].values()[0])
 			leftActor.texture = load("res://Actors/{actorL}.png".format({"actorL":actorL}))
 			rightActor.texture = load("res://Actors/{actorR}.png".format({"actorR":actorR}))
 		elif len(dialogs[name_npc]["actors"]) == 1:
-			actorL = dialogs[name_npc]["actors"][0]
+			actorL = dialogs[name_npc]["actors"][0].keys()[0]
+			actors_gender[actorL] = (dialogs[name_npc]["actors"][0].values()[0])
 			leftActor.texture = load("res://Actors/{actorL}.png".format({"actorL":actorL}))
 	else:
 		if len(cutscene_actors) >= 2:
-			actorL = cutscene_actors[0]
-			actorR = cutscene_actors[1]
-
+			actorL = cutscene_actors[0].keys()[0]
+			actorR = cutscene_actors[1].keys()[0]
+			actors_gender[actorL] = cutscene_actors[0].values()[0]
+			actors_gender[actorR] = cutscene_actors[1].values()[0]
 			leftActor.texture = load("res://Actors/{actorL}.png".format({"actorL":actorL}))
 			rightActor.texture = load("res://Actors/{actorR}.png".format({"actorR":actorR}))
 
 		elif len(cutscene_actors) == 1:
-			actorL = cutscene_actors[0]
+			actorL = cutscene_actors[0].keys()[0]
+			actors_gender[actorL] = cutscene_actors[0].values()[0]
 			leftActor.texture = load("res://Actors/{actorL}.png".format({"actorL":actorL}))
 	
 	if line["char"] == actorL:
@@ -102,6 +112,13 @@ func starter(dialog, name_npc:String, q:Quest = null, is_cutscene: bool = false,
 	
 	else:
 		name_tag_panel.hide()
+	
+	var current_char_gender = actors_gender[line["char"]]
+	if current_char_gender == "female":
+		audio_player.stream = female_typing
+	else:
+		audio_player.stream = male_typing
+	set_process_input(true)
 	type_timer.start()
 
 
@@ -153,6 +170,8 @@ func _on_typing_timeout():
 	elif current_text.length() < line["dialogue"].length():
 		current_text += line["dialogue"][current_text.length()]
 		dial_text.text = current_text
+		if not audio_player.is_playing():
+			audio_player.play()
 	
 	else:
 		type_timer.stop()
@@ -172,6 +191,7 @@ func close():
 			canvas.visible = true
 	
 	dialogue_finished.emit()
+	set_process_input(false)
 
 func _input(event):
 	if event.is_action_pressed("run"):
@@ -202,7 +222,13 @@ func _input(event):
 			else:
 				name_tag_panel.position = Vector2(890, name_tag_panel.position.y)
 				name_tag.text = line["char"]
-
+			
+			var current_char_gender = actors_gender[line["char"]]
+			if current_char_gender == "female":
+				audio_player.stream = female_typing
+			else:
+				audio_player.stream = male_typing
+			
 			type_timer.start()
 	
 	
@@ -223,4 +249,5 @@ func _input(event):
 				var option = get_node(focus.focus_neighbor_bottom) as Button
 				option.grab_focus()
 
-
+func narator_starter():
+	pass

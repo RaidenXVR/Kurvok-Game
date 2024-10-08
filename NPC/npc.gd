@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name NPC
 
+
+
 @export var texture_img:Texture2D
 @export var isNPCCanMove:bool = true
 @export var facing_dir: Vector2

@@ -59,8 +59,7 @@ func set_complete_quests(que:Quest):
 			if item_id == "money":
 				GameData.add_money(quest_rewards[item_id])
 			else:
-				var invItem = InventoryItems.new()
-				invItem.init(item_id, quest_rewards[item_id])
+				var invItem = InventoryItems.new(item_id, quest_rewards[item_id])
 				inv.inventory.insert(invItem)
 		completed_quests.append(quest)
 

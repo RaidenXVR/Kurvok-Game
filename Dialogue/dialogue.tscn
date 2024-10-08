@@ -42,12 +42,15 @@ alignment = 1
 
 [node name="Panel" type="Panel" parent="."]
 top_level = true
+z_index = 1
 custom_minimum_size = Vector2(1024, 228)
-layout_mode = 0
-offset_left = 10.0
-offset_top = 467.0
-offset_right = 1166.0
-offset_bottom = 720.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -253.0
+offset_right = 1156.0
+grow_vertical = 0
 scale = Vector2(1.1, 1)
 theme_override_styles/panel = SubResource("StyleBoxTexture_tlo1g")
 
@@ -67,6 +70,7 @@ autowrap_mode = 3
 
 [node name="NameLabel" type="Panel" parent="."]
 top_level = true
+z_index = 1
 custom_minimum_size = Vector2(102, 23)
 layout_mode = 0
 offset_left = 120.0
@@ -88,28 +92,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TypingTimer" type="Timer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 723.0
-texture = SubResource("GradientTexture2D_03kig")
-
 [node name="LeftPortrait" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 180.0
+offset_left = 57.0
 offset_top = 100.0
-offset_right = 580.0
+offset_right = 457.0
 offset_bottom = 700.0
 expand_mode = 1
 stretch_mode = 2
 
 [node name="RightPortrait" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 720.0
+offset_left = 809.0
 offset_top = 99.0
-offset_right = 1120.0
+offset_right = 1209.0
 offset_bottom = 699.0
 expand_mode = 1
 stretch_mode = 2
+
+[node name="TypingTimer" type="Timer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 723.0
+texture = SubResource("GradientTexture2D_03kig")

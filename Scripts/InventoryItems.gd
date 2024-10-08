@@ -15,7 +15,7 @@ class_name InventoryItems
 @export var is_equipped: bool = false
 var item_data
 
-func init(id, am):
+func _init(id="0", am=0):
 	item_id = id
 	amount = am
 	

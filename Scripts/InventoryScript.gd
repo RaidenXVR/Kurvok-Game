@@ -37,6 +37,7 @@ func _connect_to_player(node):
 	connect("heal_player", player_node.heal)
 
 func insert(item: InventoryItems):
+	#print(item)
 	if item.category == "consumable":
 		var itemSlots = consume_slots.filter(func(slot):return slot != null and slot.item != null and slot.item.item_id == item.item_id)
 
@@ -60,6 +61,7 @@ func insert(item: InventoryItems):
 		var emptySlots = equip_slots.filter(func(slot):return slot.item == null)
 		emptySlots[0].item = item
 		emptySlots[0].amount = item.amount
+		print(emptySlots[0].item)
 	
 	elif item.category == "key":
 		var emptySlots = key_slots.filter(func(slot):return slot.item == null)

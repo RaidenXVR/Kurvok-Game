@@ -32,7 +32,6 @@ func collect():
 	if is_chest:
 		anim.play("open")
 	for item in items:
-		var invItem = InventoryItems.new()
-		invItem.init(str(item.x), int(item.y))
+		var invItem = InventoryItems.new(str(item.x), int(item.y))
 		# GameData.player_inventory.insert(invItem)
 		GameData.player_inventory.insert(invItem)

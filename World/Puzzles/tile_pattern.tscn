@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://766ebyry4b22"]
+
+[ext_resource type="Script" path="res://World/Puzzles/tile_pattern.gd" id="1_lsbme"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81dbx"]
+size = Vector2(48, 48)
+
+[node name="TilePattern" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_lsbme")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_81dbx")
+debug_color = Color(0.745098, 0.454902, 0.105882, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

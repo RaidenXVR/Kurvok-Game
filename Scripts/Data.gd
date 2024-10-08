@@ -34,6 +34,8 @@ class_name Data
 
 @export var map_name:String = "NorthGate"
 @export var player_position: Vector2 = Vector2(1000,50)
+@export var switches: Dictionary
+@export var tile_pattern_group: Dictionary
 
 func save_data(player_pos:Vector2, map_nm:String):
 	chest_states = GameData.chest_states
@@ -68,4 +70,6 @@ func save_data(player_pos:Vector2, map_nm:String):
 
 	map_name = map_nm
 	player_position = player_pos
+	switches = GameData.switches
+	tile_pattern_group = GameData.tile_pattern_group
 

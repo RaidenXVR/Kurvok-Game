@@ -1,6 +1,9 @@
 extends Node
 
 signal equip_skill_change
+signal do_tp
+signal switch_state_change
+signal tile_pattern_completed(tile_group)
 
 var chest_states = {}
 var player_stats: Stats
@@ -24,11 +27,18 @@ var skill_slot_2:Skill
 var skill_slot_3: Skill
 var skill_passive:Skill
 
+var switches: Dictionary
+var tile_pattern_group: Dictionary
+
 var current_save_file
 var player_position
 var current_map
 var is_game_over = false
 
+var tile_size: int
+var current_tile_pattern_id:String = ""
+
+#TODO: determine if current tile pattern should be saved
 
 signal money_change(money)
 
@@ -146,11 +156,11 @@ func save_game():
 
 	var data = Data.new()
 	data.save_data(player_node.global_position, map_node.name)
-	var dir = DirAccess.open("user://")
-	if not dir.dir_exists("user://Saves"):
+	var dir = DirAccess.open("res://")
+	if not dir.dir_exists("res://Saves"):
 		dir.make_dir("Saves")
 		
-	ResourceSaver.save(data, "user://Saves/%s.tres" %[current_save_file])
+	ResourceSaver.save(data, "res://Saves/%s.tres" %[current_save_file])
 
 
 
@@ -158,17 +168,15 @@ func load_game(save_file_int:int):
 	is_game_over = false
 	var save_file: Data
 	current_save_file = "Save"+str(save_file_int)
-	var dire  = DirAccess.open("user://")
-	if dire.file_exists("user://Saves/%s.tres" % [current_save_file]):
-		save_file = load("user://Saves/%s.tres" % [current_save_file]) as Data
+	var dire  = DirAccess.open("res://")
+	if dire.file_exists("res://Saves/%s.tres" % [current_save_file]):
+		save_file = load("res://Saves/%s.tres" % [current_save_file]) as Data
 
 
 	if save_file == null:
 		save_file = Data.new()
-		save_file.weapon_equip = InventoryItems.new()
-		save_file.weapon_equip.init("4", 1)
-		save_file.armor_equip1 = InventoryItems.new()
-		save_file.armor_equip1.init("3", 1)
+		save_file.weapon_equip = InventoryItems.new("4", 1)
+		save_file.armor_equip1 = InventoryItems.new("3", 1)
 		weapon_equip = save_file.weapon_equip
 		armor_equip1 = save_file.armor_equip1
 		save_file.player_inventory.insert(weapon_equip)
@@ -208,6 +216,9 @@ func load_game(save_file_int:int):
 
 	player_position = save_file.player_position
 	current_map = "res://map/%s.tscn" % save_file.map_name
+	
+	switches = save_file.switches
+	tile_pattern_group = save_file.tile_pattern_group
 	
 
 func do_game_over():
@@ -261,6 +272,27 @@ func do_game_over():
 	
 func _do_game_over():
 	is_game_over = true
+
+
+func filter(color: Color,end_duration:float, start_duration:float ,interval: float=0 ):
+	var filter_rect:ColorRect = get_node("/root/World/CanvasLayer/Filter")
+	var player = get_node("/root/World/Player")
+	player.set_physics_process(false)
+	var tween = create_tween()
+	tween.bind_node(filter_rect)
+	tween.tween_property(filter_rect, "color", color, start_duration)
+	tween.tween_callback(func(): do_tp.emit())
+	tween.tween_interval(interval)
+	tween.tween_property(filter_rect,"color", Color.TRANSPARENT, end_duration)
+	await tween.finished
+	player.set_physics_process(true)
+	
+func perma_filter(color:Color, duration:float):
+	var filter_rect:ColorRect = get_node("/root/World/CanvasLayer/Filter")
+	var tween = create_tween().bind_node(filter_rect)
+	tween.tween_property(filter_rect, "color", color, duration)
+	
+	
 
 func _input(event):
 	if is_game_over and event is InputEventKey:

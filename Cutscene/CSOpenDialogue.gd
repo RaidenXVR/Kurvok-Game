@@ -7,12 +7,12 @@ class_name Cutscene_Dialogue
 
 
 var lines: Array
-var actors: Array
+var actors: Array[Dictionary]
 
 
 func init_vars():
-    var file_diag = FileAccess.get_file_as_string("res://Cutscene/cutscene_dialogue.json")
-    var parsed = JSON.parse_string(file_diag)
-    var dialogs = parsed[cutscene_name]
-    lines = dialogs[dialogue_phase]["dialogue"] as Array[Dictionary]
-    actors = dialogs[dialogue_phase]["actors"] as Array[String]
+	var file_diag = FileAccess.get_file_as_string("res://Cutscene/cutscene_dialogue.json")
+	var parsed = JSON.parse_string(file_diag)
+	var dialogs = parsed[cutscene_name]
+	lines = dialogs[dialogue_phase]["dialogue"] as Array[Dictionary]
+	actors = dialogs[dialogue_phase]["actors"] as Array[Dictionary]

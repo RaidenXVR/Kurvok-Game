@@ -14,6 +14,7 @@ var cutscenes_completed: Array[String] = []
 var doing_cutscene: bool = false
 var tween: Tween
 
+var dialogue_style
 
 func set_attributes(world:World):
 	world_node = world
@@ -47,6 +48,9 @@ func do_cutscene(cutscene_name, init_area:CutsceneTrigger):
 
 		elif cutscene is Cutscene_Dialogue:
 			do_dialogue(cutscene)
+		
+		elif cutscene is Cutscene_MovieNarator:
+			do_movie(cutscene)
 
 	cutscenes_completed.append(cutscene_name)
 
@@ -56,7 +60,11 @@ func do_cutscene(cutscene_name, init_area:CutsceneTrigger):
 	finished_doing_cutscene.emit()
 
 	cutscenes.set_main_quest()
-	
+	if dialogue_node:
+		for child in dialogue_node.get_children():
+			child.visible = false
+			child.theme_override_styles.panel = dialogue_style
+			child.set_anchors_preset(2)
 
 func move_player(scene: Cutscene_MovePlayer):
 	var target_positions = []
@@ -143,3 +151,25 @@ func do_dialogue(scene: Cutscene_Dialogue):
 
 	dialogue_node.starter(scene.lines,"", null, true, scene.actors)
 	await dialogue_node.dialogue_finished
+
+func do_movie(scene: Cutscene_MovieNarator):
+	if not scene.lines:
+		var movie_player: VideoStreamPlayer = get_node("/root/World/CanvasLayer/Movie")
+		movie_player.stream = scene.movie
+		movie_player.play()
+	
+	else:
+		var movie_player: VideoStreamPlayer = get_node("/root/World/CanvasLayer/Movie")
+		movie_player.stream = scene.movie
+		
+		dialogue_node = get_node("/root/World/CanvasLayer/Dialogue")
+		for child in dialogue_node.get_children():
+			if child.name != "Panel":
+				child.visible = false
+			else:
+				dialogue_style = child.theme_override_styles.panel
+				child.theme_override_styles.panel = null
+				child.set_anchors_preset(4)
+				
+		dialogue_node.visible = true
+		movie_player.play()

@@ -1,52 +1,52 @@
 {
-    "test cutscene": {
-        "phase1": {
-            "actors": [
-                "Layla"
-            ],
-            "dialogue": [
-                {
-                    "char": "Layla",
-                    "dialogue": " Testing 123"
-                },
-                {
-                    "char": "Layla",
-                    "dialogue": "Continuing Testing 123456"
-                }
-            ]
-        },
-        "phase2": {
-            "actors": [
-                "Layla",
-                "npc1"
-            ],
-            "dialogue": [
-                {
-                    "char": "Layla",
-                    "dialogue": " Testing 123"
-                },
-                {
-                    "char": "npc1",
-                    "dialogue": "NPC1 Continuing Testing 123456"
-                }
-            ]
-        }
-    },
-    "FirstMainQuest": {
-        "phase1": {
-            "actors": [
-                "Layla"
-            ],
-            "dialogue": [
-                {
-                    "char": "Layla",
-                    "dialogue": "After Main Quest Testing 123"
-                },
-                {
-                    "char": "Layla",
-                    "dialogue": "Continuing After Main Quest Testing 123456"
-                }
-            ]
-        }
-    }
+	"test cutscene": {
+		"phase1": {
+			"actors": [
+				{"Layla":"female"}
+			],
+			"dialogue": [
+				{
+					"char": "Layla",
+					"dialogue": " Testing 123"
+				},
+				{
+					"char": "Layla",
+					"dialogue": "Continuing Testing 123456"
+				}
+			]
+		},
+		"phase2": {
+			"actors": [
+				{"Layla":"female"},
+				{"npc1":"male"}
+			],
+			"dialogue": [
+				{
+					"char": "Layla",
+					"dialogue": " Testing 123"
+				},
+				{
+					"char": "npc1",
+					"dialogue": "NPC1 Continuing Testing 123456"
+				}
+			]
+		}
+	},
+	"FirstMainQuest": {
+		"phase1": {
+			"actors": [
+				{"Layla":"female"}
+			],
+			"dialogue": [
+				{
+					"char": "Layla",
+					"dialogue": "After Main Quest Testing 123"
+				},
+				{
+					"char": "Layla",
+					"dialogue": "Continuing After Main Quest Testing 123456"
+				}
+			]
+		}
+	}
 }

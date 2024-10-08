@@ -21,12 +21,18 @@ GameData="*res://Scripts/gameData.gd"
 SkillTree="*res://Scripts/SkillTree.gd"
 QuestManager="*res://Scripts/QuestManager.gd"
 CutsceneManager="*res://Cutscene/CutsceneManager.gd"
+AudioManager="*res://Scripts/AudioManager.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 

@@ -23,6 +23,7 @@ signal combo
 @onready var look_dir: RayCast2D = $LookDir
 @onready var combo_timer:Timer = $ComboTimer
 @onready var combo_timer2: Timer = $ComboTimer2
+@onready var vfx_node:AnimatedSprite2D = $VFX
 
 @onready var skill_1 = $Skills/Skill1
 @onready var skill_2 = $Skills/Skill2
@@ -37,6 +38,9 @@ var rect_shape = RectangleShape2D.new()
 var attack_sprites = preload("res://asset/LaylaAttackWeapon.png")
 var cd_gui_0 = preload("res://asset/CD_frame0.png")
 var cd_gui_1 = preload("res://asset/CD_frame1.png")
+var sword_woosh1 = preload("res://Audio/sword_woosh1.wav")
+var sword_woosh2 = preload("res://Audio/sword_woosh2.wav")
+var sword_woosh3 = preload("res://Audio/sword_woosh3.wav")
 var inventory: Inventory
 
 var lastAnimDir: String = "Down"
@@ -107,6 +111,7 @@ func handleInput():
 	
 	#Looking direction
 	if (moveDir.x<0 and velocity.length() == 0 and !is_attacking):
+
 		animation.play("walkLeft")
 		lastAnimDir = "Left"
 		look_dir.target_position = Vector2(-1,0) *20
@@ -131,10 +136,11 @@ func handleInput():
 		pass
 	else:
 		look_dir.target_position = Vector2(moveDir.x, moveDir.y) *20
-
+	
 		
 	#Switch to run
 	if Input.is_action_pressed("run") and not is_stunned and not is_attacking and not is_slowed:
+		AudioManager.audio_players["sfx"]
 		speed = 230
 		animation.speed_scale = 2
 	elif is_slowed:
@@ -158,6 +164,8 @@ func handleInput():
 			slide_amount +=0.7
 		else :
 			velocity = Vector2.ZERO
+	
+		
 	#attack logic
 	if Input.is_action_just_pressed("attack"):
 		if is_attacking:
@@ -217,9 +225,21 @@ func start_attack():
 	attack_box_shape.disabled = false
 	# Play the attack animation and add a slight delay to smooth out transitions
 	is_attacking = true
-
-	animation.play("attack" + lastAnimDir)
-
+	
+	match combo_count:
+		0: 
+			animation.play("attack" + lastAnimDir)
+			AudioManager.audio_players["sfx"].stream = sword_woosh1
+		1: 
+			animation.play("attackReverse"+lastAnimDir)
+			AudioManager.audio_players["sfx"].stream = sword_woosh2
+			
+		2: 
+			animation.play("attackThrust"+lastAnimDir)
+			AudioManager.audio_players["sfx"].stream = sword_woosh3
+			
+	AudioManager.audio_players["sfx"].play()
+	
 	if input_buffered:
 		input_buffered = false
 		animation.speed_scale = 2
@@ -288,8 +308,9 @@ func updateAnimation():
 		return
 	if is_skilling:
 		return
-	if doing_skill_1:
+	if doing_skill_1 or doing_skill_2 or doing_skill_3:
 		return
+	
 	if velocity.length() == 0:
 		if moveDir == Vector2.ZERO:
 			animation.play("walk"+lastAnimDir)
@@ -312,6 +333,7 @@ func updateAnimation():
 				elif velocity.y<0:dir = "Down"
 		lastAnimDir = dir
 		animation.play("walk"+dir)
+
 		
 func _physics_process(_delta):
 	handleInput()
@@ -356,6 +378,13 @@ func _input(event: InputEvent):
 			
 			elif collided_body is Sign:
 				collided_body.see_sign()
+			
+			elif collided_body is MovableObject:
+				if not collided_body.is_moving:
+					collided_body.move_object(lastAnimDir, moveDir)
+					
+			elif collided_body is Switch:
+				collided_body.change_state()
 	
 	if event.is_action_pressed("skill_1"):
 		if GameData.skill_slot_1:

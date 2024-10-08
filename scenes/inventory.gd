@@ -49,8 +49,7 @@ func close():
 
 
 func _insert_item(item_id,amount):
-	var temp_item = InventoryItems.new()
-	temp_item.init(item_id, amount)
+	var temp_item = InventoryItems.new(item_id, amount)
 	inventory.insert(temp_item)
 
 

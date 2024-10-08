@@ -1,13 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://brpogu8spbuoa"]
+[gd_scene load_steps=23 format=3 uid="uid://brpogu8spbuoa"]
 
+[ext_resource type="Script" path="res://map/map.gd" id="3_rnh1t"]
 [ext_resource type="PackedScene" uid="uid://rdn5uj1o0222" path="res://Item/chest.tscn" id="3_upkko"]
 [ext_resource type="Texture2D" uid="uid://b13yhi4k6h2j4" path="res://Item/chest.png" id="4_5xvyx"]
 [ext_resource type="PackedScene" uid="uid://ilwasm3kpj5b" path="res://NPC/npc.tscn" id="5_adrrc"]
 [ext_resource type="PackedScene" uid="uid://mrfsqk8sxn0l" path="res://Enemies/enemy.tscn" id="6_ci5ns"]
 [ext_resource type="Script" path="res://Scripts/Quest.gd" id="6_mlul0"]
 [ext_resource type="Resource" uid="uid://bsmhkwonwbbo5" path="res://Enemies/enemies/tentacle_determine.tres" id="9_nqqjj"]
+[ext_resource type="PackedScene" uid="uid://dvi4mfpfqia6b" path="res://World/Puzzles/movable_objects.tscn" id="11_dgd3c"]
 [ext_resource type="PackedScene" uid="uid://bkjfsdf7g5k6e" path="res://Cutscene/cutscene_trigger.tscn" id="11_rxcne"]
 [ext_resource type="Resource" uid="uid://ce32ru5l65rtp" path="res://Enemies/enemies/tentacle.tres" id="12_a5tai"]
+[ext_resource type="PackedScene" uid="uid://766ebyry4b22" path="res://World/Puzzles/tile_pattern.tscn" id="13_0k4fu"]
+[ext_resource type="PackedScene" uid="uid://b64sbsdv5e0p0" path="res://World/Puzzles/swtich.tscn" id="13_wdt82"]
+[ext_resource type="PackedScene" uid="uid://dkftr50bit8rc" path="res://World/Puzzles/event_tile.tscn" id="15_oyf3j"]
 [ext_resource type="Texture2D" uid="uid://qdltfoadoh0s" path="res://Tilesets/Path_Tileset.png" id="Path_Tileset"]
 [ext_resource type="Texture2D" uid="uid://co07ae2epewvs" path="res://Tilesets/Capital_RoofsCastleTableChairs 3.png" id="roofs"]
 
@@ -1169,7 +1174,7 @@ texture_region_size = Vector2i(48, 48)
 [sub_resource type="TileSet" id="TileSet_0"]
 tile_size = Vector2i(48, 48)
 physics_layer_0/collision_layer = 50
-physics_layer_0/collision_mask = 50
+physics_layer_0/collision_mask = 0
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_0")
 sources/1 = SubResource("TileSetAtlasSource_1")
@@ -1242,6 +1247,7 @@ layer_1/name = "Building"
 layer_1/tile_data = PackedInt32Array(0, 0, 15, 1, 65536, 15, 2, 65536, 15, 3, 65536, 15, 4, 65536, 15, 5, 65536, 15, 6, 65536, 15, 7, 65536, 15, 8, 65536, 15, 9, 65536, 15, 10, 65536, 15, 11, 65536, 15, 12, 65536, 15, 13, 65536, 15, 14, 65536, 15, 15, 65536, 15, 16, 65536, 15, 17, 65536, 15, 18, 65536, 15, 19, 65536, 15, 20, 65536, 15, 21, 65536, 15, 22, 65536, 15, 23, 65536, 15, 24, 65536, 15, 25, 65536, 15, 26, 65536, 15, 27, 65536, 15, 28, 65536, 15, 29, 65536, 15, 30, 65536, 15, 31, 65536, 15, 32, 65536, 15, 33, 65536, 15, 34, 65536, 15, 35, 65536, 15, 36, 65536, 15, 37, 65536, 15, 38, 65536, 15, 39, 65536, 15, 40, 65536, 15, 41, 65536, 15, 42, 65536, 15, 43, 65536, 15, 44, 65536, 15, 45, 65536, 15, 46, 65536, 15, 47, 65536, 15, 48, 65536, 15, 49, 131072, 15, 65536, 0, 12, 65585, 0, 12, 131072, 0, 13, 131121, 0, 13, 196608, 0, 13, 196657, 0, 13, 262144, 0, 13, 262193, 0, 13, 327680, 0, 13, 327729, 0, 13, 393216, 0, 13, 393265, 0, 13, 458752, 0, 13, 458801, 0, 13, 524288, 0, 13, 524337, 0, 13, 589824, 0, 13, 589873, 0, 13, 655360, 0, 13, 655409, 0, 13, 720896, 0, 13, 720945, 0, 13, 786432, 0, 13, 786481, 0, 13, 851968, 0, 13, 852017, 0, 13, 917504, 0, 13, 917553, 0, 13, 983040, 0, 13, 983089, 0, 13, 1048576, 0, 13, 1048625, 0, 13, 1114112, 0, 13, 1114161, 0, 13, 1179648, 0, 13, 1179697, 0, 13, 1245184, 0, 13, 1245233, 0, 13, 1310720, 0, 13, 1310769, 0, 13, 1376256, 0, 13, 1376305, 0, 13, 1441792, 0, 13, 1441841, 0, 13, 1507328, 0, 13, 1507377, 0, 13, 1572864, 0, 13, 1572913, 0, 13, 1638400, 0, 13, 1638449, 0, 13, 1703936, 0, 13, 1703985, 0, 13, 1769472, 0, 13, 1769521, 0, 13, 1835008, 0, 13, 1835057, 0, 13, 1900544, 0, 13, 1900593, 0, 13, 1966080, 0, 13, 1966129, 0, 13, 2031616, 0, 13, 2031665, 0, 13, 2097152, 0, 13, 2097201, 0, 13, 2162688, 0, 13, 2162737, 0, 13, 2228224, 0, 13, 2228273, 0, 13, 2293760, 0, 13, 2293809, 0, 13, 2359296, 0, 13, 2359345, 0, 13, 2424832, 0, 13, 2424881, 0, 13, 2490368, 0, 13, 2490417, 0, 13, 2555904, 0, 13, 2555953, 0, 13, 2621440, 0, 13, 2621489, 0, 13, 2686976, 0, 13, 2687025, 0, 13, 2752512, 0, 13, 2752561, 0, 13, 2818048, 0, 13, 2818097, 0, 13, 2883584, 0, 13, 2883633, 0, 13, 2949120, 0, 13, 2949169, 0, 13, 3014656, 0, 13, 3014705, 0, 13, 3080192, 0, 13, 3080241, 0, 13, 3145728, 0, 13, 3145777, 0, 14, 3211264, 0, 14, 3211265, 0, 15, 3211266, 65536, 15, 3211267, 65536, 15, 3211268, 65536, 15, 3211269, 65536, 15, 3211270, 65536, 15, 3211271, 65536, 15, 3211272, 65536, 15, 3211273, 65536, 15, 3211274, 65536, 15, 3211275, 65536, 15, 3211276, 65536, 15, 3211277, 65536, 15, 3211278, 65536, 15, 3211279, 65536, 15, 3211280, 65536, 15, 3211281, 65536, 15, 3211282, 65536, 15, 3211283, 65536, 15, 3211284, 65536, 15, 3211285, 65536, 15, 3211286, 65536, 15, 3211287, 65536, 15, 3211288, 65536, 15, 3211289, 65536, 15, 3211290, 65536, 15, 3211291, 65536, 15, 3211292, 65536, 15, 3211293, 65536, 15, 3211294, 65536, 15, 3211295, 65536, 15, 3211296, 65536, 15, 3211297, 65536, 15, 3211298, 65536, 15, 3211299, 65536, 15, 3211300, 65536, 15, 3211301, 65536, 15, 3211302, 65536, 15, 3211303, 65536, 15, 3211304, 65536, 15, 3211305, 65536, 15, 3211306, 65536, 15, 3211307, 65536, 15, 3211308, 65536, 15, 3211309, 65536, 15, 3211310, 65536, 15, 3211311, 65536, 15, 3211312, 65536, 15, 3211313, 131072, 15)
 layer_2/name = "Deco"
 layer_2/tile_data = PackedInt32Array()
+script = ExtResource("3_rnh1t")
 
 [node name="Chest" parent="." instance=ExtResource("3_upkko")]
 position = Vector2(983, 224)
@@ -1281,3 +1287,57 @@ enemy_res = ExtResource("9_nqqjj")
 [node name="Tentacle" parent="." instance=ExtResource("6_ci5ns")]
 position = Vector2(1379, 751)
 enemy_res = ExtResource("12_a5tai")
+
+[node name="MovableObjects" type="Node2D" parent="."]
+
+[node name="MovableObject1" parent="MovableObjects" instance=ExtResource("11_dgd3c")]
+position = Vector2(1060, 158)
+
+[node name="Switches" type="Node2D" parent="."]
+
+[node name="Swtich" parent="Switches" instance=ExtResource("13_wdt82")]
+position = Vector2(973, 26)
+switch_id = "DebugArea/1"
+
+[node name="Swtich2" parent="Switches" instance=ExtResource("13_wdt82")]
+position = Vector2(1067, 28)
+switch_id = "DebugArea/2"
+
+[node name="TilePatterns" type="Node2D" parent="."]
+
+[node name="TilePattern" parent="TilePatterns" instance=ExtResource("13_0k4fu")]
+position = Vector2(1285, 114)
+tile_pattern_id = "DebugArea/1"
+tile_pattern_group = "DebugArea1"
+start_point = Vector2(1237, 117)
+
+[node name="TilePattern2" parent="TilePatterns" instance=ExtResource("13_0k4fu")]
+position = Vector2(1334, 114)
+tile_pattern_id = "DebugArea/2"
+tile_pattern_group = "DebugArea1"
+previous_pattern_id = "DebugArea/1"
+start_point = Vector2(1237, 117)
+
+[node name="TilePattern3" parent="TilePatterns" instance=ExtResource("13_0k4fu")]
+position = Vector2(1285, 165)
+tile_pattern_id = "DebugArea/3"
+tile_pattern_group = "DebugArea1"
+previous_pattern_id = "DebugArea/2"
+is_end_point = true
+start_point = Vector2(1237, 117)
+
+[node name="Events" type="Node2D" parent="."]
+
+[node name="EventTile" parent="Events" instance=ExtResource("15_oyf3j")]
+position = Vector2(906, 118)
+requirements = {
+"DebugArea/1": true,
+"DebugArea/2": false
+}
+
+[node name="EventTile2" parent="Events" instance=ExtResource("15_oyf3j")]
+position = Vector2(1213, 216)
+requirements = {
+"DebugArea1": true
+}
+event_type = 1

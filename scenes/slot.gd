@@ -14,7 +14,7 @@ func update(slot: InventorySlot, inv: Inventory):
 	else:
 		invenBG.frame = 1
 		itemSprite.visible = true
-		itemSprite.texture = slot.item.texture
+		itemSprite.texture = load(slot.item.texture)
 			
 		if !slot.amount ==0 :
 			itemAmount.visible = true
@@ -26,11 +26,11 @@ func update(slot: InventorySlot, inv: Inventory):
 				itemSprite.scale.x =16/size_x
 				itemSprite.scale.y = 16/size_x
 	
-
-func _gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			inventory.use_item(int(self.name.right(1))-1)
-			inventory.updated.emit()
+#
+#func _gui_input(event):
+	#if event is InputEventMouseButton:
+		#if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			#inventory.use_item(int(self.name.right(1))-1)
+			#inventory.updated.emit()
 			
 

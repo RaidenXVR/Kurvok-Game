@@ -1,5 +1,5 @@
 {
-    "activeFile": "D:/Fitran/Project/Game/Map/TS/ground.tsx",
+    "activeFile": "D:/Fitran/Project/Game/Map/TS/BuildDeco.tsx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -41,16 +41,14 @@
         "D:/Fitran/Project/Game/Kurvok/map/ground.tsx",
         "D:/Fitran/Project/Game/Map/TS/BuildDeco.tsx",
         "D:/Fitran/Project/Game/Map/TS/Building.tsx",
-        "D:/Fitran/Project/Game/Map/TS/ground.tsx",
-        "D:/Fitran/Project/Game/Map/TS/Path_Tileset.tsx",
         "D:/Fitran/Project/Game/Map/TS/Roofs.tsx"
     ],
     "project": "Kurvok.tiled-project",
     "recentFiles": [
         "D:/Fitran/Project/Game/Kurvok/map/ground.tsx",
-        "D:/Fitran/Project/Game/Map/TS/BuildDeco.tsx",
-        "D:/Fitran/Project/Game/Map/TS/Building.tsx",
         "D:/Fitran/Project/Game/Map/TS/Roofs.tsx",
+        "D:/Fitran/Project/Game/Map/TS/Building.tsx",
+        "D:/Fitran/Project/Game/Map/TS/BuildDeco.tsx",
         "D:/Fitran/Project/Game/Map/TS/Path_Tileset.tsx",
         "D:/Fitran/Project/Game/Map/TS/ground.tsx",
         "D:/Fitran/Project/Game/Kurvok/map/market.tsx",

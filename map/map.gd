@@ -4,7 +4,23 @@ extends TileMap
 @export var east_map: String
 @export var north_map: String
 @export var south_map: String
+@export var music_path:String
 
+func _ready():
+	AudioManager.audio_players["main_music"].stop()
+	if music_path:
+		var music = load(music_path)
+		AudioManager.audio_players["main_music"].stream = music
+		AudioManager.audio_players["main_music"].play()
+	
+	GameData.tile_size = rendering_quadrant_size
+	
+	
+	var switches = get_node("Switches")
+	if switches:
+		for switch: Switch in switches.get_children():
+			GameData.switches[switch.switch_id] = switch.state
+			
 
 func _on_west_point_body_entered(body:Node2D):
 	if body is Player:

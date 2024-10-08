@@ -16,9 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://jd3kug7n44aw" path="res://asset/LaylaFainted.png" id="11_ueend"]
 [ext_resource type="FontFile" uid="uid://b0a4rck3bbjt7" path="res://asset/joystix monospace.otf" id="12_kfswe"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46nld"]
-bg_color = Color(0.2, 0.517647, 0.772549, 1)
-
 [sub_resource type="Animation" id="Animation_q1j30"]
 length = 0.001
 tracks/0/type = "value"
@@ -56,6 +53,9 @@ _data = {
 "fainted": SubResource("Animation_i2rv5")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46nld"]
+bg_color = Color(0.2, 0.517647, 0.772549, 1)
+
 [sub_resource type="Resource" id="Resource_pe85t"]
 script = ExtResource("10_0fbf8")
 mhp = 20
@@ -79,11 +79,112 @@ script = ExtResource("2_mpmv5")
 process_mode = 3
 script = ExtResource("5_qrmlj")
 
+[node name="GameOver" type="Control" parent="CanvasLayer"]
+z_index = 1
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverText" type="Label" parent="CanvasLayer/GameOver"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 350.0
+offset_top = -100.0
+offset_right = 890.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(270, 50)
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("12_kfswe")
+theme_override_font_sizes/font_size = 70
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="KeyText" type="Label" parent="CanvasLayer/GameOver"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 370.0
+offset_top = 550.0
+offset_right = 910.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(270, 50)
+theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
+theme_override_constants/line_spacing = 10
+theme_override_fonts/font = ExtResource("12_kfswe")
+theme_override_font_sizes/font_size = 20
+text = "press any key..."
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.0156863, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GameOver"]
+visible = false
+z_index = 1
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("11_ueend")
+offset = Vector2(0, -25)
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameOver"]
+libraries = {
+"": SubResource("AnimationLibrary_3ye1j")
+}
+
+[node name="Filter" type="ColorRect" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Movie" type="VideoStreamPlayer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Menu" parent="CanvasLayer" instance=ExtResource("4_bl51d")]
 visible = false
 
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource("7_cyrdu")]
 visible = false
+z_index = 1
 
 [node name="PlayerHealthBar" parent="CanvasLayer" instance=ExtResource("8_0npcj")]
 process_mode = 3
@@ -196,89 +297,6 @@ offset_bottom = 707.0
 layout_mode = 1
 offset_top = 0.0
 offset_right = 0.0
-
-[node name="GameOver" type="Control" parent="CanvasLayer"]
-layout_direction = 1
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1280.0
-offset_bottom = -720.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GameOverText" type="Label" parent="CanvasLayer/GameOver"]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 350.0
-offset_top = -100.0
-offset_right = 890.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(270, 50)
-theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
-theme_override_constants/line_spacing = 10
-theme_override_fonts/font = ExtResource("12_kfswe")
-theme_override_font_sizes/font_size = 70
-text = "GAME OVER"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="KeyText" type="Label" parent="CanvasLayer/GameOver"]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 370.0
-offset_top = 550.0
-offset_right = 910.0
-offset_bottom = 650.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(270, 50)
-theme_override_colors/font_color = Color(0.894118, 0.894118, 0.894118, 1)
-theme_override_constants/line_spacing = 10
-theme_override_fonts/font = ExtResource("12_kfswe")
-theme_override_font_sizes/font_size = 20
-text = "press any key..."
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
-top_level = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0156863, 0.0156863, 0.0156863, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GameOver"]
-visible = false
-z_index = 1
-scale = Vector2(2.25, 2.25)
-texture = ExtResource("11_ueend")
-offset = Vector2(0, -25)
-hframes = 6
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/GameOver"]
-libraries = {
-"": SubResource("AnimationLibrary_3ye1j")
-}
 
 [node name="Player" parent="." instance=ExtResource("3_n74gu")]
 position = Vector2(669, 369)

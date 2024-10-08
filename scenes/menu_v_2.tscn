@@ -496,6 +496,75 @@ offset_right = 1270.0
 offset_bottom = 580.0
 text = "Options"
 
+[node name="OptionContainer" type="MarginContainer" parent="OptionsButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.083
+anchor_top = -4.837
+anchor_right = -1.083
+anchor_bottom = -4.837
+offset_left = -805.06
+offset_top = -61.41
+offset_right = 94.9399
+offset_bottom = 364.59
+
+[node name="ColorRect" type="ColorRect" parent="OptionsButton/OptionContainer"]
+layout_mode = 2
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsButton/OptionContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="GridContainer" type="GridContainer" parent="OptionsButton/OptionContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 100
+columns = 2
+
+[node name="Master" type="Label" parent="OptionsButton/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="OptionsButton/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_constants/grabber_offset = 0
+value = 100.0
+
+[node name="Music" type="Label" parent="OptionsButton/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="OptionsButton/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_constants/grabber_offset = 0
+value = 80.0
+
+[node name="SFX" type="Label" parent="OptionsButton/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="OptionsButton/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_constants/grabber_offset = 0
+value = 80.0
+
 [node name="ExitButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1095.0
@@ -516,3 +585,7 @@ text = "Exit"
 [connection signal="toggled" from="QuestButton/Container/TabContainer/Side Quests/VBoxContainer/OngoingContainer/Ongoing" to="." method="_on_quest_button_toggled" binds= [NodePath("QuestButton/Container/TabContainer/Side Quests/VBoxContainer/OngoingContainer")]]
 [connection signal="toggled" from="QuestButton/Container/TabContainer/Side Quests/VBoxContainer/CompletedContainer/Completed" to="." method="_on_quest_button_toggled" binds= [NodePath("QuestButton/Container/TabContainer/Side Quests/VBoxContainer/CompletedContainer")]]
 [connection signal="button_down" from="SaveButton" to="." method="_on_save_button_button_down"]
+[connection signal="button_down" from="OptionsButton" to="." method="_on_options_button_button_down"]
+[connection signal="value_changed" from="OptionsButton/OptionContainer/MarginContainer/GridContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="OptionsButton/OptionContainer/MarginContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="OptionsButton/OptionContainer/MarginContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

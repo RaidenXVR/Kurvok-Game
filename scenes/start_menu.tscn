@@ -44,10 +44,84 @@ custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 text = "Options"
 
+[node name="OptionContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Option"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.083
+anchor_top = -4.837
+anchor_right = -1.083
+anchor_bottom = -4.837
+offset_left = -0.0999756
+offset_top = 136.96
+offset_right = 899.9
+offset_bottom = 536.96
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Option/OptionContainer"]
+layout_mode = 2
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Option/OptionContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 100
+columns = 2
+
+[node name="Master" type="Label" parent="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_constants/grabber_offset = 0
+value = 100.0
+
+[node name="Music" type="Label" parent="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_constants/grabber_offset = 0
+value = 80.0
+
+[node name="SFX" type="Label" parent="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SFX Volume"
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 0
+theme_override_constants/grabber_offset = 0
+value = 80.0
+
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="hidden" from="MarginContainer/VBoxContainer/Option/OptionContainer" to="." method="_on_option_container_hidden"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Option/OptionContainer/MarginContainer/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -11,6 +11,7 @@ extends Control
 @onready var quest_main_cont: Control = $QuestButton/Container
 @onready var main_quest_cont: VBoxContainer = $"QuestButton/Container/TabContainer/Main Quest/VBoxContainer"
 @onready var side_quest_cont: VBoxContainer = $"QuestButton/Container/TabContainer/Side Quests/VBoxContainer"
+@onready var option_cont: MarginContainer = $OptionsButton/OptionContainer
 
 
 signal opened
@@ -52,8 +53,7 @@ func close():
 
 
 func _insert_item(item_id,amount):
-	var temp_item = InventoryItems.new()
-	temp_item.init(item_id, amount)
+	var temp_item = InventoryItems.new(item_id, amount)
 	inventory.insert(temp_item)
 
 
@@ -88,6 +88,7 @@ func _on_item_button_button_down():
 		status_cont.visible = false
 		key_cont.visible = false
 		equip_cont.visible = false
+		quest_main_cont.visible = false
 		current_tab = "consumable"
 		consume_cont.visible = true
 	else:
@@ -100,6 +101,7 @@ func _on_key_item_button_button_down():
 		status_cont.visible = false
 		consume_cont.visible = false
 		equip_cont.visible = false
+		quest_main_cont.visible = false
 		current_tab = "key items"
 		key_cont.visible = true
 	else:
@@ -113,6 +115,7 @@ func _on_equip_button_button_down():
 		status_cont.visible = false
 		key_cont.visible = false
 		consume_cont.visible = false
+		quest_main_cont.visible = false
 		current_tab = "equipment"
 		equip_cont.visible = true
 	else:
@@ -127,6 +130,7 @@ func _on_status_button_button_down():
 		consume_cont.visible = false
 		equip_cont.visible = false
 		quest_main_cont.visible = false
+		option_cont.visible = false
 		current_tab = "status"
 		$StatusButton/Container/VBoxContainer/HP.text ="HP: "+ str(GameData.player_stats.hp) +"/"+str(GameData.player_stats.mhp)
 		$StatusButton/Container/VBoxContainer/MP.text = "Mana: "+str(GameData.player_stats.mana) +"/"+str(GameData.player_stats.max_mana)
@@ -291,6 +295,20 @@ func _on_quest_clicked(button_node:Button):
 		target_cont.add_child(lb)
 
 
+func _on_options_button_button_down():
+	if not is_open or not current_tab == "option":
+		update()
+		is_open = true
+		status_cont.visible = false
+		key_cont.visible = false
+		consume_cont.visible = false
+		quest_main_cont.visible = false
+		equip_cont.visible = false
+		current_tab = "option"
+		option_cont.visible = true
+	else:
+		_on_status_button_button_down()
+
 func _on_save_button_button_down():
 	GameData.save_game()
 	close()
@@ -300,3 +318,19 @@ func _on_set_skills_button_down():
 	$StatusButton/Container/SetSkills/SetSkillPopup.visible = true
 	$StatusButton/Container/SetSkills/SetSkillPopup/EquippedSkill1.grab_focus()
 	is_status_open = true
+
+func _on_master_slider_value_changed(value):
+	var db = lerp(-40.0,0.0, value/100.0)
+	AudioServer.set_bus_volume_db(0, db)
+
+
+func _on_music_slider_value_changed(value):
+	var db = lerp(-40.0,0.0, value/100.0)
+	var music: AudioStreamPlayer = AudioManager.audio_players["main_music"]
+	music.volume_db = db
+
+
+func _on_sfx_slider_value_changed(value):
+	var db = lerp(-40.0,0.0, value/100.0)
+	var sfx: AudioStreamPlayer = AudioManager.audio_players["sfx"]
+	sfx.volume_db = db

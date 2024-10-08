@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_25nvj")
 shape = 0
-radius = 25
+radius = 30
 height = 80
 rotation_offset = 90.0
 offset_up = Vector2(0, -40)

@@ -13,6 +13,10 @@ extends Node2D
 @export var mana_consumption: int
 @export var inflicted_status_effect: Effect
 @export var damage_mod:int
+@export var animation_name:String
+@export var is_directional_animation: bool
+@export var vfx_animation_name: String
+@export var vfx_scale: float = 1
 
 @export_group("Skill Move")
 @export var is_reverse: bool
@@ -89,6 +93,11 @@ func _ready():
 		is_full_circle_division = skill_slot.is_full_circle_division
 		skill_description = skill_slot.skill_description
 		mana_consumption = skill_slot.mana_consumption
+		damage_mod = skill_slot.damage_mod
+		animation_name = skill_slot.animation_name
+		is_directional_animation = skill_slot.is_directional_animation
+		vfx_animation_name = skill_slot.vfx_animation_name
+		vfx_scale = skill_slot.vfx_scale
 		
 		is_reverse = skill_slot.is_reverse
 		offset_up = skill_slot.offset_up
@@ -152,15 +161,15 @@ func _process(_delta):
 			if skilling_timer.time_left > 0.001:
 				player.velocity = vel
 				drag_force += 0.1
-					
+
 			else:
 				if drag_force >1:
 					drag_force = 1
 				player.velocity = vel - (vel*drag_force)
 				drag_force += 0.1
 
-
 			player.move_and_slide()
+
 	else:
 		if !can_skill:
 			skill_cd_gui.value = snapped(skill_cd.time_left,0.1)
@@ -178,10 +187,14 @@ func do_skill(lastAnimDir):
 func skill_move(lastAnimDir):
 	if can_skill and player.stats.mana >= mana_consumption:
 		drag_force = 0
-		is_skilling = true
 		can_skill = false
-		player.animation.stop()
-		player.animation.animation_finished.emit()
+		player.doing_skill_1 = true
+		if is_directional_animation:
+			player.animation.play(animation_name+lastAnimDir)
+		else:
+			player.animation.play(animation_name)
+		
+		#await  player.animation.animation_finished
 		
 		var shape
 		if skill_shape == Skill.SkillShape.SHAPE_CIRCLE:
@@ -206,38 +219,30 @@ func skill_move(lastAnimDir):
 		attack_box_shape.shape = shape
 		
 		match lastAnimDir:
-			"Down":	
+			"Down":
 				player.velocity = Vector2(0,1) * force 
-				player.player_sprite.visible = false
-				player.player_attack_sprite.visible = true
-				player.player_attack_sprite.frame = 16
 				attack_box_shape.position = Vector2(0,15)
 				attack_box_shape.rotation_degrees = 0
 
 			"Up": 
 				player.velocity  = Vector2(0,-1) * force
-				player.player_sprite.visible = false
-				player.player_attack_sprite.visible = true
-				player.player_attack_sprite.frame = 4
 				attack_box_shape.position = Vector2(0,-60)
 				attack_box_shape.rotation_degrees = 0
 
 			"Left": 
 				player.velocity = Vector2(-1,0)*force 
-				player.player_sprite.visible = false
-				player.player_attack_sprite.visible = true
-				player.player_attack_sprite.frame = 10
 				attack_box_shape.position = Vector2(-35,-20)
 				attack_box_shape.rotation_degrees = 90
 
 
 			"Right": 
 				player.velocity = Vector2(1,0)* force 
-				player.player_sprite.visible = false
-				player.player_attack_sprite.visible = true
-				player.player_attack_sprite.frame = 22
 				attack_box_shape.position =  Vector2(35,-20)
 				attack_box_shape.rotation_degrees = 90
+		
+
+			
+
 
 		vel = player.velocity
 		attack_box.monitoring = true
@@ -245,21 +250,26 @@ func skill_move(lastAnimDir):
 		player.is_immune = true
 		skilling_timer.start(skill_stun_duration)
 		skill_cd.start(cooldown)
-		#match index:
-			#0:
-		player.doing_skill_1 = true
-			#1:
-				#player.doing_skill_2 = true
-			#2: 
-				#player.doing_skill_3 = true
 		player.stats.use_mana(mana_consumption)
 		player.manabar._set_amount(player.stats.mana)
 		skill_cd_gui.max_value = cooldown
 		skill_cd_gui.texture_over = cd_gui_0
+		is_skilling = true
+		
 
 
 func skill_projectile(lastAnimDir):
 	if can_skill and player.stats.mana >= mana_consumption:
+		#player.animation.stop()
+		#player.animation.animation_finished.emit()
+		player.doing_skill_2 = true
+		if is_directional_animation:
+			player.animation.play(animation_name+lastAnimDir)
+		else:
+			player.animation.play(animation_name)
+		
+		await player.animation.animation_finished
+		
 		var skill_pos = player.position
 		var shoot_dir
 		#projectile_offset.x -= (5*(projectiles_count/2)) 
@@ -298,6 +308,7 @@ func skill_projectile(lastAnimDir):
 			projectiles.append(projectile)
 			shoot_dirs.append(Vector2(dir_x, dir_y))
 		
+
 		
 		skill_pos.y += -15
 		for i in range(len(projectiles)):
@@ -305,6 +316,7 @@ func skill_projectile(lastAnimDir):
 			#force is speed
 			projectile.init(player.stats.att,shoot_dirs[i],skill_pos,projectile_res)
 			get_node("/root/World").add_child(projectile)
+		
 		skill_cd.start(cooldown)
 		skilling_timer.start(skill_stun_duration)
 		player.velocity = Vector2.ZERO
@@ -321,6 +333,7 @@ func skill_area() :#AOE
 		if can_skill and player.stats.mana >= mana_consumption:
 			var tween = get_tree().create_tween()
 			can_skill = false
+			player.animation.play("magicDown")
 			match skill_shape:
 				Skill.SkillShape.SHAPE_CIRCLE:
 					attack_box_shape.shape = circle_shape
@@ -342,7 +355,20 @@ func skill_area() :#AOE
 
 	else:
 		if can_skill and player.stats.mana >= mana_consumption:
+			player.animation.play("magicDown")
+			player.doing_skill_3 = true
+			player.velocity = Vector2.ZERO
+			player.vfx_node.scale = Vector2(0.25,0.25)
+			player.vfx_node.visible = true
+			player.vfx_node.play("BlueMC")
+			await player.animation.animation_finished
+			player.vfx_node.visible = false
+
+			
 			is_skilling = true
+			player.vfx_node.scale = Vector2(vfx_scale, vfx_scale)
+			player.vfx_node.visible = true
+			player.vfx_node.play(vfx_animation_name)
 			match skill_shape:
 				Skill.SkillShape.SHAPE_CIRCLE:
 					attack_box_shape.shape = circle_shape
@@ -352,8 +378,6 @@ func skill_area() :#AOE
 			can_skill = false
 			attack_box_shape.disabled = false
 			attack_box.monitoring = true
-			player.velocity = Vector2.ZERO
-			player.doing_skill_3 = true
 			skill_cd_gui.texture_over = cd_gui_0
 			skill_cd_gui.max_value = cooldown
 			skilling_timer.start(skill_stun_duration)
@@ -364,21 +388,19 @@ func skill_area() :#AOE
 func _on_area_tween_finished(tween:Tween):
 	skill_cd.start(cooldown)
 	tween.kill()
-	pass
 
 func _on_skilling_timer_timeout():
 	if skill_category == Skill.SkillCategory.SKILL_MOVE:
 		is_skilling = false
-
-		player.doing_skill_1 = false
-		player.player_sprite.visible = true
-		player.player_attack_sprite.visible = false
+		
 		attack_box_shape.shape.radius = 20
 		attack_box_shape.position = Vector2(0,0)
 		attack_box_shape.rotation_degrees = 0
 		attack_box.monitoring = false
 
 		attack_box_shape.disabled = true
+		await player.animation.animation_finished
+		player.doing_skill_1 = false
 	
 	elif skill_category == Skill.SkillCategory.SKILL_PROJECTILE:
 		is_skilling = false
@@ -391,7 +413,9 @@ func _on_skilling_timer_timeout():
 			player.doing_skill_3 = false
 			attack_box_shape.disabled = true
 			attack_box.monitoring = false
-	
+			player.vfx_node.visible = false
+			player.vfx_node.scale = Vector2.ZERO
+			
 	player.is_immune = false
 
 func _on_skill_timer_timeout():

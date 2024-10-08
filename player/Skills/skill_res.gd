@@ -17,6 +17,11 @@ enum SkillShape {SHAPE_CIRCLE, SHAPE_CAPSULE}
 @export var skill_stun_duration: float = 0.2
 @export var skill_description:String
 @export var mana_consumption:int
+@export var damage_mod: int
+@export var animation_name:String
+@export var is_directional_animation: bool
+@export var vfx_animation_name: String
+@export var vfx_scale:float = 1
 
 @export_group("Skill Move")
 @export var is_reverse: bool

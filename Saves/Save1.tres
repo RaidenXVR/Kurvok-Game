@@ -1,0 +1,648 @@
+[gd_resource type="Resource" script_class="Data" load_steps=126 format=3 uid="uid://xrka81xahj5f"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryItems.gd" id="1_khwdk"]
+[ext_resource type="Resource" uid="uid://bma48iyj5bd00" path="res://Quests/MainQuests/Rumors.tres" id="2_wq8r5"]
+[ext_resource type="Script" path="res://Scripts/InventorySlot.gd" id="3_51ohf"]
+[ext_resource type="Resource" uid="uid://bt5a2sglvct7y" path="res://Cutscene/Cutscenes/After_AskAround.tres" id="3_iqrg6"]
+[ext_resource type="Script" path="res://Scripts/InventoryScript.gd" id="4_frtt1"]
+[ext_resource type="Script" path="res://Scripts/Quest.gd" id="4_q5tiw"]
+[ext_resource type="Resource" uid="uid://cy5b7ehqd36w" path="res://Quests/MainQuests/MainQuestQuests/Prologue/Look For Other Clues.tres" id="5_4j2mk"]
+[ext_resource type="Script" path="res://Scripts/Stats.gd" id="5_dymqp"]
+[ext_resource type="Script" path="res://Scripts/Data.gd" id="6_lbrv2"]
+[ext_resource type="Script" path="res://Scripts/MainQuest.gd" id="6_lvx6m"]
+[ext_resource type="Resource" uid="uid://3sd4vw08asx" path="res://player/Skills/skills/lightning_thrust.tres" id="7_3g72x"]
+[ext_resource type="Resource" uid="uid://c4eep1uy7inoy" path="res://player/Skills/skills/thunder_eagle.tres" id="8_f3xys"]
+[ext_resource type="Resource" uid="uid://cnhmwkc0c50vx" path="res://player/Skills/skills/lightning_burst.tres" id="9_y74ao"]
+[ext_resource type="Resource" uid="uid://ckl7jdbnl1fma" path="res://player/Skills/skills/default_combo.tres" id="10_04csu"]
+
+[sub_resource type="Resource" id="Resource_hh5kd"]
+script = ExtResource("1_khwdk")
+name = "Steel Armor"
+texture = ""
+category = "equipment"
+effects = {
+"buff": {
+"def": 2.0
+}
+}
+item_id = "3"
+amount = 1
+description = "A normal steel armor, it's durable, but quite heavy."
+sub_category = "armor"
+is_equipped = true
+
+[sub_resource type="Resource" id="Resource_qiegm"]
+script = ExtResource("4_q5tiw")
+quest_name = "Ask Around"
+quest_description = "Ask people in North Gate."
+quest_requirement = Array[String]([])
+type = 2
+giver = ""
+target = {
+"Parsefal": 1,
+"Yvette": 1
+}
+current_target_amount = {
+"Parsefal": 2,
+"Yvette": 1
+}
+rewards = {}
+state = 0
+Cutscene_to_play = ExtResource("3_iqrg6")
+is_main_quest = false
+
+[sub_resource type="Resource" id="Resource_21r64"]
+script = ExtResource("6_lvx6m")
+main_quest_name = "Prologue"
+on_going_quests = Array[ExtResource("4_q5tiw")]([ExtResource("5_4j2mk")])
+completed_quests = Array[ExtResource("4_q5tiw")]([SubResource("Resource_qiegm")])
+next_main_quest = ExtResource("2_wq8r5")
+requirements = Array[Dictionary]([])
+
+[sub_resource type="Resource" id="Resource_0w2hd"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_oacn0"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_vcaes"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_uos44"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_fe83t"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_07jfl"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_k7mtv"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_rnump"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_4k0av"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_l4xu7"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_dlgml"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_7bhro"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_cvmhd"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_8a6ww"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_vqfhm"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_3fpdd"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_stuo3"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_3v0c8"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_lv05h"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_vba1q"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_ug5ls"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_5iusj"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_7aie0"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_6vbqy"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_1twrf"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_vnmbu"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_wvb7r"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_150vn"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_5kvg2"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_lskfe"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_j60pf"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_48pu7"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_gbrqf"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_7p5gh"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_luj63"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 20
+
+[sub_resource type="Resource" id="Resource_xgri2"]
+script = ExtResource("1_khwdk")
+name = "Holy Sword of Generosity"
+texture = "res://Item/texture/holy_sword.png"
+category = "equipment"
+effects = {
+"buff": {
+"atk": 4.0,
+"max_mana": 20.0
+}
+}
+item_id = "4"
+amount = 1
+description = "The Holy Sword of Generosity, a sword that was given to humanity to fight against evil. It chooses who worthy enough to wield it, and currently, it is you."
+sub_category = "weapon"
+is_equipped = true
+
+[sub_resource type="Resource" id="Resource_1754i"]
+script = ExtResource("3_51ohf")
+item = SubResource("Resource_xgri2")
+amount = 1
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_xn6ho"]
+script = ExtResource("3_51ohf")
+item = SubResource("Resource_hh5kd")
+amount = 1
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_dp7lp"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_noh03"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_oc2ty"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_uu7bt"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_xmjph"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_dn076"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_6xn42"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_r0w6d"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_73k26"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_8kxcr"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_3esaq"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_1sxsb"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_21l73"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_t77lx"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_6cn12"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_70erk"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_rygbo"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_6dmfp"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_iaec0"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_kj0tf"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_6xtqg"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_rsg5k"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_vvhxm"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_gbhix"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_n3nma"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_vg5gk"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_oi8vi"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_5jntb"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_g8gxd"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_germt"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_v80fi"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_ac220"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_mm82b"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_ifxh4"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_os018"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_mnbv0"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_kspfo"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_q25e1"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_b7jv3"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_3h3qs"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_3avjg"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_l6ox6"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_u7ctu"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_afgx7"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_h8vym"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_2fv0i"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_cvql4"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_rspbb"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_kxmnr"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_5gv8t"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_pfvec"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_1x3pw"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_n5k1d"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_vrofb"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_atdkj"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_50dbm"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_nwplj"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_7vlxr"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_odb5d"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_bt1yw"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_phomp"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_nrr5a"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_a4k6x"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_ol1c5"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_78ndp"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_8i06v"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_vns7v"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_voif0"]
+script = ExtResource("3_51ohf")
+amount = 0
+maxAmount = 1
+
+[sub_resource type="Resource" id="Resource_56fc7"]
+script = ExtResource("4_frtt1")
+consume_slots = Array[ExtResource("3_51ohf")]([SubResource("Resource_0w2hd"), SubResource("Resource_oacn0"), SubResource("Resource_vcaes"), SubResource("Resource_uos44"), SubResource("Resource_fe83t"), SubResource("Resource_07jfl"), SubResource("Resource_k7mtv"), SubResource("Resource_rnump"), SubResource("Resource_4k0av"), SubResource("Resource_l4xu7"), SubResource("Resource_dlgml"), SubResource("Resource_7bhro"), SubResource("Resource_cvmhd"), SubResource("Resource_8a6ww"), SubResource("Resource_vqfhm"), SubResource("Resource_3fpdd"), SubResource("Resource_stuo3"), SubResource("Resource_3v0c8"), SubResource("Resource_lv05h"), SubResource("Resource_vba1q"), SubResource("Resource_ug5ls"), SubResource("Resource_5iusj"), SubResource("Resource_7aie0"), SubResource("Resource_6vbqy"), SubResource("Resource_1twrf"), SubResource("Resource_vnmbu"), SubResource("Resource_wvb7r"), SubResource("Resource_150vn"), SubResource("Resource_5kvg2"), SubResource("Resource_lskfe"), SubResource("Resource_j60pf"), SubResource("Resource_48pu7"), SubResource("Resource_gbrqf"), SubResource("Resource_7p5gh"), SubResource("Resource_luj63")])
+key_slots = Array[ExtResource("3_51ohf")]([SubResource("Resource_ifxh4"), SubResource("Resource_os018"), SubResource("Resource_mnbv0"), SubResource("Resource_kspfo"), SubResource("Resource_q25e1"), SubResource("Resource_b7jv3"), SubResource("Resource_3h3qs"), SubResource("Resource_3avjg"), SubResource("Resource_l6ox6"), SubResource("Resource_u7ctu"), SubResource("Resource_afgx7"), SubResource("Resource_h8vym"), SubResource("Resource_2fv0i"), SubResource("Resource_cvql4"), SubResource("Resource_rspbb"), SubResource("Resource_kxmnr"), SubResource("Resource_5gv8t"), SubResource("Resource_pfvec"), SubResource("Resource_1x3pw"), SubResource("Resource_n5k1d"), SubResource("Resource_vrofb"), SubResource("Resource_atdkj"), SubResource("Resource_50dbm"), SubResource("Resource_nwplj"), SubResource("Resource_7vlxr"), SubResource("Resource_odb5d"), SubResource("Resource_bt1yw"), SubResource("Resource_phomp"), SubResource("Resource_nrr5a"), SubResource("Resource_a4k6x"), SubResource("Resource_ol1c5"), SubResource("Resource_78ndp"), SubResource("Resource_8i06v"), SubResource("Resource_vns7v"), SubResource("Resource_voif0")])
+equip_slots = Array[ExtResource("3_51ohf")]([SubResource("Resource_1754i"), SubResource("Resource_xn6ho"), SubResource("Resource_dp7lp"), SubResource("Resource_noh03"), SubResource("Resource_oc2ty"), SubResource("Resource_uu7bt"), SubResource("Resource_xmjph"), SubResource("Resource_dn076"), SubResource("Resource_6xn42"), SubResource("Resource_r0w6d"), SubResource("Resource_73k26"), SubResource("Resource_8kxcr"), SubResource("Resource_3esaq"), SubResource("Resource_1sxsb"), SubResource("Resource_21l73"), SubResource("Resource_t77lx"), SubResource("Resource_6cn12"), SubResource("Resource_70erk"), SubResource("Resource_rygbo"), SubResource("Resource_6dmfp"), SubResource("Resource_iaec0"), SubResource("Resource_kj0tf"), SubResource("Resource_6xtqg"), SubResource("Resource_rsg5k"), SubResource("Resource_vvhxm"), SubResource("Resource_gbhix"), SubResource("Resource_n3nma"), SubResource("Resource_vg5gk"), SubResource("Resource_oi8vi"), SubResource("Resource_5jntb"), SubResource("Resource_g8gxd"), SubResource("Resource_germt"), SubResource("Resource_v80fi"), SubResource("Resource_ac220"), SubResource("Resource_mm82b")])
+
+[sub_resource type="Resource" id="Resource_kqbas"]
+script = ExtResource("5_dymqp")
+mhp = 20
+att = 5
+hp = 20
+def = 3
+max_mana = 30
+mana = 30
+
+[resource]
+script = ExtResource("6_lbrv2")
+chest_states = {}
+player_stats = SubResource("Resource_kqbas")
+player_inventory = SubResource("Resource_56fc7")
+armor_equip1 = SubResource("Resource_hh5kd")
+weapon_equip = SubResource("Resource_xgri2")
+main_quest_state = "MQ Name"
+enemy_slain = {}
+money = 10
+current_skill_tree = 0
+current_skill_equipped = 1
+skill_learned = Array[Resource("res://player/Skills/skill_res.gd")]([ExtResource("7_3g72x"), ExtResource("8_f3xys"), ExtResource("9_y74ao"), ExtResource("10_04csu")])
+skill_available = Array[Resource("res://player/Skills/skill_res.gd")]([])
+skill_slot_1 = ExtResource("7_3g72x")
+skill_slot_2 = ExtResource("8_f3xys")
+skill_slot_3 = ExtResource("9_y74ao")
+skill_passive = ExtResource("10_04csu")
+available_quests = Array[ExtResource("4_q5tiw")]([])
+ongoing_quests = Array[ExtResource("4_q5tiw")]([])
+completed_quests = Array[ExtResource("4_q5tiw")]([])
+current_main_quest = SubResource("Resource_21r64")
+completed_main_quest = Array[ExtResource("6_lvx6m")]([])
+cutscenes_completed = Array[String](["Prologue", "After_AskAround", "After_AskAround", "After_AskAround", "After_AskAround"])
+map_name = "NorthGate"
+player_position = Vector2(985.809, 669.374)
+switches = {}
+tile_pattern_group = {}

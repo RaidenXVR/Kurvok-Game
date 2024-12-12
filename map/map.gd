@@ -5,6 +5,8 @@ extends TileMap
 @export var north_map: String
 @export var south_map: String
 @export var music_path:String
+@export var cam_zoom: Vector2 = Vector2(1.5,1.5)
+
 
 func _ready():
 	AudioManager.audio_players["main_music"].stop()
@@ -12,6 +14,8 @@ func _ready():
 		var music = load(music_path)
 		AudioManager.audio_players["main_music"].stream = music
 		AudioManager.audio_players["main_music"].play()
+	else:
+		AudioManager.audio_players["main_music"].stream = null
 	
 	GameData.tile_size = rendering_quadrant_size
 	
@@ -20,6 +24,10 @@ func _ready():
 	if switches:
 		for switch: Switch in switches.get_children():
 			GameData.switches[switch.switch_id] = switch.state
+	
+	get_node("../../Player/Camera2D").load_cam(self)
+	get_node("../../Player/Camera2D").zoom = cam_zoom
+	QuestManager.check_go_to_quest(name)
 			
 
 func _on_west_point_body_entered(body:Node2D):
@@ -38,6 +46,7 @@ func _on_west_point_body_entered(body:Node2D):
 			get_parent().call_deferred("add_child", map)
 			self.queue_free()
 		body.set_physics_process(true)
+		
 		
 
 

@@ -39,6 +39,7 @@ mana = null
 script = ExtResource("5_i861t")
 enemy_type = "Tentacle"
 enemy_stats = SubResource("Resource_now3r")
+drop_table = {}
 speed = 100
 knockPower = 300
 detect_radius = 50

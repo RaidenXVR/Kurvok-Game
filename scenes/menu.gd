@@ -49,6 +49,7 @@ func close():
 	visible = false
 	is_open = false
 	is_menu_open = false
+	free_quest()
 	closed.emit()
 
 
@@ -222,7 +223,7 @@ func _on_quest_tab_selected(tab):
 					var butt = Button.new()
 					butt.text = quest.main_quest_name
 					butt.visible = false
-					butt.set_meta("desc",quest.quest_description)
+					butt.set_meta("desc",quest.main_quest_name)
 					butt.connect("pressed", func(): _on_quest_clicked(butt))
 					completed_main_quest_cont.add_child(butt)
 		
@@ -276,10 +277,13 @@ func _on_quest_clicked(button_node:Button):
 	var desc_label:Label = $QuestButton/Container/Details/Description
 	var target_cont:VBoxContainer = $QuestButton/Container/Details/Targets
 	
+	
 	quest_name_label.text = button_node.get_meta("quest_name")
 	desc_label.text = button_node.get_meta("desc")
 	var targets = button_node.get_meta("target")
 	var current_targets = button_node.get_meta("current_target")
+	for child in target_cont.get_children():
+		target_cont.remove_child(child)
 	for target in targets:
 		var lb = Label.new()
 		lb.add_theme_font_size_override("font_size", 25)

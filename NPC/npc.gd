@@ -148,20 +148,26 @@ func talk():
 		if quests:
 			for q in quests:
 				QuestManager.current_main_quest.check_quest(q)
-
-
-	else:
-		dialog = dialogue["non-quest-dialogue"]
-		dialogue_node.starter(dialog,self.name)
-		# QuestManager.check_target(self.name, 1)
 	
-	if QuestManager.check_talk(name) == 1:
+	elif QuestManager.check_talk(name) == 1:
 		var quests_for_npc: Array[Quest] = QuestManager.get_talk_quest(name)
 		if quests_for_npc:
 			for q in quests_for_npc:
 				dialog = dialogue[q.quest_name]
 				dialogue_node.starter(dialog, name)
+				await dialogue_node.dialogue_finished
 				QuestManager.check_talk(name,true)
+				
+			for q in quests_for_npc:
+				if q.Cutscene_to_play and (q.check_target_complete()):
+					CutsceneManager.do_cutscene(q.Cutscene_to_play.cutscene_name)
+					await  CutsceneManager.finished_doing_cutscene
+
+	else:
+		dialog = dialogue["non-quest-dialogue"]
+		dialogue_node.starter(dialog,self.name)
+		# QuestManager.check_target(self.name, 1)
+
 	# QuestManager.check_talk(name)
 	if not isNPCCanMove:
 		match facing_dir:

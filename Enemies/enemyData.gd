@@ -3,7 +3,9 @@ extends Resource
 class_name EnemyData
 
 @export var enemy_type: String
+@export var unkillable: bool = false
 @export var enemy_stats: Stats
+@export var drop_table: Dictionary
 @export var speed:int = 30
 @export var knockPower:int = 300
 @export var detect_radius:int = 200
@@ -15,3 +17,4 @@ class_name EnemyData
 @export var attack_patterns: Array[EnemyAttack]
 @export var default_shape_radius: int
 @export var enemy_sprite_frames: SpriteFrames
+

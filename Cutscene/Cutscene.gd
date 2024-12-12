@@ -8,6 +8,8 @@ class_name Cutscene
 @export var main_quest_to_set: MainQuest
 @export var player_facing: Vector2
 @export var cutscene_to_do: Array
+@export var initial_position: Vector2
+@export var trigger_node_path: String
 
 
 func check_quest_requirements():

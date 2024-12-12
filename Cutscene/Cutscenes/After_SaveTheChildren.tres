@@ -1,0 +1,218 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=31 format=3 uid="uid://cghx0j74xs24v"]
+
+[ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_7gnar"]
+[ext_resource type="Script" path="res://Cutscene/CSMovePlayer.gd" id="1_k1u63"]
+[ext_resource type="Script" path="res://Cutscene/CSMoveObject.gd" id="2_kx7nm"]
+[ext_resource type="Script" path="res://Cutscene/CSOpenDialogue.gd" id="3_ppbbn"]
+[ext_resource type="Script" path="res://Cutscene/CSPlayAnim.gd" id="4_xlbtm"]
+[ext_resource type="Script" path="res://Cutscene/CSQuestStarted.gd" id="5_6te8y"]
+
+[sub_resource type="Resource" id="Resource_hjnuy"]
+script = ExtResource("1_k1u63")
+player_init_pos = Vector2(0, 0)
+move_grid_amount = Array[int]([])
+direction = Array[Vector2]([])
+speed = 120
+parallel_with_next = true
+
+[sub_resource type="Resource" id="Resource_inw74"]
+script = ExtResource("2_kx7nm")
+object_name = "Namboo"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(0, -1)
+move_grid_amount = Array[int]([0])
+direction = Array[Vector2]([Vector2(0, 1)])
+speed = 120
+parallel_with_next = true
+
+[sub_resource type="Resource" id="Resource_2o5p3"]
+script = ExtResource("2_kx7nm")
+object_name = "Yallie"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-1, -1)
+move_grid_amount = Array[int]([0])
+direction = Array[Vector2]([Vector2(0, 1)])
+speed = 120
+parallel_with_next = true
+
+[sub_resource type="Resource" id="Resource_46wdr"]
+script = ExtResource("2_kx7nm")
+object_name = "Remmie"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(1, 0)
+move_grid_amount = Array[int]([0])
+direction = Array[Vector2]([Vector2(-1, 0)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_3qpuh"]
+script = ExtResource("3_ppbbn")
+cutscene_name = "After_SaveTheChildren"
+dialogue_phase = "phase1"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_uf18v"]
+script = ExtResource("4_xlbtm")
+object = "Player"
+animation_to_play = "magicRight"
+secondary_animation_to_play = "BlueMC"
+type = 0
+vfx_sprite_scale = Vector2(0.125, 0.125)
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_vvt78"]
+script = ExtResource("3_ppbbn")
+cutscene_name = "After_SaveTheChildren"
+dialogue_phase = "phase2"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_d1hj3"]
+script = ExtResource("2_kx7nm")
+object_name = "Remmie"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(1, 0)
+move_grid_amount = Array[int]([1, 3, 2, 0])
+direction = Array[Vector2]([Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1), Vector2(1, 0)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_q0hxj"]
+script = ExtResource("2_kx7nm")
+object_name = "Remmie"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-2, -1)
+move_grid_amount = Array[int]([15])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 120
+parallel_with_next = true
+
+[sub_resource type="Resource" id="Resource_xu0b4"]
+script = ExtResource("2_kx7nm")
+object_name = "Yallie"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-1, -1)
+move_grid_amount = Array[int]([15])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 120
+parallel_with_next = true
+
+[sub_resource type="Resource" id="Resource_7ucc4"]
+script = ExtResource("2_kx7nm")
+object_name = "Namboo"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(0, -1)
+move_grid_amount = Array[int]([15])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_p4x8x"]
+script = ExtResource("3_ppbbn")
+cutscene_name = "After_SaveTheChildren"
+dialogue_phase = "phase3"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_oru6s"]
+script = ExtResource("2_kx7nm")
+object_name = "Raiden"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-2, 15)
+move_grid_amount = Array[int]([16])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 140
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_sumkq"]
+script = ExtResource("1_k1u63")
+player_init_pos = Vector2(0, 0)
+move_grid_amount = Array[int]([0])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_rii2c"]
+script = ExtResource("3_ppbbn")
+cutscene_name = "After_SaveTheChildren"
+dialogue_phase = "phase4"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_f3ywm"]
+script = ExtResource("2_kx7nm")
+object_name = "Raiden"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-2, -1)
+move_grid_amount = Array[int]([1, 0])
+direction = Array[Vector2]([Vector2(0, -1), Vector2(0, 1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_tp7pd"]
+script = ExtResource("3_ppbbn")
+cutscene_name = "After_SaveTheChildren"
+dialogue_phase = "phase5"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_8n5j0"]
+script = ExtResource("2_kx7nm")
+object_name = "Raiden"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-2, -2)
+move_grid_amount = Array[int]([0])
+direction = Array[Vector2]([Vector2(0, 1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_2ypv5"]
+script = ExtResource("4_xlbtm")
+object = "Player"
+animation_to_play = "fainted"
+secondary_animation_to_play = ""
+type = 0
+vfx_sprite_scale = Vector2(0.125, 0.125)
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_8xqyk"]
+script = ExtResource("3_ppbbn")
+cutscene_name = "After_SaveTheChildren"
+dialogue_phase = "phase6"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_itao2"]
+script = ExtResource("2_kx7nm")
+object_name = "Raiden"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-2, -2)
+move_grid_amount = Array[int]([2, 0])
+direction = Array[Vector2]([Vector2(0, -1), Vector2(0, 1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_p6yah"]
+script = ExtResource("3_ppbbn")
+cutscene_name = "After_SaveTheChildren"
+dialogue_phase = "phase7"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_6eyc1"]
+script = ExtResource("2_kx7nm")
+object_name = "Raiden"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-2, -4)
+move_grid_amount = Array[int]([10])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_6sjga"]
+script = ExtResource("5_6te8y")
+quest_name = "End of Chapter 1"
+description = "This is the end of chapter 1 of the story. You can continue exploring the map."
+
+[resource]
+script = ExtResource("1_7gnar")
+cutscene_name = "After_SaveTheChildren"
+cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
+player_facing = Vector2(1, 0)
+cutscene_to_do = [SubResource("Resource_hjnuy"), SubResource("Resource_inw74"), SubResource("Resource_2o5p3"), SubResource("Resource_46wdr"), SubResource("Resource_3qpuh"), SubResource("Resource_uf18v"), SubResource("Resource_vvt78"), SubResource("Resource_d1hj3"), SubResource("Resource_q0hxj"), SubResource("Resource_xu0b4"), SubResource("Resource_7ucc4"), SubResource("Resource_p4x8x"), SubResource("Resource_oru6s"), SubResource("Resource_sumkq"), SubResource("Resource_rii2c"), SubResource("Resource_f3ywm"), SubResource("Resource_tp7pd"), null, SubResource("Resource_8n5j0"), SubResource("Resource_2ypv5"), SubResource("Resource_8xqyk"), SubResource("Resource_itao2"), SubResource("Resource_p6yah"), SubResource("Resource_6eyc1"), SubResource("Resource_6sjga")]
+initial_position = Vector2(0, 0)
+trigger_node_path = "Cutscenes/After_SaveTheChildren"

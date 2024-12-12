@@ -1,8 +1,10 @@
 extends Control
 
+@onready var audio_streamer = AudioManager.audio_players["sfx"]
 
-
-
+func _ready():
+	$MarginContainer/VBoxContainer/Start.grab_focus()
+	pass
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/load_menu.tscn")

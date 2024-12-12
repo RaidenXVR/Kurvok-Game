@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=6 format=3 uid="uid://bt5a2sglvct7y"]
+
+[ext_resource type="Script" path="res://Cutscene/CSMovePlayer.gd" id="1_0fpof"]
+[ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_ddid7"]
+[ext_resource type="Script" path="res://Cutscene/CSOpenDialogue.gd" id="2_8aq4g"]
+
+[sub_resource type="Resource" id="Resource_der5t"]
+script = ExtResource("1_0fpof")
+player_init_pos = Vector2(0, 0)
+move_grid_amount = Array[int]([0])
+direction = Array[Vector2]([Vector2(0, 1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_ngsha"]
+script = ExtResource("2_8aq4g")
+cutscene_name = "After_AskAround"
+dialogue_phase = "phase1"
+parallel_with_next = false
+
+[resource]
+script = ExtResource("1_ddid7")
+cutscene_name = "After_AskAround"
+cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
+player_facing = Vector2(0, 0)
+cutscene_to_do = [SubResource("Resource_der5t"), SubResource("Resource_ngsha")]
+initial_position = Vector2(0, 0)

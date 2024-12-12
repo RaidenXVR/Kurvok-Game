@@ -24,6 +24,7 @@ script = ExtResource("1_stww7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3hmaq")
+debug_color = Color(0.14902, 0.623529, 0.466667, 0.419608)
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 8
@@ -39,6 +40,7 @@ debug_path_custom_color = Color(0.886275, 0.364706, 0.364706, 1)
 debug_path_custom_line_width = 5.22
 
 [node name="HealthBar" parent="." instance=ExtResource("3_6ushu")]
+z_index = 1
 offset_left = -50.0
 offset_top = -33.3333
 offset_right = 49.0
@@ -60,6 +62,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+offset = Vector2(0, -11.5)
 
 [node name="StatusEffects" type="Node2D" parent="."]
 

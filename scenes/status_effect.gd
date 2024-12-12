@@ -23,6 +23,7 @@ func _init(effect:Effect):
 	status_effect_type = effect.effect_type
 	damage = effect.damage_or_modifier
 	wait_time = effect.duration
+	print(wait_time)
 	if effect.tick_duration != 0:
 		secondary_timer.wait_time = effect.tick_duration
 		secondary_timer.autostart = true

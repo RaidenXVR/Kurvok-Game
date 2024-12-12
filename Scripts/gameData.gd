@@ -4,6 +4,7 @@ signal equip_skill_change
 signal do_tp
 signal switch_state_change
 signal tile_pattern_completed(tile_group)
+signal filter_finished
 
 var chest_states = {}
 var player_stats: Stats
@@ -156,11 +157,11 @@ func save_game():
 
 	var data = Data.new()
 	data.save_data(player_node.global_position, map_node.name)
-	var dir = DirAccess.open("res://")
-	if not dir.dir_exists("res://Saves"):
+	var dir = DirAccess.open("user://")
+	if not dir.dir_exists("user://Saves"):
 		dir.make_dir("Saves")
 		
-	ResourceSaver.save(data, "res://Saves/%s.tres" %[current_save_file])
+	ResourceSaver.save(data, "user://Saves/%s.tres" %[current_save_file])
 
 
 
@@ -168,9 +169,9 @@ func load_game(save_file_int:int):
 	is_game_over = false
 	var save_file: Data
 	current_save_file = "Save"+str(save_file_int)
-	var dire  = DirAccess.open("res://")
-	if dire.file_exists("res://Saves/%s.tres" % [current_save_file]):
-		save_file = load("res://Saves/%s.tres" % [current_save_file]) as Data
+	var dire  = DirAccess.open("user://")
+	if dire.file_exists("user://Saves/%s.tres" % [current_save_file]):
+		save_file = load("user://Saves/%s.tres" % [current_save_file]) as Data
 
 
 	if save_file == null:
@@ -183,6 +184,7 @@ func load_game(save_file_int:int):
 		save_file.player_inventory.insert(armor_equip1)
 		save_file.player_inventory.use_item(0, "equipment")
 		save_file.player_inventory.use_item(1,"equipment")
+		
 	
 	chest_states = save_file.chest_states
 	player_stats = save_file.player_stats
@@ -219,6 +221,7 @@ func load_game(save_file_int:int):
 	
 	switches = save_file.switches
 	tile_pattern_group = save_file.tile_pattern_group
+
 	
 
 func do_game_over():
@@ -286,6 +289,8 @@ func filter(color: Color,end_duration:float, start_duration:float ,interval: flo
 	tween.tween_property(filter_rect,"color", Color.TRANSPARENT, end_duration)
 	await tween.finished
 	player.set_physics_process(true)
+	filter_finished.emit()
+
 	
 func perma_filter(color:Color, duration:float):
 	var filter_rect:ColorRect = get_node("/root/World/CanvasLayer/Filter")

@@ -4,6 +4,8 @@ class_name World
 
 func _ready():
 	CutsceneManager.set_attributes(self)
+	CutsceneManager.cutscene_started.connect(_on_cutscene_played)
+	CutsceneManager.finished_doing_cutscene.connect(_on_cutscene_finished)
 	# GameData.player_inventory.updated.emit()
 
 func _on_menu_opened():
@@ -33,9 +35,23 @@ func _notification(what):
 	if what == NOTIFICATION_PAUSED:
 		for c: Timer in get_node("StatusTimers").get_children():
 			c.paused = true
-			print("paused")
 	elif  what == NOTIFICATION_UNPAUSED:
 		for c: Timer in get_node("StatusTimers").get_children():
 			
 			c.paused = false
 		pass
+
+func _on_cutscene_played():
+	#print("cutscene played, gui invisible")
+	$CanvasLayer/PlayerHealthBar.visible = false
+	$CanvasLayer/ManaBar.visible = false
+	$CanvasLayer/MoneyUI.visible = false
+	$CanvasLayer/Skill1CD.visible = false
+	$CanvasLayer/Skill2CD.visible = false
+	$CanvasLayer/Skill3CD.visible = false
+
+
+func _on_cutscene_finished():
+	for canvas in $CanvasLayer.get_children():
+		if canvas != self and canvas.name not in ["ShopGUI", "Menu", "Portrait", "Popup", "Dialogue", "Game Over"]:
+			canvas.visible = true

@@ -1,18 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://jnt7rswx64d4"]
+[gd_scene load_steps=6 format=3 uid="uid://jnt7rswx64d4"]
 
-[ext_resource type="Texture2D" uid="uid://crh74rpc5s4ef" path="res://asset/tab.png" id="1_uj0s4"]
-[ext_resource type="Texture2D" uid="uid://cq1rikimvki0u" path="res://asset/tabClick.png" id="2_fh16k"]
+[ext_resource type="Texture2D" uid="uid://c51g7fm745x72" path="res://asset/item slot2.png" id="1_8pg0s"]
+[ext_resource type="Texture2D" uid="uid://b6sqkos48sgma" path="res://asset/item slot.png" id="2_kx2hh"]
+[ext_resource type="Texture2D" uid="uid://dro4vfyet3nnd" path="res://asset/item slot3.png" id="3_2hnma"]
 [ext_resource type="Script" path="res://scenes/slot_v_2.gd" id="3_v75m2"]
 [ext_resource type="FontFile" uid="uid://c5e7dfiiyk0hv" path="res://asset/NormalFont.ttf" id="4_0vfix"]
 
 [node name="SlotV2" type="TextureButton"]
 clip_contents = true
 custom_minimum_size = Vector2(96, 96)
-texture_normal = ExtResource("1_uj0s4")
-texture_pressed = ExtResource("2_fh16k")
-texture_hover = ExtResource("2_fh16k")
-texture_disabled = ExtResource("2_fh16k")
-texture_focused = ExtResource("2_fh16k")
+texture_normal = ExtResource("1_8pg0s")
+texture_pressed = ExtResource("2_kx2hh")
+texture_hover = ExtResource("3_2hnma")
+texture_disabled = ExtResource("2_kx2hh")
+texture_focused = ExtResource("3_2hnma")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("3_v75m2")

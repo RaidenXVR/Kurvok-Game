@@ -13,7 +13,9 @@ var attack_radius:int = 20
 var move_pattern: Array[Dictionary]
 var move_delay: float
 var attack_delay: float
+var unkillable: bool
 @export var enemy_res: EnemyData
+@export var sprite_scale: float = 1
 
 
 
@@ -26,13 +28,14 @@ var attack_delay: float
 @onready var health_bar_enemy = $HealthBar
 @onready var pattern_timer = $PatternTimer
 @onready var attack_timer = $AttackTimer
-@onready var enemy_anim:AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player:AnimatedSprite2D = $AnimatedSprite2D
 @onready var status_effects: Node2D = $StatusEffects
 # @onready var player = get_tree().root.get_node("World").get_node("Player")
 
 
 var enemy_stats :Stats
 var enemy_type
+var drop_table: Dictionary
 var attack_patterns:Array[EnemyAttack]
 var current_attack: EnemyAttack
 var player_body
@@ -62,8 +65,9 @@ var doing_slash = false
 
 func _ready():
 	circle_shape = attack_shape.shape
-	enemy_anim.sprite_frames = enemy_res.enemy_sprite_frames
+	animation_player.sprite_frames = enemy_res.enemy_sprite_frames
 	enemy_type = enemy_res.enemy_type
+	drop_table = enemy_res.drop_table
 	attack_patterns = enemy_res.attack_patterns
 	enemy_stats = enemy_res.enemy_stats.duplicate()
 	speed = enemy_res.speed
@@ -74,6 +78,7 @@ func _ready():
 	move_pattern = enemy_res.move_pattern
 	attack_radius = enemy_res.attack_radius
 	attack_delay = enemy_res.attack_delay
+	unkillable = enemy_res.unkillable
 	detection_shape.shape.radius = detect_radius
 	collision_box.shape.radius = col_hitbox_radius
 	attack_shape.shape.radius = attack_radius
@@ -89,6 +94,8 @@ func _ready():
 	
 	CutsceneManager.cutscene_started.connect(_on_started_cutscene_signal)
 	CutsceneManager.finished_doing_cutscene.connect(_on_finished_cutscene_signal)
+	
+	animation_player.scale = Vector2(sprite_scale, sprite_scale)
 	
 func _physics_process(_delta):
 	if !is_stunned:
@@ -109,7 +116,20 @@ func _physics_process(_delta):
 		else:
 			var chase_dir =to_local(nav.get_next_path_position())
 			velocity = chase_dir.normalized() * (speed+20)
-			move_and_slide()	
+			move_and_slide()
+			#if not animation_player.is_playing():
+			var dir = rad_to_deg(chase_dir.angle())
+			dir = (int(dir) +360) % 360
+			
+			if dir >35 and dir < 125:
+				animation_player.play("walkDown")
+			elif dir >= 125 and dir < 215:
+				animation_player.play("walkLeft")
+			elif dir >= 215 and dir < 305:
+				animation_player.play("walkUp")
+			else:
+				animation_player.play("walkRight")
+			
 	
 
 	elif  is_knocked:
@@ -145,27 +165,27 @@ func random_desti():
 		rand_y = randi_range(-3,3)
 		if rand_y >0 :
 			# animation_player.play("walkDown")
-			enemy_anim.play("walkDown")
+			animation_player.play("walkDown")
 			last_dir = "Down"
 		elif rand_y<0:
-			enemy_anim.play("walkUp")
+			animation_player.play("walkUp")
 			last_dir="Up"
 		else:
-			enemy_anim.play("idle"+last_dir)
+			animation_player.play("idle"+last_dir)
 			pass
 	
 	else:
 		rand_x = randi_range(-3,3)
 		if rand_x>0:
-			enemy_anim.play("walkRight")
+			animation_player.play("walkRight")
 			last_dir = "Right"
 		elif rand_x < 0:
-			enemy_anim.play("walkLeft")
+			animation_player.play("walkLeft")
 			last_dir="Left"
 		else:
-			enemy_anim.play("idle"+last_dir)
+			animation_player.play("idle"+last_dir)
 			pass
-	print(enemy_anim.animation)
+	print(animation_player.animation)
 	distance_must_travel = 48* rand_dis
 	target_coor = Vector2(rand_x*tileSize,rand_y*tileSize)
 
@@ -174,23 +194,23 @@ func determined_move():
 	var current_move: Dictionary = move_pattern[current_move_index]
 	var coor: Vector2
 	if current_move.keys()[0] == "up":
-		enemy_anim.play("walkUp")
+		animation_player.play("walkUp")
 		coor = Vector2(0,-1)
 		last_dir = "Up"
 	elif current_move.keys()[0] == "down":
-		enemy_anim.play("walkDown")
+		animation_player.play("walkDown")
 		coor = Vector2(0,1)
 		last_dir = "Down"
 	elif current_move.keys()[0] == "left":
-		enemy_anim.play("walkLeft")
+		animation_player.play("walkLeft")
 		coor = Vector2(-1,0)
 		last_dir = "Left"
 	elif current_move.keys()[0] == "right":
-		enemy_anim.play("walkRight")
+		animation_player.play("walkRight")
 		coor = Vector2(1,0)
 		last_dir = "Right"
 	elif current_move.keys()[0] == "stop":
-		enemy_anim.play("idle"+last_dir)
+		animation_player.play("idle"+last_dir)
 		coor = Vector2(0,0)
 		is_stopped = true
 		timer.start(current_move["stop"])
@@ -293,8 +313,22 @@ func damaged(damage):
 		QuestManager.check_target(enemy_type,1)
 		if QuestManager.current_main_quest:
 			QuestManager.current_main_quest.check_target(enemy_type,1)
+		drop_item()
 		queue_free()
 
+func drop_item():
+	for item in drop_table:
+		var r = randf()
+		if r < drop_table[item]["chance"]:
+			var weights = []
+			for i in range(drop_table[item]["min_amount"], drop_table[item]["max_amount"]+1): weights.append({str(i):float(1.0/i)})
+			r = randf()
+			var amount = weights.filter(func(x): return  r < x[x.keys()[0]] )[-1].keys()[0]
+			var inv_item = InventoryItems.new(item, int(amount))
+			GameData.player_inventory.insert(inv_item)
+	
+	
+	
 func knockback(attack_dir: Vector2, knock_power = 500):
 	velocity = Vector2.ZERO
 	var knockDir = attack_dir.normalized() * knock_power
@@ -364,20 +398,20 @@ func _slash():
 		var target_pos = position.direction_to(player_body.position)
 		if target_pos.abs().x > target_pos.abs().y:
 			if target_pos.x > position.x:
-				enemy_anim.play("attackRight")
+				animation_player.play("attackRight")
 				attack_shape.position = Vector2(current_attack.slash_shape_offset, 0)
 
 			else:
-				enemy_anim.play("attackLeft")
+				animation_player.play("attackLeft")
 				attack_shape.position = Vector2(-current_attack.slash_shape_offset, 0)
 
 		else:
 			if target_pos.y > position.y:
-				enemy_anim.play("attackDown")
+				animation_player.play("attackDown")
 				attack_shape.position = Vector2(0, current_attack.slash_shape_offset)
 
 			else:
-				enemy_anim.play("attackUp")
+				animation_player.play("attackUp")
 				attack_shape.position = Vector2(0, -current_attack.slash_shape_offset)
 		velocity = Vector2.ZERO
 

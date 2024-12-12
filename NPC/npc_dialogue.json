@@ -348,6 +348,42 @@
 
 				}
 			}
+		],
+		"Ask Around":[
+			{
+				"char": "Parsefal",
+				"dialogue": "If you have some questions, go to the Information Center.",
+				"options": {}
+			},
+			{
+				"char": "Parsefal",
+				"dialogue": "I'm on break.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "Sorry to bother you, but I just want to ask about the situation here in the empire.", 
+				"options": {}},
+			{
+				"char":"Parsefal",
+				"dialogue": "Nothing much happened, just a few bandits bothering the peddlers. But we already send a squad there.",
+				"options":{}
+			},
+			{
+				"char":"Layla",
+				"dialogue": "How about inside the city? Nothing bad happened?",
+				"options":{}
+			},
+			{
+				"char":"Parsefal",
+				"dialogue": "No. Nothing. See for yourself if you're not certain.",
+				"options":{}
+			},
+			{
+				"char":"Layla",
+				"dialogue": "Ah, okay. Thank you for your time.",
+				"options":{}
+			}
 		]
 	},
 	"Yvette": {
@@ -429,7 +465,7 @@
 				}
 			},
 			{
-				"char": "Character...",
+				"char": "Yvette",
 				"dialogue": "The guards are being deployed more than usual to prevent any attack to citizens.",
 				"options": {
 
@@ -464,5 +500,512 @@
 				}
 			}
 		]
+	},
+	"Condy": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Condy": "male"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Layla",
+				"dialogue": "Ah, music! Is there anything that can make the heart calmer?.",
+				"options": {}
+			},
+			{
+				"char": "Condy",
+				"dialogue": "Darlin' I......, I can't explain. Where did we lose our way? Girl it's drivin' me insane....,",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "I think I've heard this song before, am I just imagining things? I don't know, at least it's good for my ears.",
+				"options": {}
+			}
+		],
+		"Look For Other Clues": [
+					{
+				"char": "Condy",
+				"dialogue": "Hello there, Young Lady. Care for some music?",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "I would love to, but I have things to do right now. But can I ask a question?",
+				"options": {}
+			},
+			{
+				"char": "Condy",
+				"dialogue": "Sure, Milady. What can this humble musician help you with?",
+				"options": {}
+			},
+			
+			{
+				"char": "Layla",
+				"dialogue": "Have you seen anything bad in here lately? Or maybe a bad rumor?",
+				"options": {}
+			},
+			
+			{
+				"char": "Condy",
+				"dialogue": "Well, I do hear that the monsters are getting active lately.",
+				"options": {}
+			},
+			
+			{
+				"char": "Condy",
+				"dialogue": "There are some monster sightings in The Forest, south of the market.",
+				"options": {}
+			},
+			
+			{
+				"char": "Layla",
+				"dialogue": "I see. Is there nothing like slavery and torture among the government?",
+				"options": {}
+			},
+			
+			{
+				"char": "Condy",
+				"dialogue": "Gosh, no! The Prince and the Queen would not like to hear that kind of rumor again.",
+				"options": {}
+			},
+			{
+				"char": "Condy",
+				"dialogue": "After the slavery system was abolished, The Prince has been punishing nobles that still own slaves in any way non-stop.",
+				"options": {}
+			},
+			{
+				"char": "Condy",
+				"dialogue": "If he hears about it again, he will be very displeased.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "I see. Thank you, Sir.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "No problem, Milady.",
+				"options": {}
+			},
+		]
+	},
+	"Norianni": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Norianni": "female"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Layla",
+				"dialogue": "Good afternoon, Miss. Your garden is beautiful. Can I talk to you for a moment?",
+				"options": {}
+			},
+			{
+				"char": "Norianni",
+				"dialogue": "...",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "Oh... can't you hear?",
+				"options": {}
+			},
+			{
+				"char": "Norianni",
+				"dialogue": "...",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "M-Maybe I should leave her alone...",
+				"options": {}
+			}
+		],
+		"Look For Other Clues": [
+					{
+				"char": "Layla",
+				"dialogue": "Good afternoon, Miss. Can I talk to you for a moment?",
+				"options": {}
+			},
+			{
+				"char": "Norianni",
+				"dialogue": "...",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "Is everything okay here? I feel like something is... wrong.",
+				"options": {}
+			},
+			
+			{
+				"char": "Norianni",
+				"dialogue": "Don’t do anything stupid.",
+				"options": {}
+			},
+			
+			{
+				"char": "Layla",
+				"dialogue": "Huh?",
+				"options": {}
+			},
+			
+			{
+				"char": "Norianni",
+				"dialogue": "People are happy here, don’t bother them.",
+				"options": {}
+			},
+			
+			{
+				"char": "Layla",
+				"dialogue": "Wh-What do you mean?!",
+				"options": {}
+			},
+			
+			{
+				"char": "Norianni",
+				"dialogue": "I know who you are, Young Lady.",
+				"options": {}
+			},
+			{
+				"char": "Norianni",
+				"dialogue": "Don’t try to disturb our life here.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "...",
+				"options": {}
+			},
+		]
+	},
+	"Pulgem": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Pulgem": "male"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Layla",
+				"dialogue": "(smiling kindly) Good afternoon, sir! That wood looks heavy. Can I help you?",
+				"options": {}
+			},
+			{
+				"char": "Pulgem",
+				"dialogue": "(The carpenter didn't glance over at all, just continued walking with heavy steps. The look on his face was focused on the wood he was carrying)",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(squints, feeling confused) Huh... maybe he was too busy to hear me. (Layla shrugged and continued on her way, leaving the craftsman to his work.",
+				"options": {}
+			}
+		]
+	},
+	"Pabban": {
+		"actors": [
+			{
+				"Pabban": "female"
+			},
+			{
+				"Layla": "female"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Layla",
+				"dialogue": "Hello old granny, I need a potion. But this time it's not for wounds on the body... but on the heart.",
+				"options": {}
+			},
+			{
+				"char": "Pabban",
+				"dialogue": "(chuckled) Ah, lady. Unfortunately, I don't have any potions for wounded hearts. That's the task of time, not this potion.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(Smiles and then leaves)",
+				"options": {}
+			}
+		]
+	},
+	"Nillannie": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Nillannie": "female"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Nillannie",
+				"dialogue": "(Standing in the middle of her colorful flower stall, smiling brightly at passers-by) Come and see these flowers! Fragrant roses, graceful lilies, and charming orchids. Each petal brings beauty and hope to your day!\n",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(Pauses for a moment in the distance, observing the flowers with calm eyes. She thought to herself)\nThese flowers... so vibrant and beautiful. Who would have thought that this city, with all its hustle and bustle, could hold such beauty? Maybe this place isn't as bad as I thought.\n",
+				"options": {}
+			},
+			{
+				"char": "Nillannie",
+				"dialogue": "(Continuing with a friendly smile to other customers) Don't hesitate, take one to decorate your home or gift it to a loved one!",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(Layla smiles a little, then steps away, a warm feeling slowly filling her heart)",
+				"options": {}
+			}
+		]
+	},
+	"Mula": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Mula": "male"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Mula",
+				"dialogue": "(Walking back and forth in the middle of the Townsquare, his face full of confusion)\nWhy is it always like this? What's wrong with me? My third girlfriend... she even left me! (wipes his face, almost crying)",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(Looking at Fredrick with a puzzled expression, frowning slightly)\nHmm, why does this guy look like he's in trouble? Perhaps... he has a habit of being 'too nice' which makes people run away?",
+				"options": {}
+			},
+			{
+				"char": "Mula",
+				"dialogue": "(Pauses, looks at Layla with a hopeful gaze)\nHey, have you ever had a girlfriend who... uh... kept leaving you for unclear reasons too?",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(Surprised and chuckling)\nUh... I seem to be chased by enemies more often than love problems. Maybe you need knight training, not courtship training. \n(Fredrick laughs dryly, while Layla continues on her way, smiling slightly at the ridiculousness of the situation)",
+				"options": {}
+			}
+		]
+	},
+	"Minwae": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Minwae": "female"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Minwae",
+				"dialogue": "My job isn't easy, but I take pride in keeping this city safe. Have you ever met anyone who seems suspicious?",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "Not yet, but I'll let you know if there is one. (goes and leaves)",
+				"options": {}
+			},
+			{
+				"char": "Minwae",
+				"dialogue": "It seems like you're the one who made me suspicious. (Patrolling as before)",
+				"options": {}
+			}
+		]
+	},
+	"Lani": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Lani": "female"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Layla",
+				"dialogue": "That bread looks delicious.",
+				"options": {}
+			},
+			{
+				"char": "Lani",
+				"dialogue": "Each of my breads is made with love, but there is one secret ingredient that I found at the market. You should come by later and try it!",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "See you later, I will definitely buy it (layla looks impatient to taste it)",
+				"options": {}
+			}
+		]
+	},
+	"Kyer": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Kyer": "male"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Kyer",
+				"dialogue": "(approached while swinging a small, glittering dagger in his hand) Hi there, check this out! A sharp dagger with a perfect design. Light, fast, and deadly. Only for a special knight like you.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(Taking a step back, her face showing a hint of wariness)\nWhere did you get it? You look... suspicious.",
+				"options": {}
+			},
+			{
+				"char": "Kyer",
+				"dialogue": " (Smiling in a mysterious manner, leaning in slightly)\nTake it easy, I'm not a thief. But trust me, you won't find a better dagger than this.\n",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "Uh... thank you, but I don't need it. I have to go.( turns around quickly, leaving him while feeling scared)",
+				"options": {}
+			}
+		]
+	},
+	"Julbert": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Julbert": "male"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Julbert",
+				"dialogue": "Listening to stories is the best way to understand the past. Do you want to listen to the old story of the lost king?",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(signaling no) I'd better hurry. Don't waste time listening to this guy's nonsense.",
+				"options": {}
+			}
+		]
+	},
+	"Jinmica": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Jinmica": "female"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Layla",
+				"dialogue": "(Looking at an elegant dress in Rael's display case, raising a curious eyebrow)\nThis dress looks really pretty. How much is it?",
+				"options": {}
+			},
+			{
+				"char": "Jinmica",
+				"dialogue": "(Smiling proudly while smoothing the dress)\nAh, your eyes are sharp, girl. This dress is made of rare silk from the other side, and costs 500 gold coins.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(Surprised, takes half a step back)\n500 gold coins?! That's more expensive than my sword!",
+				"options": {}
+			},
+			{
+				"char": "Jinmica",
+				"dialogue": "(Laughs lightly, shrugs)\nBeauty always has a price, knight. But if you change your mind, this dress will be waiting for you.",
+				"options": {}
+			}
+		]
+	},
+	"Imetta": {
+		"actors": [
+
+			{
+				"Layla": "female"
+			},
+						{
+				"Imetta": "female"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Layla",
+				"dialogue": "Incredible... That axe looks as if it can cut through stone like butter. This blacksmith is not just anybody.\u201d",
+				"options": {}
+			},
+			{
+				"char": "Imetta",
+				"dialogue": "(Sunlight reflected off the axe's blade, revealing the intricate carved patterns along the hilt. Borin, with muscles clearly visible under his metal dust-soiled shirt, checked the balance of the weapon attentively)",
+				"options": {}
+			}
+		]
+	},
+	"Bubba": {
+		"actors": [
+			{
+				"Layla": "female"
+			},
+			{
+				"Bubba": "male"
+			}
+		],
+		"non-quest-dialogue": [
+			{
+				"char": "Layla",
+				"dialogue": "Excuse me, sir. Am I disturbing you?",
+				"options": {}
+			},
+			{
+				"char": "Bubba",
+				"dialogue": "(without looking away, still digging) If you just pass by, this field has no story for you.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(slightly urgent) I'm not just passing through. I'm looking into the village and... maybe I can help if there's a problem.",
+				"options": {}
+			},
+			{
+				"char": "Bubba",
+				"dialogue": "(sighs heavily, puts down the hoe, then looks at Layla with a serious face) Listen, Miss. Don't meddle in matters that don't belong to you. This town is fine... as long as you don't ask too many questions.",
+				"options": {}
+			},
+			{
+				"char": "Layla",
+				"dialogue": "(confused, then leaves him)",
+				"options": {}
+			}
+		]
 	}
+	
 }

@@ -23,6 +23,7 @@ var quest_type
 var is_option: bool = false
 var actors_gender: Dictionary
 var audio_stream = AudioStream.new()
+var is_from_cutscene: bool
 
 @onready var leftActor = $LeftPortrait
 @onready var rightActor = $RightPortrait
@@ -51,9 +52,11 @@ func starter(dialog, name_npc:String, q:Quest = null, is_cutscene: bool = false,
 	visible = true
 	is_finished_talking = false
 	lines.clear()
+	actors_gender.clear()
+	is_from_cutscene = is_cutscene
 
 	for canvas in get_node("/root/World/CanvasLayer").get_children():
-		if canvas != self:
+		if canvas != self and not canvas is VideoStreamPlayer and not canvas.name == "CG":
 			canvas.visible = false
 
 
@@ -90,10 +93,12 @@ func starter(dialog, name_npc:String, q:Quest = null, is_cutscene: bool = false,
 			leftActor.texture = load("res://Actors/{actorL}.png".format({"actorL":actorL}))
 	else:
 		if len(cutscene_actors) >= 2:
+
 			actorL = cutscene_actors[0].keys()[0]
 			actorR = cutscene_actors[1].keys()[0]
-			actors_gender[actorL] = cutscene_actors[0].values()[0]
-			actors_gender[actorR] = cutscene_actors[1].values()[0]
+			for idx in len(cutscene_actors):
+				var act = cutscene_actors[idx].keys()[0]
+				actors_gender[act] = cutscene_actors[idx].values()[0]
 			leftActor.texture = load("res://Actors/{actorL}.png".format({"actorL":actorL}))
 			rightActor.texture = load("res://Actors/{actorR}.png".format({"actorR":actorR}))
 
@@ -112,8 +117,9 @@ func starter(dialog, name_npc:String, q:Quest = null, is_cutscene: bool = false,
 	
 	else:
 		name_tag_panel.hide()
-	
-	var current_char_gender = actors_gender[line["char"]]
+	var current_char_gender
+	if not actors_gender.is_empty():
+		current_char_gender = actors_gender[line["char"]]
 	if current_char_gender == "female":
 		audio_player.stream = female_typing
 	else:
@@ -187,8 +193,9 @@ func close():
 	rightActor.texture=null
 	get_tree().paused = false
 	for canvas in get_node("/root/World/CanvasLayer").get_children():
-		if canvas != self and canvas.name not in ["ShopGUI", "Menu", "Portrait", "Popup"]:
+		if canvas != self and canvas.name not in ["ShopGUI", "Menu", "Portrait", "Popup"] and not is_from_cutscene:
 			canvas.visible = true
+		
 	
 	dialogue_finished.emit()
 	set_process_input(false)
@@ -223,7 +230,9 @@ func _input(event):
 				name_tag_panel.position = Vector2(890, name_tag_panel.position.y)
 				name_tag.text = line["char"]
 			
-			var current_char_gender = actors_gender[line["char"]]
+			var current_char_gender
+			if not actors_gender.is_empty():
+				current_char_gender = actors_gender[line["char"]]
 			if current_char_gender == "female":
 				audio_player.stream = female_typing
 			else:

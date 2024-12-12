@@ -1,4 +1,14 @@
 {
+	"AreaDeactivate":{
+		"phase1":{
+			"actors":[
+				{"Layla": "female"}
+			],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"I shouldn't go there right now..."}
+			]
+		}
+	},
 	"test cutscene": {
 		"phase1": {
 			"actors": [
@@ -47,6 +57,66 @@
 					"dialogue": "Continuing After Main Quest Testing 123456"
 				}
 			]
+		}
+	},
+	"Prologue":{
+		"phase1":{
+			"actors":[{"Layla": "female"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"..."},
+				{"char":"Layla", "dialogue":"It's more peaceful than I thought..."},
+				{"char":"Layla", "dialogue":"Let's ask around to find something."}
+				
+				
+			]
+		}
+	},
+	"After_AskAround":{
+		"phase1":{
+			"actors":[{"Layla":"female"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"Hmm... Nothing..."},
+				{"char":"Layla", "dialogue":"Let's ask again somewhere else... Maybe check the Town Square..."},
+				{"char":"Layla", "dialogue":"It should be in the south east from here..."}
+				
+			],
+		}
+	},
+	"After_LookForOtherClues":{
+		"phase1":{
+			"actors":[{"Layla":"female"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"Still nothing… Is Atlantia wrong about this place?"},
+				{"char":"Layla", "dialogue":"Maybe I should look around more… But the rumor about monsters makes me worried."},
+				{"char":"Layla", "dialogue":"Let’s check on that first, maybe I can find something there too."},
+				{"char":"Layla", "dialogue":"According to Condy, the Forest is south of the Market. The Market should be east of here."}
+				
+				
+			],
+		}
+	},
+	"SaveTheChildren":{
+		"phase1":{
+			"actors":[{"Layla":"female"}, {"???":"male"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"Quite a lovely forest, I think I can scavenge for food he–"},
+				{"char":"???", "dialogue":"HELP!!!"},
+			],
+		},
+		"phase2":{
+			"actors":[{"Namboo":"male"}, {"Yallie":"female"}, {"Remmie":"male"}],
+			"dialogue":[
+				{"char":"Yallie", "dialogue":"Remmie!!"},
+				{"char":"Namboo", "dialogue":"Get up, Remmie!!"},
+				{"char":"Remmie", "dialogue":"Ugh..."},
+				
+			],
+		},
+		"phase3":{
+			"actors":[{"Layla": "female"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"I need to help them!"},
+			],
 		}
 	}
 }

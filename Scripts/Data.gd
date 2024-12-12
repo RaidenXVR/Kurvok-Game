@@ -39,8 +39,8 @@ class_name Data
 
 func save_data(player_pos:Vector2, map_nm:String):
 	chest_states = GameData.chest_states
-	player_stats = GameData.player_stats
-	player_inventory = GameData.player_inventory
+	player_stats = GameData.player_stats.duplicate()
+	player_inventory = GameData.player_inventory.duplicate()
 	#items_equiped = GameData.items_equiped
 	armor_equip1 = GameData.armor_equip1
 	armor_equip2 = GameData.armor_equip2
@@ -60,13 +60,13 @@ func save_data(player_pos:Vector2, map_nm:String):
 	skill_slot_3 = GameData.skill_slot_3
 	skill_passive = GameData.skill_passive
 	
-	available_quests = QuestManager.available_quests
-	ongoing_quests = QuestManager.ongoing_quests
-	completed_quests = QuestManager.completed_quests
-	current_main_quest = QuestManager.current_main_quest
-	completed_main_quest = QuestManager.completed_main_quest
+	available_quests = QuestManager.available_quests.duplicate()
+	ongoing_quests = QuestManager.ongoing_quests.duplicate()
+	completed_quests = QuestManager.completed_quests.duplicate()
+	current_main_quest = QuestManager.current_main_quest.duplicate()
+	completed_main_quest = QuestManager.completed_main_quest.duplicate()
 	
-	cutscenes_completed = CutsceneManager.cutscenes_completed
+	cutscenes_completed = CutsceneManager.cutscenes_completed.duplicate()
 
 	map_name = map_nm
 	player_position = player_pos

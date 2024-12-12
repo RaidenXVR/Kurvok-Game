@@ -1,18 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://k531a6l3m0q8"]
+[gd_scene load_steps=19 format=3 uid="uid://k531a6l3m0q8"]
 
 [ext_resource type="PackedScene" uid="uid://cip074xhh35wc" path="res://scenes/slots.tscn" id="1_5i664"]
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_o5ian"]
 [ext_resource type="Texture2D" uid="uid://c1sy15yklc1mw" path="res://Actors/Layla.png" id="2_aum4k"]
-[ext_resource type="Texture2D" uid="uid://c82hra0kvbk7p" path="res://asset/frame4.png" id="2_jlwna"]
-[ext_resource type="Texture2D" uid="uid://c0tmpuqlmbxn2" path="res://asset/frame3.png" id="3_b0pb3"]
+[ext_resource type="Texture2D" uid="uid://capxg71y8dlt1" path="res://asset/button2.png" id="2_hp33g"]
+[ext_resource type="Texture2D" uid="uid://wlkttn3pdcu" path="res://asset/button3.png" id="3_2q6fh"]
 [ext_resource type="PackedScene" uid="uid://boa8k17k5377v" path="res://scenes/set_skill_popup.tscn" id="3_k6g5f"]
+[ext_resource type="Texture2D" uid="uid://btwe04h8ndd0r" path="res://asset/bg inven.png" id="6_215tf"]
+[ext_resource type="Texture2D" uid="uid://c131n6gqhtqlw" path="res://asset/Item Frame(black).png" id="7_rbta1"]
+[ext_resource type="Texture2D" uid="uid://cf2ryjwr3ktu6" path="res://asset/item desc(black).png" id="8_8eewb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_22fbd"]
+texture = ExtResource("2_hp33g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2g1f5"]
+texture = ExtResource("3_2q6fh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fp55h"]
+texture = ExtResource("3_2q6fh")
+modulate_color = Color(0.509804, 0.509804, 0.509804, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oovtj"]
+texture = ExtResource("3_2q6fh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_76mi4"]
+texture = ExtResource("2_hp33g")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iyl05"]
 content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-texture = ExtResource("3_b0pb3")
+texture = ExtResource("8_8eewb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tykwm"]
+texture = ExtResource("8_8eewb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7j5yb"]
+texture = ExtResource("8_8eewb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3cf25"]
+texture = ExtResource("6_215tf")
 
 [node name="MenuV2" type="Control"]
 texture_filter = 1
@@ -30,13 +58,17 @@ offset_right = 1280.0
 offset_bottom = 722.0
 color = Color(0.0745098, 0.0745098, 0.0745098, 0.415686)
 
-[node name="StatusButton" type="Button" parent="."]
+[node name="StatusButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 1090.0
 offset_top = 30.0
 offset_right = 1270.0
 offset_bottom = 100.0
 focus_neighbor_left = NodePath("Container/SetSkills")
+theme_override_styles/normal = SubResource("StyleBoxTexture_22fbd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Status
 "
 
@@ -50,6 +82,15 @@ offset_left = 0.0800781
 offset_top = 0.0300007
 offset_right = 0.0600014
 offset_bottom = 0.00994873
+
+[node name="TextureRect2" type="TextureRect" parent="StatusButton/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_215tf")
 
 [node name="TextureRect" type="TextureRect" parent="StatusButton/Container"]
 custom_minimum_size = Vector2(400, 600)
@@ -163,12 +204,16 @@ custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 expand_mode = 1
 
-[node name="SetSkills" type="Button" parent="StatusButton/Container"]
+[node name="SetSkills" type="Button" parent="StatusButton/Container" groups=["Button"]]
 layout_mode = 0
 offset_left = 831.0
 offset_top = 493.0
 offset_right = 1013.0
 offset_bottom = 557.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_76mi4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Set Skills"
 
 [node name="SetSkillPopup" parent="StatusButton/Container/SetSkills" instance=ExtResource("3_k6g5f")]
@@ -185,12 +230,16 @@ offset_top = -275.008
 offset_right = 499.926
 offset_bottom = 274.992
 
-[node name="ItemButton" type="Button" parent="."]
+[node name="ItemButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 1090.0
 offset_top = 110.0
 offset_right = 1270.0
 offset_bottom = 180.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_76mi4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Items"
 
 [node name="Container" type="Control" parent="ItemButton"]
@@ -206,6 +255,12 @@ offset_top = -0.0299911
 offset_right = 0.0600014
 offset_bottom = 32.5699
 
+[node name="TextureRect" type="TextureRect" parent="ItemButton/Container"]
+layout_mode = 0
+offset_right = 1086.0
+offset_bottom = 720.0
+texture = ExtResource("6_215tf")
+
 [node name="Slots" parent="ItemButton/Container" instance=ExtResource("1_5i664")]
 layout_mode = 1
 offset_left = 25.0
@@ -220,7 +275,7 @@ offset_left = 785.0
 offset_top = 85.0
 offset_right = 1035.0
 offset_bottom = 335.0
-texture = ExtResource("2_jlwna")
+texture = ExtResource("7_rbta1")
 expand_mode = 1
 
 [node name="ItemIcon" type="TextureRect" parent="ItemButton/Container"]
@@ -236,8 +291,8 @@ expand_mode = 1
 layout_mode = 0
 offset_left = 775.0
 offset_top = 345.0
-offset_right = 1049.0
-offset_bottom = 633.0
+offset_right = 1050.0
+offset_bottom = 620.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 20
 theme_override_font_sizes/bold_font_size = 20
@@ -247,12 +302,16 @@ theme_override_font_sizes/mono_font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_iyl05")
 bbcode_enabled = true
 
-[node name="KeyItemButton" type="Button" parent="."]
+[node name="KeyItemButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 1090.0
 offset_top = 190.0
 offset_right = 1270.0
 offset_bottom = 260.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_22fbd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Key Items"
 
 [node name="Container" type="Control" parent="KeyItemButton"]
@@ -266,6 +325,12 @@ offset_left = 0.0800781
 offset_top = -0.019989
 offset_right = -220.08
 offset_bottom = 0.0299683
+
+[node name="TextureRect" type="TextureRect" parent="KeyItemButton/Container"]
+layout_mode = 0
+offset_right = 1086.0
+offset_bottom = 720.0
+texture = ExtResource("6_215tf")
 
 [node name="Slots" parent="KeyItemButton/Container" instance=ExtResource("1_5i664")]
 layout_mode = 1
@@ -281,7 +346,7 @@ offset_left = 785.0
 offset_top = 85.0
 offset_right = 1035.0
 offset_bottom = 335.0
-texture = ExtResource("2_jlwna")
+texture = ExtResource("7_rbta1")
 expand_mode = 1
 
 [node name="ItemIcon" type="TextureRect" parent="KeyItemButton/Container"]
@@ -305,13 +370,18 @@ theme_override_font_sizes/bold_font_size = 20
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_tykwm")
 
-[node name="EquipButton" type="Button" parent="."]
+[node name="EquipButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 1090.0
 offset_top = 270.0
 offset_right = 1270.0
 offset_bottom = 340.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_22fbd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Equipment"
 
 [node name="Container" type="Control" parent="EquipButton"]
@@ -325,6 +395,12 @@ offset_left = 0.0800781
 offset_top = -0.00997925
 offset_right = -220.08
 offset_bottom = -0.0300293
+
+[node name="TextureRect" type="TextureRect" parent="EquipButton/Container"]
+layout_mode = 0
+offset_right = 1086.0
+offset_bottom = 720.0
+texture = ExtResource("6_215tf")
 
 [node name="Slots" parent="EquipButton/Container" instance=ExtResource("1_5i664")]
 layout_mode = 1
@@ -340,7 +416,7 @@ offset_left = 785.0
 offset_top = 85.0
 offset_right = 1035.0
 offset_bottom = 335.0
-texture = ExtResource("2_jlwna")
+texture = ExtResource("7_rbta1")
 expand_mode = 1
 
 [node name="ItemIcon" type="TextureRect" parent="EquipButton/Container"]
@@ -364,13 +440,18 @@ theme_override_font_sizes/bold_font_size = 20
 theme_override_font_sizes/italics_font_size = 20
 theme_override_font_sizes/bold_italics_font_size = 20
 theme_override_font_sizes/mono_font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_7j5yb")
 
-[node name="QuestButton" type="Button" parent="."]
+[node name="QuestButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 1090.0
 offset_top = 350.0
 offset_right = 1270.0
 offset_bottom = 420.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_22fbd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Quests"
 
 [node name="Container" type="Control" parent="QuestButton"]
@@ -384,14 +465,31 @@ offset_left = 0.0800781
 offset_right = -226.08
 offset_bottom = -0.019989
 
+[node name="TextureRect" type="TextureRect" parent="QuestButton/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_215tf")
+
 [node name="TabContainer" type="TabContainer" parent="QuestButton/Container"]
 layout_mode = 0
 offset_left = 63.0
 offset_top = 127.0
 offset_right = 391.0
 offset_bottom = 662.0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/tab_selected = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_22fbd")
+theme_override_styles/tab_focus = SubResource("StyleBoxTexture_oovtj")
+theme_override_styles/panel = SubResource("StyleBoxTexture_3cf25")
+tab_alignment = 1
+clip_tabs = false
 
-[node name="Main Quest" type="Button" parent="QuestButton/Container/TabContainer"]
+[node name="Main Quest" type="Button" parent="QuestButton/Container/TabContainer" groups=["Button"]]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="QuestButton/Container/TabContainer/Main Quest"]
@@ -419,7 +517,7 @@ text = "Completed Main Quests
 "
 alignment = 0
 
-[node name="Side Quests" type="Button" parent="QuestButton/Container/TabContainer"]
+[node name="Side Quests" type="Button" parent="QuestButton/Container/TabContainer" groups=["Button"]]
 visible = false
 layout_mode = 2
 
@@ -480,20 +578,28 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
-[node name="SaveButton" type="Button" parent="."]
+[node name="SaveButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 1090.0
 offset_top = 430.0
 offset_right = 1270.0
 offset_bottom = 500.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_22fbd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Save"
 
-[node name="OptionsButton" type="Button" parent="."]
+[node name="OptionsButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 1090.0
 offset_top = 510.0
 offset_right = 1270.0
 offset_bottom = 580.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_22fbd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Options"
 
 [node name="OptionContainer" type="MarginContainer" parent="OptionsButton"]
@@ -565,12 +671,16 @@ theme_override_constants/center_grabber = 0
 theme_override_constants/grabber_offset = 0
 value = 80.0
 
-[node name="ExitButton" type="Button" parent="."]
+[node name="ExitButton" type="Button" parent="." groups=["Button"]]
 layout_mode = 0
 offset_left = 1095.0
 offset_top = 630.0
 offset_right = 1264.0
 offset_bottom = 684.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_22fbd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2g1f5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fp55h")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oovtj")
 text = "Exit"
 
 [connection signal="button_down" from="StatusButton" to="." method="_on_status_button_button_down"]

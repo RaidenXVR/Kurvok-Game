@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=3 format=3 uid="uid://cppu0blc148mf"]
+
+[ext_resource type="Script" path="res://Scripts/Quest.gd" id="1_aedlq"]
+[ext_resource type="Resource" uid="uid://biculabwycm65" path="res://Cutscene/Cutscenes/SaveTheChildren.tres" id="1_w7nt7"]
+
+[resource]
+script = ExtResource("1_aedlq")
+quest_name = "Go To The Forest"
+quest_description = "Go to the Forest, south of Market."
+quest_requirement = Array[String](["Look For Other Clues"])
+type = 3
+giver = ""
+target = {
+"Forest": 0
+}
+current_target_amount = {}
+rewards = {}
+state = 0
+Cutscene_to_play = ExtResource("1_w7nt7")
+is_main_quest = false

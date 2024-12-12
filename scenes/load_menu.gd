@@ -1,7 +1,8 @@
 extends Control
 
 
-
+func _ready():
+	$MarginContainer/VBoxContainer/Save0.grab_focus()
 
 func _on_save_0_pressed():
 	GameData.load_game(0)

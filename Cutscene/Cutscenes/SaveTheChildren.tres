@@ -1,0 +1,114 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=19 format=3 uid="uid://biculabwycm65"]
+
+[ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_h0jwx"]
+[ext_resource type="Script" path="res://Cutscene/CSMovePlayer.gd" id="1_vnyv5"]
+[ext_resource type="Script" path="res://Cutscene/CSOpenDialogue.gd" id="2_ey7tb"]
+[ext_resource type="Script" path="res://Cutscene/CSMoveObject.gd" id="3_bgeme"]
+[ext_resource type="Script" path="res://Cutscene/CSPlayAnim.gd" id="4_0tgni"]
+[ext_resource type="Script" path="res://Cutscene/CSQuestStarted.gd" id="5_fa6mo"]
+
+[sub_resource type="Resource" id="Resource_snmhm"]
+script = ExtResource("1_vnyv5")
+player_init_pos = Vector2(0, 1)
+move_grid_amount = Array[int]([9])
+direction = Array[Vector2]([Vector2(0, 1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_gntxw"]
+script = ExtResource("2_ey7tb")
+cutscene_name = "SaveTheChildren"
+dialogue_phase = "phase1"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_qvv47"]
+script = ExtResource("3_bgeme")
+object_name = "Namboo"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(0, 15)
+move_grid_amount = Array[int]([5])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 200
+parallel_with_next = true
+
+[sub_resource type="Resource" id="Resource_vsifc"]
+script = ExtResource("3_bgeme")
+object_name = "Yallie"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-1, 15)
+move_grid_amount = Array[int]([5])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 200
+parallel_with_next = true
+
+[sub_resource type="Resource" id="Resource_7p7cr"]
+script = ExtResource("3_bgeme")
+object_name = "Remmie"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(1, 15)
+move_grid_amount = Array[int]([3])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 200
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_htecd"]
+script = ExtResource("4_0tgni")
+object = "Remmie"
+animation_to_play = "fall"
+type = 1
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_xpxev"]
+script = ExtResource("3_bgeme")
+object_name = "Namboo"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(0, 10)
+move_grid_amount = Array[int]([0])
+direction = Array[Vector2]([Vector2(0, 1)])
+speed = 120
+parallel_with_next = true
+
+[sub_resource type="Resource" id="Resource_7hq67"]
+script = ExtResource("3_bgeme")
+object_name = "Yallie"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(-1, 10)
+move_grid_amount = Array[int]([0])
+direction = Array[Vector2]([Vector2(0, 1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_v40ue"]
+script = ExtResource("2_ey7tb")
+cutscene_name = "SaveTheChildren"
+dialogue_phase = "phase2"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_xp8w1"]
+script = ExtResource("3_bgeme")
+object_name = "BoribasCS"
+object_root = "maps/Forest"
+start_pos_relative = Vector2(1, 20)
+move_grid_amount = Array[int]([4])
+direction = Array[Vector2]([Vector2(0, -1)])
+speed = 150
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_huf8c"]
+script = ExtResource("2_ey7tb")
+cutscene_name = "SaveTheChildren"
+dialogue_phase = "phase3"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_fyiyt"]
+script = ExtResource("5_fa6mo")
+quest_name = "Save The Children"
+description = "Some children running while crying for help, I should quickly help them!"
+
+[resource]
+script = ExtResource("1_h0jwx")
+cutscene_name = "SaveTheChildren"
+cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
+player_facing = Vector2(0, 1)
+cutscene_to_do = [SubResource("Resource_snmhm"), SubResource("Resource_gntxw"), SubResource("Resource_qvv47"), SubResource("Resource_vsifc"), SubResource("Resource_7p7cr"), SubResource("Resource_htecd"), SubResource("Resource_xpxev"), SubResource("Resource_7hq67"), SubResource("Resource_v40ue"), SubResource("Resource_xp8w1"), SubResource("Resource_huf8c"), SubResource("Resource_fyiyt")]
+initial_position = Vector2(750, 0)

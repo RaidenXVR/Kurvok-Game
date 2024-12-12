@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=7 format=3 uid="uid://d1foe6xargof3"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_attack.gd" id="1_7eisa"]
+[ext_resource type="Script" path="res://Enemies/enemyData.gd" id="1_p7ct8"]
+[ext_resource type="Script" path="res://Scripts/Stats.gd" id="1_schmc"]
+[ext_resource type="SpriteFrames" uid="uid://c1w88dv8ic2qb" path="res://Enemies/enemies/anim/boribas.tres" id="2_rxwop"]
+
+[sub_resource type="Resource" id="Resource_wubqp"]
+script = ExtResource("1_7eisa")
+attack_type = 1
+speed_mod = 90
+stun_duration = 0.5
+shape_radius = 35
+num_projectile = 0
+is_full_circle_division = false
+distance_for_aoe = 0
+distance_for_slash = 30
+slash_shape_offset = 30
+
+[sub_resource type="Resource" id="Resource_jdbnw"]
+script = ExtResource("1_schmc")
+mhp = 30
+att = 7
+hp = 30
+def = 3
+max_mana = 0
+mana = null
+
+[resource]
+script = ExtResource("1_p7ct8")
+enemy_type = "Boribas"
+unkillable = false
+enemy_stats = SubResource("Resource_jdbnw")
+drop_table = {}
+speed = 80
+knockPower = 500
+detect_radius = 300
+col_hitbox_radius = 25
+move_delay = 0.0
+move_pattern = Array[Dictionary]([])
+attack_radius = 35
+attack_delay = 1.0
+attack_patterns = Array[ExtResource("1_7eisa")]([SubResource("Resource_wubqp")])
+default_shape_radius = 0
+enemy_sprite_frames = ExtResource("2_rxwop")

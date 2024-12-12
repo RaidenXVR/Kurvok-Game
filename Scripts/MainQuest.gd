@@ -32,18 +32,15 @@ func check_requirements():
 func check_target(target_id:String, amount:int):
 	var found_quests
 	if not target_id.is_valid_int():
-		print("check target main quest")
 		found_quests = on_going_quests.filter(func(q):return q.type == Quest.Quest_Types.KILL and target_id in q.target.keys())
-		print("found quest: ", found_quests)
 		if found_quests.size()!=0:
 			for quest:Quest in found_quests:
 				quest.current_target_amount[target_id] += amount
-				print("updated ", quest.current_target_amount[target_id])
 				if quest.current_target_amount[target_id] >= quest.target[target_id] and quest.giver == "":
-					print("completed")
+
 					completed_quests.append(quest)
 					on_going_quests.erase(quest)
-					print(on_going_quests, completed_quests)
+
 		else:
 			found_quests = on_going_quests.filter(func(q):return _check_target(q, Quest.Quest_Types.TALK))
 			if found_quests.size()!=0:
@@ -51,6 +48,16 @@ func check_target(target_id:String, amount:int):
 				if second_found_quests.size()!=0:
 					for quest:Quest in second_found_quests:
 						quest.current_target_amount[target_id] += amount
+						var target_meet = true
+						for q in quest.current_target_amount.keys():
+							if quest.current_target_amount[q] < quest.target[q]:
+								target_meet = false
+								break
+						if target_meet:
+							completed_quests.append(quest)
+							on_going_quests.erase(quest)
+					check_empty()
+					return 'found'
 	
 	check_empty()
 
@@ -83,3 +90,38 @@ func get_quest_by_giver(giver_name:String):
 func check_empty():
 	if len(on_going_quests) == 0:
 		QuestManager.set_main_quest()
+
+func check_quest_in_complete(quest_name: String):
+	for c in completed_quests:
+		if c.quest_name == quest_name:
+			return true
+	
+	return false
+
+func check_already_talking(npc_name: String):
+	var found_quests = on_going_quests.filter(func(q):return _check_target(q, Quest.Quest_Types.TALK))
+	if found_quests.size()!=0:
+		var second_found_quests = found_quests.filter(func(q:Quest):return _check_target(q,npc_name))
+		if second_found_quests:
+			var is_already_talking = second_found_quests[0].current_target_amount[npc_name] >= second_found_quests[0].target[npc_name]
+			return is_already_talking
+	
+	return 0
+
+func check_talk_in_ongoing(npc_name):
+	var found_quests = on_going_quests.filter(func(q):return _check_target(q, Quest.Quest_Types.TALK))
+	if found_quests.size()!=0:
+		var second_found_quests = found_quests.filter(func(q:Quest):return _check_target(q,npc_name))
+		if len(second_found_quests) != 0:
+			return true
+	return false
+	
+func check_go_to_quest(map_name):
+	for on in on_going_quests:
+		if map_name in on.target.keys():
+			completed_quests.append(on)
+			on_going_quests.erase(on)
+			if on.Cutscene_to_play:
+				CutsceneManager.do_cutscene(on.Cutscene_to_play)
+				
+			

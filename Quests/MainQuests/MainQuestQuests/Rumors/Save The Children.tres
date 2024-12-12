@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://cb1oul026kkcp"]
+
+[ext_resource type="Script" path="res://Scripts/Quest.gd" id="1_nfs5p"]
+
+[resource]
+script = ExtResource("1_nfs5p")
+quest_name = "Save The Children"
+quest_description = "Some children running while crying for help, I should quickly help them!"
+quest_requirement = Array[String]([])
+type = 0
+giver = ""
+target = {
+"Boribas": 1
+}
+current_target_amount = {
+"Boribas": 0
+}
+rewards = {}
+state = 0
+is_main_quest = false

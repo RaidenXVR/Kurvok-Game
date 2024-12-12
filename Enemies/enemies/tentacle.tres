@@ -39,6 +39,18 @@ mana = null
 script = ExtResource("2_okrry")
 enemy_type = "Tentacle"
 enemy_stats = SubResource("Resource_now3r")
+drop_table = {
+"1": {
+"chance": 0.7,
+"max_amount": 3,
+"min_amount": 1
+},
+"2": {
+"chance": 0.1,
+"max_amount": 1,
+"min_amount": 1
+}
+}
 speed = 30
 knockPower = 300
 detect_radius = 200

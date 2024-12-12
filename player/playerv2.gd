@@ -422,7 +422,8 @@ func _input(event: InputEvent):
 				skill_3.do_skill(lastAnimDir)
 				
 	if event.is_action_pressed("debug"):
-		take_damage(100)
+		print(QuestManager.current_main_quest.on_going_quests[0].current_target_amount)
+				
 func unstun():
 	timer.stop()
 	is_stunned = false
@@ -478,6 +479,7 @@ func take_damage(damage):
 	if stats.hp <= 0:
 		GameData.do_game_over()
 		return
+		
 	hurtTimer.start(1)
 	is_damaged = true
 
@@ -512,7 +514,11 @@ func status_effect_damage(effect_type: StatusEffect.EffectType,effect_timer:Time
 			is_slowed = false
 		StatusEffect.EffectType.EFFECT_CONFUSION:
 			is_confused = true
+			var effect = StatusIcon.new("def_down", effect_timer, effect_timer.time_left)
+			get_parent().get_node("CanvasLayer/StatusContainer").add_child(effect)
 			await effect_timer.timeout
+			get_parent().get_node("CanvasLayer/StatusContainer").remove_child(effect)
+			
 			is_confused = false
 			
 func add_status_effect(effect: Effect):

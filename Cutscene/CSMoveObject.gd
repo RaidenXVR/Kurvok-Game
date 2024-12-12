@@ -8,3 +8,4 @@ class_name Cutscene_MoveObject
 @export var move_grid_amount: Array[int]
 @export var direction:Array[Vector2]
 @export var speed: int = 120
+@export var parallel_with_next: bool = false

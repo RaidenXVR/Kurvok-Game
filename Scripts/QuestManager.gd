@@ -61,7 +61,14 @@ func set_complete_quests(que:Quest):
 			else:
 				var invItem = InventoryItems.new(item_id, quest_rewards[item_id])
 				inv.inventory.insert(invItem)
+				
+		
 		completed_quests.append(quest)
+		print("Quest completed: ", quest.quest_name)
+		if que.Cutscene_to_play:
+			print("Cutscene Play")
+			CutsceneManager.do_cutscene(que.Cutscene_to_play.cutscene_name)
+			await CutsceneManager.finished_doing_cutscene
 
 
 func check_where_quest(quest_title:String):
@@ -114,6 +121,7 @@ func check_target(target_id:String, amount:int):
 				var second_found_quests = found_quests.filter(func(q:Quest):return _check_target(q,target_id))
 				if second_found_quests.size()!=0:
 					for quest:Quest in second_found_quests:
+						if quest.current_target_amount[target_id] == quest.target[target_id]: return
 						quest.current_target_amount[target_id] += amount
 
 func _check_target(q:Quest,state_or_key:Variant):
@@ -125,6 +133,18 @@ func _check_target(q:Quest,state_or_key:Variant):
 
 func check_talk(npc_name:String, add_mode: bool = false):
 	var req_quest: Array[Quest] = ongoing_quests.filter(func(q:Quest): return npc_name in q.target.keys())
+	var req_main = current_main_quest.check_talk_in_ongoing(npc_name)
+	var is_already_talking = current_main_quest.check_already_talking(npc_name)
+	
+	
+	if req_main and not is_already_talking and add_mode:
+		current_main_quest.check_target(npc_name, 1)
+		return 0
+	elif req_main and not is_already_talking:
+		return 1
+	elif req_main and is_already_talking:
+		
+		return 0
 
 	if len(req_quest) != 0:
 		if add_mode:
@@ -137,8 +157,12 @@ func check_talk(npc_name:String, add_mode: bool = false):
 
 func get_talk_quest(npc_name:String) -> Array[Quest]:
 	var req_quest: Array[Quest] = ongoing_quests.filter(func(q:Quest): return npc_name in q.target.keys())
-	return req_quest
+	var main_req_quest = current_main_quest.on_going_quests.filter(func(q:Quest): return _debug(q, npc_name))
+	req_quest += main_req_quest
+	return req_quest 
 
+func _debug(q:Quest, npc_name):
+	return npc_name in q.target.keys()
 
 func set_main_quest(main_quest_to_set: MainQuest = null):
 	if main_quest_to_set:
@@ -150,5 +174,17 @@ func set_main_quest(main_quest_to_set: MainQuest = null):
 			current_main_quest = current_main_quest.next_main_quest
 		else:
 			completed_main_quest.append(current_main_quest)
+
+
+func check_quest_in_complete(quest_name: String):
+	for c in completed_quests:
+		if c.quest_name == quest_name:
+			return true
+	
+	return false
+	
+func check_go_to_quest(map_name):
+	current_main_quest.check_go_to_quest(map_name)
+	
 
 

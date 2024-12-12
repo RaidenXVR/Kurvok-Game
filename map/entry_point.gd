@@ -6,9 +6,24 @@ class_name EntryPoint
 @export var entry_point_destination:String
 enum OutOffset {OFFSET_UP, OFFSET_DOWN, OFFSET_LEFT, OFFSET_RIGHT}
 @export var self_out_offset: OutOffset
+@export var is_deactivated: bool
+@export var activation_requirement: Array[String]
 
 
 func change_map(player_body:Player):
+	for r in activation_requirement:
+		if not (QuestManager.check_quest_in_complete(r) or QuestManager.current_main_quest.check_quest_in_complete(r)):
+			is_deactivated = true
+			break
+		is_deactivated = false
+	if is_deactivated:
+		var scene = load("res://Cutscene/Cutscenes/AreaDeactivate.tres").duplicate(true) as Cutscene
+		var dir = -player_body.moveDir if player_body.moveDir != Vector2.ZERO else player_body.look_dir.target_position/20
+		scene.cutscene_to_do[0].direction[0] = dir
+		scene.initial_position = player_body.position
+		CutsceneManager.do_cutscene(scene)
+		await CutsceneManager.finished_doing_cutscene
+		return
 	var load_map = load("res://map/"+map_destination+".tscn")
 	var map: TileMap
 	if load_map:

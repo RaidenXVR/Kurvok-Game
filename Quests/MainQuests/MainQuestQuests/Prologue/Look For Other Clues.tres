@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=3 format=3 uid="uid://cy5b7ehqd36w"]
+
+[ext_resource type="Script" path="res://Scripts/Quest.gd" id="1_hangh"]
+[ext_resource type="Resource" uid="uid://dbo7v34umjl3j" path="res://Cutscene/Cutscenes/After_LookForOtherClues.tres" id="1_q336w"]
+
+[resource]
+script = ExtResource("1_hangh")
+quest_name = "Look For Other Clues"
+quest_description = "Ask more people, maybe in the town square"
+quest_requirement = Array[String](["Ask Around"])
+type = 2
+giver = ""
+target = {
+"Condy": 1,
+"Norianni": 1
+}
+current_target_amount = {
+"Condy": 0,
+"Norianni": 0
+}
+rewards = {}
+state = 0
+Cutscene_to_play = ExtResource("1_q336w")
+is_main_quest = false

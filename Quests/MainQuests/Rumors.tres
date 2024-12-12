@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MainQuest" load_steps=4 format=3 uid="uid://bma48iyj5bd00"]
+
+[ext_resource type="Resource" uid="uid://cppu0blc148mf" path="res://Quests/MainQuests/MainQuestQuests/Rumors/Go To The Forest.tres" id="1_kdbhh"]
+[ext_resource type="Script" path="res://Scripts/MainQuest.gd" id="1_tvxce"]
+[ext_resource type="Resource" uid="uid://cb1oul026kkcp" path="res://Quests/MainQuests/MainQuestQuests/Rumors/Save The Children.tres" id="2_r32hs"]
+
+[resource]
+script = ExtResource("1_tvxce")
+main_quest_name = "Rumors"
+on_going_quests = Array[Resource("res://Scripts/Quest.gd")]([ExtResource("1_kdbhh"), ExtResource("2_r32hs")])
+completed_quests = Array[Resource("res://Scripts/Quest.gd")]([])
+requirements = Array[Dictionary]([])

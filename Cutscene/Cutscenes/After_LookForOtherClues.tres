@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=7 format=3 uid="uid://dbo7v34umjl3j"]
+
+[ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_15nlo"]
+[ext_resource type="Script" path="res://Cutscene/CSOpenDialogue.gd" id="2_1mbwi"]
+[ext_resource type="Resource" uid="uid://bma48iyj5bd00" path="res://Quests/MainQuests/Rumors.tres" id="3_8b6r3"]
+[ext_resource type="Script" path="res://Cutscene/CSQuestStarted.gd" id="3_oyafi"]
+
+[sub_resource type="Resource" id="Resource_d5opu"]
+script = ExtResource("2_1mbwi")
+cutscene_name = "After_LookForOtherClues"
+dialogue_phase = "phase1"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_ljkmx"]
+script = ExtResource("3_oyafi")
+quest_name = "Go To The Forest"
+description = "Go to the Forest, south of Market."
+
+[resource]
+script = ExtResource("1_15nlo")
+cutscene_name = "After_LookForOtherClues"
+cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
+main_quest_to_set = ExtResource("3_8b6r3")
+player_facing = Vector2(0, 1)
+cutscene_to_do = [SubResource("Resource_d5opu"), SubResource("Resource_ljkmx")]
+initial_position = Vector2(0, 0)

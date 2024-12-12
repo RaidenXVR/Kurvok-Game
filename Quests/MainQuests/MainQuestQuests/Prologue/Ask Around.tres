@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=3 format=3 uid="uid://u2irtv66t3v2"]
+
+[ext_resource type="Resource" uid="uid://bt5a2sglvct7y" path="res://Cutscene/Cutscenes/After_AskAround.tres" id="1_2cj8v"]
+[ext_resource type="Script" path="res://Scripts/Quest.gd" id="1_2t13q"]
+
+[resource]
+script = ExtResource("1_2t13q")
+quest_name = "Ask Around"
+quest_description = "Ask people in North Gate."
+quest_requirement = Array[String]([])
+type = 2
+giver = ""
+target = {
+"Parsefal": 1,
+"Yvette": 1
+}
+current_target_amount = {
+"Parsefal": 0,
+"Yvette": 0
+}
+rewards = {}
+state = 0
+Cutscene_to_play = ExtResource("1_2cj8v")
+is_main_quest = false

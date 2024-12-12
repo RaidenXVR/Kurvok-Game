@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=5 format=3 uid="uid://djwfw32mqe4ii"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=4 format=3 uid="uid://djwfw32mqe4ii"]
 
-[ext_resource type="Resource" uid="uid://dx4j1bpfralty" path="res://Quests/MainQuests/FirstMainQuests.tres" id="1_170n4"]
 [ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_j7cwh"]
 [ext_resource type="Script" path="res://Cutscene/CSOpenDialogue.gd" id="2_vq8uc"]
 
@@ -8,11 +7,12 @@
 script = ExtResource("2_vq8uc")
 cutscene_name = "FirstMainQuest"
 dialogue_phase = "phase1"
+parallel_with_next = false
 
 [resource]
 script = ExtResource("1_j7cwh")
 cutscene_name = "FirstMainQuest"
 cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
-cutscene_main_quest_requirements = ExtResource("1_170n4")
 player_facing = Vector2(1, 0)
 cutscene_to_do = [SubResource("Resource_onni8")]
+initial_position = Vector2(0, 0)

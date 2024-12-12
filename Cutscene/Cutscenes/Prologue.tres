@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=14 format=3 uid="uid://c7dw47lrj4bqp"]
+
+[ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_4dofn"]
+[ext_resource type="Script" path="res://Cutscene/CSMovieNarator.gd" id="1_qmgr4"]
+[ext_resource type="VideoStream" path="res://Cutscene/Movies/prologue.ogv" id="1_vyyjb"]
+[ext_resource type="Script" path="res://Cutscene/CSMovePlayer.gd" id="3_dbxk3"]
+[ext_resource type="Script" path="res://Cutscene/CSOpenDialogue.gd" id="4_r5tlj"]
+[ext_resource type="Resource" uid="uid://j1yudayarb81" path="res://Quests/MainQuests/Prologue.tres" id="5_86ubv"]
+[ext_resource type="Script" path="res://Cutscene/CSTimer.gd" id="5_om7mh"]
+[ext_resource type="Script" path="res://Cutscene/CSQuestStarted.gd" id="5_w1wun"]
+
+[sub_resource type="Resource" id="Resource_q61j1"]
+script = ExtResource("1_qmgr4")
+lines = Array[String](["Kurvok, the Empire that is ruled by a Demon Queen, is said to be a hell for humans to live in. ", "Humans were enslaved and tortured under the rule of Demons, used like a toy and discarded like garbage. ", "Or so they said."])
+movie = ExtResource("1_vyyjb")
+
+[sub_resource type="Resource" id="Resource_6acnw"]
+script = ExtResource("3_dbxk3")
+player_init_pos = Vector2(961, 41)
+move_grid_amount = Array[int]([4, 0, 0, 0])
+direction = Array[Vector2]([Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1)])
+speed = 120
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_0kd6b"]
+script = ExtResource("4_r5tlj")
+cutscene_name = "Prologue"
+dialogue_phase = "phase1"
+parallel_with_next = false
+
+[sub_resource type="Resource" id="Resource_pjhp7"]
+script = ExtResource("5_om7mh")
+time = 0.5
+
+[sub_resource type="Resource" id="Resource_n5g7t"]
+script = ExtResource("5_w1wun")
+quest_name = "Ask Around"
+description = "Ask people in North Gate."
+
+[resource]
+script = ExtResource("1_4dofn")
+cutscene_name = "Prologue"
+cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
+main_quest_to_set = ExtResource("5_86ubv")
+player_facing = Vector2(0, 0)
+cutscene_to_do = [SubResource("Resource_q61j1"), SubResource("Resource_6acnw"), SubResource("Resource_0kd6b"), SubResource("Resource_pjhp7"), SubResource("Resource_n5g7t")]
+initial_position = Vector2(0, 0)

@@ -263,13 +263,19 @@ func skill_projectile(lastAnimDir):
 		#player.animation.stop()
 		#player.animation.animation_finished.emit()
 		player.doing_skill_2 = true
+		player.velocity = Vector2.ZERO
+		can_skill = false
+		player.is_stunned = true
+		player.vfx_node.scale = Vector2(0.125,0.125)
+		player.vfx_node.visible = true
+		player.vfx_node.play("BlueMC")
 		if is_directional_animation:
 			player.animation.play(animation_name+lastAnimDir)
 		else:
 			player.animation.play(animation_name)
 		
 		await player.animation.animation_finished
-		
+		player.vfx_node.visible = false
 		var skill_pos = player.position
 		var shoot_dir
 		#projectile_offset.x -= (5*(projectiles_count/2)) 
@@ -319,9 +325,7 @@ func skill_projectile(lastAnimDir):
 		
 		skill_cd.start(cooldown)
 		skilling_timer.start(skill_stun_duration)
-		player.velocity = Vector2.ZERO
-		can_skill = false
-		player.is_stunned = true
+
 		is_skilling = true
 		skill_cd_gui.texture_over = cd_gui_0
 		skill_cd_gui.max_value = cooldown

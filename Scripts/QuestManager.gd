@@ -184,7 +184,8 @@ func check_quest_in_complete(quest_name: String):
 	return false
 	
 func check_go_to_quest(map_name):
-	current_main_quest.check_go_to_quest(map_name)
+	if current_main_quest:
+		current_main_quest.check_go_to_quest(map_name)
 	
 
 

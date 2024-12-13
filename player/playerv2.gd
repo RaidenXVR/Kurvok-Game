@@ -140,7 +140,6 @@ func handleInput():
 		
 	#Switch to run
 	if Input.is_action_pressed("run") and not is_stunned and not is_attacking and not is_slowed:
-		AudioManager.audio_players["sfx"]
 		speed = 230
 		animation.speed_scale = 2
 	elif is_slowed:

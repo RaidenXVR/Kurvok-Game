@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxv6h7ftq1sge"]
+[gd_scene load_steps=15 format=3 uid="uid://dxv6h7ftq1sge"]
 
 [ext_resource type="TileSet" uid="uid://xw476vuhnt4c" path="res://map/Tilesets/TownSquareTS.tres" id="1_pva8d"]
 [ext_resource type="Texture2D" uid="uid://dulmcptevebqh" path="res://NPC/sprite/Julbertwalk.png" id="7_mnwlg"]
 [ext_resource type="Texture2D" uid="uid://83k6ddokkmuu" path="res://NPC/sprite/Mulawalk.png" id="8_4j4pb"]
 [ext_resource type="Texture2D" uid="uid://crmwx3mdnm8h4" path="res://NPC/sprite/Pabbanwalk.png" id="9_ewlgj"]
+[ext_resource type="Texture2D" uid="uid://b58tdd2t7vtyr" path="res://NPC/sprite/NambooWalk.png" id="10_urcdl"]
+[ext_resource type="Texture2D" uid="uid://dqnvoxot4bt3e" path="res://NPC/sprite/Yalliewalk.png" id="11_pi1dy"]
+[ext_resource type="Texture2D" uid="uid://cbm27wj44w8k" path="res://NPC/sprite/Remmiewalk.png" id="12_n4io2"]
 [ext_resource type="PackedScene" uid="uid://ogvnsdbv0hpq" path="res://scenes/enterPoint.tscn" id="16_cr2vb"]
 [ext_resource type="Script" path="res://map/map.gd" id="16_ygsl7"]
 [ext_resource type="PackedScene" uid="uid://ilwasm3kpj5b" path="res://NPC/npc.tscn" id="17_p7dpo"]
@@ -94,16 +97,19 @@ isNPCCanMove = false
 
 [node name="Namboo" parent="." instance=ExtResource("17_p7dpo")]
 position = Vector2(1081, 815)
+texture_img = ExtResource("10_urcdl")
 isNPCCanMove = false
 facing_dir = Vector2(1, 0)
 
 [node name="Yallie" parent="." instance=ExtResource("17_p7dpo")]
 position = Vector2(1142, 815)
+texture_img = ExtResource("11_pi1dy")
 isNPCCanMove = false
 facing_dir = Vector2(-1, 0)
 
 [node name="Remmie" parent="." instance=ExtResource("17_p7dpo")]
 position = Vector2(1114, 875)
+texture_img = ExtResource("12_n4io2")
 isNPCCanMove = false
 facing_dir = Vector2(0, -1)
 

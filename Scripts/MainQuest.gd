@@ -40,6 +40,9 @@ func check_target(target_id:String, amount:int):
 
 					completed_quests.append(quest)
 					on_going_quests.erase(quest)
+				
+				if quest.current_target_amount[target_id] == quest.target[target_id]:
+					CutsceneManager.do_cutscene(quest.Cutscene_to_play)
 
 		else:
 			found_quests = on_going_quests.filter(func(q):return _check_target(q, Quest.Quest_Types.TALK))
@@ -60,6 +63,10 @@ func check_target(target_id:String, amount:int):
 					return 'found'
 	
 	check_empty()
+
+func check_enemy_quest(enemy_type):
+	
+	pass
 
 func _check_target(q:Quest,state_or_key:Variant):
 

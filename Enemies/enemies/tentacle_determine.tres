@@ -38,6 +38,7 @@ mana = null
 [resource]
 script = ExtResource("5_i861t")
 enemy_type = "Tentacle"
+unkillable = false
 enemy_stats = SubResource("Resource_now3r")
 drop_table = {}
 speed = 100

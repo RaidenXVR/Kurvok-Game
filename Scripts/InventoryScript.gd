@@ -86,10 +86,13 @@ func use_item(index:int, used_item_category:String):
 				#emit_signal("heal_player", item.effects[key])
 		for key in item.effects.keys():
 			if key == "heal":
-				GameData.player_stats.hp += item.effects["heal"]
+				GameData.player_stats.heal_self(item.effects["heal"])
 			elif key == "buff":
 				GameData.update_stats(item.effects["buff"], item.effects["duration"])
 			elif key == "duration":
+				pass
+			elif key == "mana":
+				GameData.player_stats.add_mana(item.effects["mana"])
 				pass
 		consume_slots[index].amount -=1
 		if consume_slots[index].amount <=0:
@@ -239,3 +242,13 @@ func get_amount_by_id(item_id):
 			amnt +=int(a.amount)
 	
 	return amnt
+
+func get_all_item_amount():
+	var items_dict: Dictionary = {}
+	for item in consume_slots:
+		if item.item:
+			if not items_dict.has(item.item.item_id):
+				items_dict[item.item.item_id] = item.amount
+			else:
+				items_dict[item.item.item_id] += item.amount
+	return items_dict

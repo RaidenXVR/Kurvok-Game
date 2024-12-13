@@ -11,9 +11,11 @@ quest_requirement = Array[String](["Look For Other Clues"])
 type = 3
 giver = ""
 target = {
+"Forest": 1
+}
+current_target_amount = {
 "Forest": 0
 }
-current_target_amount = {}
 rewards = {}
 state = 0
 Cutscene_to_play = ExtResource("1_w7nt7")

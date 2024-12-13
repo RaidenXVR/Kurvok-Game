@@ -28,7 +28,6 @@ func do_cutscene(cutscene_name, init_area:CutsceneTrigger = null):
 		cutscenes = cutscene_name
 	else:
 		cutscenes = ResourceLoader.load("res://Cutscene/Cutscenes/{cutscene_name}.tres".format({"cutscene_name":cutscene_name})) as Cutscene
-
 	if not cutscenes.check_quest_requirements():
 		return
 	
@@ -41,8 +40,10 @@ func do_cutscene(cutscene_name, init_area:CutsceneTrigger = null):
 		trigger_node_position = init_area.position
 		player_node.position = init_area.position
 	elif not init_area and cutscenes.trigger_node_path:
+		player_node.get_node("Camera2D").position_smoothing_enabled = false
 		var trigger_node = get_node("/root/World/maps").get_child(0).get_node(cutscenes.trigger_node_path)
 		trigger_node_position = trigger_node.position
+		player_node.position = trigger_node.position
 	else :
 		trigger_node_position = cutscenes.initial_position
 		
@@ -61,11 +62,12 @@ func do_cutscene(cutscene_name, init_area:CutsceneTrigger = null):
 			move_object(cutscene)
 			if not cutscene.parallel_with_next:
 				await done_scene
+			
 
 
 		elif cutscene is Cutscene_Dialogue:
 			do_dialogue(cutscene)
-			await dialogue_node.dialogue_finished
+			await done_scene
 		
 		elif cutscene is Cutscene_MovieNarator:
 			do_movie(cutscene)
@@ -101,14 +103,15 @@ func do_cutscene(cutscene_name, init_area:CutsceneTrigger = null):
 			do_cg_dialogue(cutscene)
 			await dialogue_node.dialogue_finished
 
-
-	cutscenes_completed.append(cutscene_name)
+	
+	cutscenes_completed.append(str(cutscene_name))
 
 	doing_cutscene = false
 	player_node.set_process_input(true)
 	player_node.animation.play("RESET")
 
 	finished_doing_cutscene.emit()
+	player_node.get_node("Camera2D").position_smoothing_enabled = true
 
 	cutscenes.set_main_quest()
 
@@ -132,7 +135,7 @@ func move_player(scene: Cutscene_MovePlayer):
 		var time_need:float = temp.length() / scene.speed 
 		target_positions.append(pos)
 		time_needs.append(time_need)
-	
+	player_node.velocity = Vector2.ZERO
 	var idx = 0
 	for target in target_positions:
 		tween = create_tween()
@@ -188,10 +191,11 @@ func move_object(scene: Cutscene_MoveObject):
 		time_needs.append(time_need)
 	
 	var idx = 0
+	print(scene.object_name, ": ",target_positions," ", time_needs)
 	for target in target_positions:
 		tween = create_tween()
 
-		tween.chain().tween_property(object_node,"position",target, time_needs[idx])
+		tween.tween_property(object_node,"position",target, time_needs[idx])
 		tween.play()
 		match scene.direction[idx]:
 			Vector2(1,0):
@@ -205,6 +209,7 @@ func move_object(scene: Cutscene_MoveObject):
 
 		await tween.finished
 		tween.stop()
+		print(scene.object_name, ": ",object_node.position)
 
 		object_node.animation_player.stop()
 		idx +=1
@@ -213,10 +218,10 @@ func move_object(scene: Cutscene_MoveObject):
 
 func do_dialogue(scene: Cutscene_Dialogue):
 	scene.init_vars()
-
-
 	dialogue_node.starter(scene.lines,"", null, true, scene.actors)
 	await dialogue_node.dialogue_finished
+	done_scene.emit()
+
 	
 func do_quest_started(scene: Cutscene_QuestStarted):
 	dialogue_node.get_node("NameLabel").position = Vector2(380, 155)
@@ -271,11 +276,18 @@ func do_play_anim(scene:Cutscene_PlayAnimation):
 	elif scene.type == scene.ObjectAnimType.PLAYER:
 		var object: Player = get_node("/root/World/Player")
 		object.animation.play(scene.animation_to_play)
+		
 		if scene.secondary_animation_to_play:
 			object.vfx_node.scale = scene.vfx_sprite_scale
+			object.vfx_node.z_index = scene.vfx_z_index
 			object.vfx_node.visible = true
 			object.vfx_node.play(scene.secondary_animation_to_play)
+			await object.vfx_node.animation_finished
+		
 		await object.animation.animation_finished
+		
+		object.vfx_node.scale = Vector2(1,1)
+		object.vfx_node.z_index = -1
 		done_scene.emit()
 
 func do_cg_dialogue(scene: Cutscene_CGDialogue):

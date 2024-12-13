@@ -1,6 +1,5 @@
 extends Node
 
-# class_name QuestManager
 
 var available_quests:Array[Quest]
 var ongoing_quests:Array[Quest]
@@ -115,6 +114,9 @@ func check_target(target_id:String, amount:int):
 			if second_found_quests.size()!=0:
 				for quest:Quest in second_found_quests:
 					quest.current_target_amount[target_id] += amount
+				
+					if quest.current_target_amount[target_id] == quest.target[target_id]:
+						CutsceneManager.do_cutscene(quest.Cutscene_to_play)
 		else:
 			found_quests = ongoing_quests.filter(func(q):return _check_target(q, Quest.Quest_Types.TALK))
 			if found_quests.size()!=0:
@@ -180,7 +182,11 @@ func check_quest_in_complete(quest_name: String):
 	for c in completed_quests:
 		if c.quest_name == quest_name:
 			return true
-	
+	for cc in completed_main_quest:
+		print(cc.main_quest_name)
+		if cc.check_quest_in_complete(quest_name):
+			print(cc.main_quest_name, cc.completed_quests)
+			return true
 	return false
 	
 func check_go_to_quest(map_name):

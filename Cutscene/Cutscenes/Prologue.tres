@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=14 format=3 uid="uid://c7dw47lrj4bqp"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=15 format=3 uid="uid://c7dw47lrj4bqp"]
 
 [ext_resource type="Script" path="res://Cutscene/Cutscene.gd" id="1_4dofn"]
 [ext_resource type="Script" path="res://Cutscene/CSMovieNarator.gd" id="1_qmgr4"]
@@ -37,11 +37,17 @@ script = ExtResource("5_w1wun")
 quest_name = "Ask Around"
 description = "Ask people in North Gate."
 
+[sub_resource type="Resource" id="Resource_h5jgl"]
+script = ExtResource("5_w1wun")
+quest_name = "Controll"
+description = "Use WASD to move. Press E to interact with people. Hold Shift while walking to run. "
+
 [resource]
 script = ExtResource("1_4dofn")
 cutscene_name = "Prologue"
 cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
 main_quest_to_set = ExtResource("5_86ubv")
 player_facing = Vector2(0, 0)
-cutscene_to_do = [SubResource("Resource_q61j1"), SubResource("Resource_6acnw"), SubResource("Resource_0kd6b"), SubResource("Resource_pjhp7"), SubResource("Resource_n5g7t")]
+cutscene_to_do = [SubResource("Resource_q61j1"), SubResource("Resource_6acnw"), SubResource("Resource_0kd6b"), SubResource("Resource_pjhp7"), SubResource("Resource_n5g7t"), SubResource("Resource_h5jgl")]
 initial_position = Vector2(0, 0)
+trigger_node_path = ""

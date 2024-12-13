@@ -25,3 +25,4 @@ cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
 player_facing = Vector2(0, 0)
 cutscene_to_do = [SubResource("Resource_der5t"), SubResource("Resource_ngsha")]
 initial_position = Vector2(0, 0)
+trigger_node_path = ""

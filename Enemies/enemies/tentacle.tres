@@ -38,6 +38,7 @@ mana = null
 [resource]
 script = ExtResource("2_okrry")
 enemy_type = "Tentacle"
+unkillable = false
 enemy_stats = SubResource("Resource_now3r")
 drop_table = {
 "1": {

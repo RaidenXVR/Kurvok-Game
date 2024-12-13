@@ -55,7 +55,9 @@ parallel_with_next = false
 script = ExtResource("4_0tgni")
 object = "Remmie"
 animation_to_play = "fall"
+secondary_animation_to_play = ""
 type = 1
+vfx_sprite_scale = Vector2(0.125, 0.125)
 parallel_with_next = false
 
 [sub_resource type="Resource" id="Resource_xpxev"]
@@ -112,3 +114,4 @@ cutscene_quest_requirements = Array[Resource("res://Scripts/Quest.gd")]([])
 player_facing = Vector2(0, 1)
 cutscene_to_do = [SubResource("Resource_snmhm"), SubResource("Resource_gntxw"), SubResource("Resource_qvv47"), SubResource("Resource_vsifc"), SubResource("Resource_7p7cr"), SubResource("Resource_htecd"), SubResource("Resource_xpxev"), SubResource("Resource_7hq67"), SubResource("Resource_v40ue"), SubResource("Resource_xp8w1"), SubResource("Resource_huf8c"), SubResource("Resource_fyiyt")]
 initial_position = Vector2(750, 0)
+trigger_node_path = ""

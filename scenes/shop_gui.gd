@@ -60,11 +60,8 @@ func selected_item_buy(index:int):
 	GameData.decrease_money(items[item_id_selected]["buy"])
 	buy_item_money.text = str(GameData.money)
 	check_money_to_item(index, items[item_id_selected]["buy"])
-	var rel_item = GameData.items_id_consum.filter(func(it): return it.keys()[0] == item_id_selected)
-	var posession = 0
-	for p in rel_item:
-		posession += p[item_id_selected] 
-	buy_item_posess.text = "Owned: "+ str(posession)
+	var rel_item = GameData.player_inventory.get_amount_by_id(item_id_selected)
+	buy_item_posess.text = "Owned: "+ str(rel_item)
 
 func _on_buy_list_item_selected(index:int):
 	buy_item_effects.clear()
@@ -76,7 +73,7 @@ func _on_buy_list_item_selected(index:int):
 	buy_item_name.text = item["name"]
 	buy_item_cost.text = "Price: "+str(item["buy"])
 	buy_item_description.append_text(item["description"])
-	var rel_item = GameData.items_id_consum.filter(func(it): return it.keys()[0] == item_id_selected)
+	var rel_item = GameData.player_inventory.get_amount_by_id(item_id_selected)
 	var posession = 0
 	for p in rel_item:
 		posession += p[item_id_selected] 
@@ -110,14 +107,8 @@ func _input(event):
 
 
 func set_sell_items():
-	var slots = GameData.items_id_consum
 	var items = GameData.json_getter("items","Item")
-	var items_dict: Dictionary = {}
-	for item in slots:
-		if not items_dict.has(item.keys()[0]):
-			items_dict[item.keys()[0]] = item[item.keys()[0]]
-		else:
-			items_dict[item.keys()[0]] += item[item.keys()[0]]
+	var items_dict: Dictionary = GameData.player_inventory.get_all_item_amount()
 
 	var idx = 0
 	for item in items_dict.keys():
@@ -125,12 +116,11 @@ func set_sell_items():
 		sell_itemlist.set_item_metadata(idx, {item:items_dict[item]})
 
 func selected_item_sell(index:int):
-	var inv = get_parent().get_node("Inventory")
 	var items_json = GameData.json_getter("items","Item")
 	var metadata_item = sell_itemlist.get_item_metadata(index)
 	var the_amount = metadata_item[metadata_item.keys()[0]] -1 
 	sell_itemlist.set_item_metadata(index, {metadata_item.keys()[0]:the_amount})
-	inv.inventory.remove(metadata_item.keys()[0],1)
+	GameData.player_inventory.remove(metadata_item.keys()[0],1)
 	GameData.add_money(items_json[metadata_item.keys()[0]]["sell"])
 	sell_item_posess.text = "Owned: "+str(the_amount)
 	if the_amount <=0:
@@ -160,11 +150,8 @@ func _on_sell_list_item_selected(index:int):
 	sell_item_name.text = item["name"]
 	sell_item_cost.text = "Price: "+str(item["buy"])
 	sell_item_description.append_text(item["description"])
-	var rel_item = GameData.items_id_consum.filter(func(it): return it.keys()[0] == item_id_selected)
-	var posession = 0
-	for p in rel_item:
-		posession += p[item_id_selected] 
-	sell_item_posess.text = "Owned: "+str(posession)
+	var rel_item = GameData.player_inventory.get_amount_by_id(item_id_selected)
+	sell_item_posess.text = "Owned: "+str(rel_item)
 
 	for effect in item["effect"].keys():
 		if effect == "heal":

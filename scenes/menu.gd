@@ -276,27 +276,27 @@ func _on_quest_clicked(button_node:Button):
 	var quest_name_label:Label = $QuestButton/Container/Details/QuestName
 	var desc_label:Label = $QuestButton/Container/Details/Description
 	var target_cont:VBoxContainer = $QuestButton/Container/Details/Targets
-	
-	
-	quest_name_label.text = button_node.get_meta("quest_name")
-	desc_label.text = button_node.get_meta("desc")
-	var targets = button_node.get_meta("target")
-	var current_targets = button_node.get_meta("current_target")
-	for child in target_cont.get_children():
-		target_cont.remove_child(child)
-	for target in targets:
-		var lb = Label.new()
-		lb.add_theme_font_size_override("font_size", 25)
-		var t: String = ""
-		if target.is_valid_int():
-			var item_dict = GameData.json_getter("items", "Item")
-			t = item_dict[target]["name"]
-		else:
-			t = target
-		
-		lb.text = t +":   \t"+ str(current_targets[target])+"/"+str(targets[target])
-		
-		target_cont.add_child(lb)
+	pass
+	if button_node.get_meta("quest_name"):
+		quest_name_label.text = button_node.get_meta("quest_name")
+		desc_label.text = button_node.get_meta("desc")
+		var targets = button_node.get_meta("target")
+		var current_targets = button_node.get_meta("current_target")
+		for child in target_cont.get_children():
+			target_cont.remove_child(child)
+		for target in targets:
+			var lb = Label.new()
+			lb.add_theme_font_size_override("font_size", 25)
+			var t: String = ""
+			if target.is_valid_int():
+				var item_dict = GameData.json_getter("items", "Item")
+				t = item_dict[target]["name"]
+			else:
+				t = target
+			
+			lb.text = t +":   \t"+ str(current_targets[target])+"/"+str(targets[target])
+			
+			target_cont.add_child(lb)
 
 
 func _on_options_button_button_down():

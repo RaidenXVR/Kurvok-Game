@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bswabc2fnfm68"]
+[gd_scene load_steps=89 format=3 uid="uid://bswabc2fnfm68"]
 
 [ext_resource type="Script" path="res://player/playerv2.gd" id="1_2l7u8"]
 [ext_resource type="Texture2D" uid="uid://bovbb18hq2etj" path="res://player/Sprites/Layla64.png" id="2_1kkqw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://6jmywi238321" path="res://VFX/BlueEXP1/hits-1-4.png" id="8_cu2ye"]
 [ext_resource type="Texture2D" uid="uid://cltsrphyarlwy" path="res://VFX/BlueEXP1/hits-1-5.png" id="9_hbm25"]
 [ext_resource type="Texture2D" uid="uid://bmj7gbl82e4er" path="res://VFX/Singular/blueMC.png" id="10_u58qt"]
+[ext_resource type="Texture2D" uid="uid://c3qgfe0waxgea" path="res://VFX/Singular/Air Explosion.png" id="12_1sy43"]
 
 [sub_resource type="Animation" id="Animation_s1dod"]
 length = 0.001
@@ -1004,6 +1005,42 @@ region = Rect2(17408, 0, 512, 512)
 atlas = ExtResource("10_u58qt")
 region = Rect2(17920, 0, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfs7d"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcl2n"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlpk0"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u020g"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fqkd"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsej3"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmscw"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksowt"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5k6h"]
+atlas = ExtResource("12_1sy43")
+region = Rect2(0, 64, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_p3ctg"]
 animations = [{
 "frames": [{
@@ -1138,6 +1175,38 @@ animations = [{
 "loop": false,
 "name": &"BlueMC",
 "speed": 50.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfs7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcl2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlpk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u020g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fqkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsej3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmscw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksowt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5k6h")
+}],
+"loop": false,
+"name": &"GreenExp",
+"speed": 20.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -1242,7 +1311,7 @@ one_shot = true
 visible = false
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_p3ctg")
-animation = &"BlueMC"
+animation = &"GreenExp"
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="unstun"]

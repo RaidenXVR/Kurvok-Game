@@ -24,3 +24,4 @@ main_quest_to_set = ExtResource("3_8b6r3")
 player_facing = Vector2(0, 1)
 cutscene_to_do = [SubResource("Resource_d5opu"), SubResource("Resource_ljkmx")]
 initial_position = Vector2(0, 0)
+trigger_node_path = ""

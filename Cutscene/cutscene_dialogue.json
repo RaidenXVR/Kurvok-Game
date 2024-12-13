@@ -118,5 +118,93 @@
 				{"char":"Layla", "dialogue":"I need to help them!"},
 			],
 		}
+	},
+	"After_SaveTheChildren":{
+		"phase1":{
+			"actors":[{"Layla":"female"}, {"Namboo":"male"}, {"Yallie": "female"}, {"Remmie":"male"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"Huft... That's one hell of Boribas..."},
+				{"char":"Yallie", "dialogue":"Wow! You're so cool, big sis!"},
+				{"char":"Namboo", "dialogue":"Yeah! You can slay that big Boribas in no time!"},
+				{"char":"Remmie", "dialogue":"Thank you, big sis."},
+				{"char":"Layla", "dialogue":"Thank you, kids. But now, I need to tend your wound first."},
+				{"char":"Layla", "dialogue":"(Hmm... This kid is a demon, but using healing magic should be fine...)"},
+			],
+		},
+		"phase2":{
+			"actors":[{"Layla":"female"}, {"Namboo":"male"}, {"Yallie": "female"}, {"Remmie":"male"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"Now it's healed!"},
+				{"char":"Remmie", "dialogue":"Wow! You can use healing magic too, big sis? Thank you so much!"},
+				{"char":"Namboo", "dialogue":"You're so cool, big sis!"},
+				{"char":"Yallie", "dialogue":"I want to be like you when I grow up!"},
+				{"char":"Layla", "dialogue":"Hehe, then you should train and study hard, little girl."},
+				{"char":"Yallie", "dialogue":"Hehe, you sound like the Prince."},
+				{"char":"Layla", "dialogue":"(The Prince? The demon Prince?)"},
+				{"char":"Layla", "dialogue":"Really? When did you meet him?"},
+				{"char":"Namboo", "dialogue":"It's been a while since we last saw him. Mom says that he is busy these past few weeks."},
+				{"char":"Remmie", "dialogue":"Yeah! We miss his class! He always do cool things!"},
+				{"char":"Layla", "dialogue":"(That's unexpected... Why does he teach commoners?)"},
+				{"char":"Layla", "dialogue":"Is that so? Well then, you better go home now. It's dangerous here."},
+				{"char":"Layla", "dialogue":"You shouldn't be near the forest without any adult around."},
+				{"char":"Namboo", "dialogue":"Okay!"},
+				{"char":"Yallie", "dialogue":"See you later, big sis!"},
+				{"char":"Remmie", "dialogue":"Thank you, big sis!"},
+				
+			],
+		},
+		"phase3":{
+			"actors":[{"Layla": "female"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"Well, that was an unexpected news about him..."},
+				{"char":"Layla", "dialogue":"I need to dig more about this..."},
+			],
+		},
+		
+		"phase4":{
+			"actors":[{"Layla": "female"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"(Huh?... Isn't that...)"},
+			],
+		},
+		
+		"phase5":{
+			"actors":[{"Layla": "female"}, {"Raiden":"male"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"Hey, you! Wait!"},
+				{"char":"Raiden", "dialogue":"Hm? Yes?"},
+				{"char":"Layla", "dialogue":"You, demon! Did you release that big ass Boribas to attack the children?!"},
+				{"char":"Raiden", "dialogue":"Huh? What are you talking about?"},
+				{"char":"Layla", "dialogue":"There's no way a big Boribas like that to be this near to a settlement."},
+				{"char":"Layla", "dialogue":"You must be the one that bring it here!"},
+				{"char":"Raiden", "dialogue":"What the hell are you talking about?"},
+				{"char":"Layla", "dialogue":"You can deceive the people, but you can't fool me!"},
+				{"char":"Layla", "dialogue":"You try to look good in front of other people, but you bring a monster here to hurt the children!"},
+				{"char":"Raiden", "dialogue":"Miss, you really should calm down."},
+				{"char":"Raiden", "dialogue":"I don't even understand half of what you say!"},
+				{"char":"Layla", "dialogue":"Enough! You will die here, right now, Demon Prince!"},
+				
+			],
+		},
+				"phase6":{
+			"actors":[{"Layla": "female"}, {"Raiden":"male"}],
+			"dialogue":[
+				{"char":"Layla", "dialogue":"Ugh!"},
+				{"char":"Layla", "dialogue":"(What?! How is his magic so strong?!)"},
+				{"char":"Raiden", "dialogue":"Don't go around and attack people, you fool!"},
+				{"char":"Raiden", "dialogue":"You may be a Hero, but this empire don't need one."},
+				
+			],
+		},
+				"phase7":{
+			"actors":[{"Layla": "female"},{"Raiden": "male"}],
+			"dialogue":[
+				{"char":"Raiden", "dialogue":"Oh, but you may be useful for something."},
+				{"char":"Raiden", "dialogue":"If you interested in the Truth, come to me. Let's have a conversation."},
+				{"char":"Raiden", "dialogue":"I will give these for you. Don't die here."},
+				{"char":"Layla", "dialogue":"Ugh..."},
+				
+			],
+		},
 	}
 }

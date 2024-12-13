@@ -22,6 +22,11 @@ func heal_self(amount:int):
 	hp+= amount
 	if hp > mhp:
 		hp = mhp
+
+func add_mana(amount:int):
+	mana += amount
+	if mana > max_mana:
+		mana = max_mana
 	
 func use_mana(_mana:int):
 	mana -=_mana

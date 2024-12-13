@@ -59,7 +59,7 @@ position = Vector2(2406, 1255)
 scale = Vector2(1, 10)
 map_destination = "Market"
 entry_point_destination = "westPoint"
-self_out_offset = 1
+self_out_offset = 2
 is_deactivated = true
 activation_requirement = Array[String](["Look For Other Clues"])
 

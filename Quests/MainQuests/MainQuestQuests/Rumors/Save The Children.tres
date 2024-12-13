@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://cb1oul026kkcp"]
+[gd_resource type="Resource" script_class="Quest" load_steps=3 format=3 uid="uid://cb1oul026kkcp"]
 
+[ext_resource type="Resource" uid="uid://cghx0j74xs24v" path="res://Cutscene/Cutscenes/After_SaveTheChildren.tres" id="1_ath78"]
 [ext_resource type="Script" path="res://Scripts/Quest.gd" id="1_nfs5p"]
 
 [resource]
@@ -17,4 +18,5 @@ current_target_amount = {
 }
 rewards = {}
 state = 0
+Cutscene_to_play = ExtResource("1_ath78")
 is_main_quest = false

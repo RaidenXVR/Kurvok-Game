@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmt3nno06vcof"]
+[gd_scene load_steps=13 format=3 uid="uid://cmt3nno06vcof"]
 
-[ext_resource type="TileSet" uid="uid://bdhoroxybjlj3" path="res://map/Tilesets/MarketTS.tres" id="1_y7r64"]
-[ext_resource type="Script" path="res://map/map.gd" id="2_cgrvk"]
-[ext_resource type="PackedScene" uid="uid://ogvnsdbv0hpq" path="res://scenes/enterPoint.tscn" id="3_yng3u"]
-[ext_resource type="PackedScene" uid="uid://ilwasm3kpj5b" path="res://NPC/npc.tscn" id="4_lt3yk"]
-[ext_resource type="Texture2D" uid="uid://gtjfoxogyjkx" path="res://NPC/sprite/Imettawalk.png" id="5_r47mr"]
-[ext_resource type="Texture2D" uid="uid://kfor2gd5n5u4" path="res://NPC/sprite/Jinmicawalk.png" id="6_yxp3d"]
-[ext_resource type="Texture2D" uid="uid://s7iiatlm683t" path="res://NPC/sprite/Minwaewalk.png" id="7_7npo3"]
-[ext_resource type="Texture2D" uid="uid://b7ivvlqohnisu" path="res://NPC/sprite/Laniwalk.png" id="8_g1dlx"]
-[ext_resource type="Texture2D" uid="uid://bpf0mw76e3a71" path="res://NPC/sprite/Kyerwalk.png" id="9_85vms"]
+[ext_resource type="TileSet" uid="uid://bdhoroxybjlj3" path="res://map/Tilesets/MarketTS.tres" id="1_oxwmg"]
+[ext_resource type="Script" path="res://map/map.gd" id="2_lqul3"]
+[ext_resource type="PackedScene" uid="uid://ogvnsdbv0hpq" path="res://scenes/enterPoint.tscn" id="3_w2kre"]
+[ext_resource type="PackedScene" uid="uid://ilwasm3kpj5b" path="res://NPC/npc.tscn" id="4_x0rw3"]
+[ext_resource type="Texture2D" uid="uid://gtjfoxogyjkx" path="res://NPC/sprite/Imettawalk.png" id="5_w3kll"]
+[ext_resource type="Texture2D" uid="uid://kfor2gd5n5u4" path="res://NPC/sprite/Jinmicawalk.png" id="6_tfluj"]
+[ext_resource type="Texture2D" uid="uid://s7iiatlm683t" path="res://NPC/sprite/Minwaewalk.png" id="7_a0aiw"]
+[ext_resource type="Texture2D" uid="uid://b7ivvlqohnisu" path="res://NPC/sprite/Laniwalk.png" id="8_4h4im"]
+[ext_resource type="Texture2D" uid="uid://bpf0mw76e3a71" path="res://NPC/sprite/Kyerwalk.png" id="9_1318y"]
+[ext_resource type="PackedScene" uid="uid://bbr5pf7jf5wda" path="res://scenes/shop_area.tscn" id="10_xijhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss8bm"]
 size = Vector2(2440, 94)
@@ -18,7 +19,7 @@ size = Vector2(89, 2440)
 
 [node name="Market" type="TileMap"]
 y_sort_enabled = true
-tile_set = ExtResource("1_y7r64")
+tile_set = ExtResource("1_oxwmg")
 rendering_quadrant_size = 48
 format = 2
 layer_0/name = "Ground"
@@ -39,57 +40,55 @@ layer_4/name = "Decoration 2"
 layer_4/y_sort_enabled = true
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array(65536, 65537, 13, 65551, 65537, 13, 65555, 65537, 13, 131072, 65537, 14, 131087, 65537, 14, 131091, 65537, 14, 196608, 65537, 15, 196623, 65537, 15, 196627, 65537, 15, 196642, 589827, 7, 196643, 655363, 7, 196644, 131075, 6, 196645, 196611, 6, 262178, 589827, 8, 262179, 655363, 8, 262180, 131075, 7, 262181, 196611, 7, 327714, 589827, 9, 327715, 655363, 9, 327717, 393218, 13, 393220, 65548, 2, 589869, 65540, 5, 655400, 524293, 6, 655403, 65540, 5, 655404, 196612, 5, 720900, 65549, 2, 720910, 196621, 2, 720942, 393220, 5, 786436, 65537, 13, 786469, 327683, 12, 786476, 65540, 5, 851972, 65537, 14, 852005, 327683, 13, 852009, 524293, 6, 917508, 65537, 15, 983047, 262157, 2, 983060, 65537, 13, 983085, 655366, 13, 1048596, 65537, 14, 1048621, 655366, 14, 1114132, 65537, 15, 1507346, 131085, 8, 1835039, 458765, 1610612740, 1900591, 327693, 6, 1900592, 196621, 6, 1900593, 196621, 1, 1966080, 131075, 6, 1966081, 196611, 6, 1966129, 196621, 4, 2031616, 131075, 7, 2031617, 196611, 7, 2097152, 13, 8, 2097153, 65549, 8, 2097163, 196611, 4, 2097178, 524301, 0, 2097179, 589837, 0, 2097180, 655373, 0, 2097181, 720909, 0, 2097201, 262157, 6, 2162699, 196611, 4, 2162714, 524301, 1, 2162715, 589837, 1, 2162716, 655373, 1, 2162717, 720909, 1, 2228235, 196611, 4, 2228273, 131085, 4, 2293781, 65537, 13, 2293788, 65537, 13, 2359317, 65537, 14, 2359324, 65537, 14, 2359345, 131085, 6, 2424853, 65537, 15, 2424860, 65537, 15, 2555909, 65537, 13, 2555953, 589837, 8, 2621445, 65537, 14, 2621489, 589837, 9, 2686981, 65537, 15, 2752552, 65537, 13, 2818088, 65537, 14, 2883624, 65537, 15, 2949142, 65537, 13, 2949147, 65537, 13, 2949157, 65537, 2, 3014678, 65537, 14, 3014683, 65537, 14, 3014700, 196621, 0, 3080214, 65537, 15, 3080219, 65537, 15)
-script = ExtResource("2_cgrvk")
+script = ExtResource("2_lqul3")
 west_map = "TownSquare"
 
 [node name="EntryPoints" type="Node2D" parent="."]
 
-[node name="southPoint" parent="EntryPoints" instance=ExtResource("3_yng3u")]
+[node name="southPoint" parent="EntryPoints" instance=ExtResource("3_w2kre")]
 position = Vector2(1224, 2400)
 scale = Vector2(12, 1)
 map_destination = "Forest"
 entry_point_destination = "northPoint"
-is_deactivated = true
-activation_requirement = Array[String](["Save The Children"])
 
-[node name="eastPoint" parent="EntryPoints" instance=ExtResource("3_yng3u")]
+[node name="eastPoint" parent="EntryPoints" instance=ExtResource("3_w2kre")]
 position = Vector2(2394, 1050)
 scale = Vector2(1, 10)
 self_out_offset = 1
 is_deactivated = true
 activation_requirement = Array[String](["Look For Other Clues"])
 
-[node name="westPoint" parent="EntryPoints" instance=ExtResource("3_yng3u")]
+[node name="westPoint" parent="EntryPoints" instance=ExtResource("3_w2kre")]
 position = Vector2(0, 1050)
 scale = Vector2(1, 10)
 map_destination = "TownSquare"
 entry_point_destination = "eastPoint"
 self_out_offset = 3
 
-[node name="Imetta" parent="." instance=ExtResource("4_lt3yk")]
+[node name="Imetta" parent="." instance=ExtResource("4_x0rw3")]
 position = Vector2(551, 2142)
-texture_img = ExtResource("5_r47mr")
+texture_img = ExtResource("5_w3kll")
 isNPCCanMove = false
 facing_dir = Vector2(0, -1)
 
-[node name="Jinmica" parent="." instance=ExtResource("4_lt3yk")]
+[node name="Jinmica" parent="." instance=ExtResource("4_x0rw3")]
 position = Vector2(1273, 753)
-texture_img = ExtResource("6_yxp3d")
+texture_img = ExtResource("6_tfluj")
 isNPCCanMove = false
 facing_dir = Vector2(0, 1)
 
-[node name="Minwae" parent="." instance=ExtResource("4_lt3yk")]
+[node name="Minwae" parent="." instance=ExtResource("4_x0rw3")]
 position = Vector2(893, 1753)
-texture_img = ExtResource("7_7npo3")
+texture_img = ExtResource("7_a0aiw")
 
-[node name="Lani" parent="." instance=ExtResource("4_lt3yk")]
-position = Vector2(1462, 1079)
-texture_img = ExtResource("8_g1dlx")
+[node name="Lani" parent="." instance=ExtResource("4_x0rw3")]
+position = Vector2(1576, 1114)
+texture_img = ExtResource("8_4h4im")
 isNPCCanMove = false
 
-[node name="Kyer" parent="." instance=ExtResource("4_lt3yk")]
+[node name="Kyer" parent="." instance=ExtResource("4_x0rw3")]
 position = Vector2(635, 1071)
-texture_img = ExtResource("9_85vms")
+texture_img = ExtResource("9_1318y")
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
 
@@ -108,3 +107,8 @@ shape = SubResource("RectangleShape2D_aw4av")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBorder"]
 position = Vector2(2446, 1225)
 shape = SubResource("RectangleShape2D_aw4av")
+
+[node name="ShopArea" parent="." instance=ExtResource("10_xijhl")]
+position = Vector2(1566, 1090)
+scale = Vector2(8, 8)
+item_ids = Array[String](["1", "2", "6"])

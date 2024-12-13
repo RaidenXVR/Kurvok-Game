@@ -84,6 +84,8 @@ sprite_scale = 2.0
 
 [node name="After_SaveTheChildren" parent="Cutscenes" instance=ExtResource("11_qv5v0")]
 position = Vector2(749, 548)
+monitoring = false
+monitorable = false
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
 

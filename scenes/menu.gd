@@ -338,3 +338,7 @@ func _on_sfx_slider_value_changed(value):
 	var db = lerp(-40.0,0.0, value/100.0)
 	var sfx: AudioStreamPlayer = AudioManager.audio_players["sfx"]
 	sfx.volume_db = db
+
+
+func _on_exit_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/start_menu.tscn")

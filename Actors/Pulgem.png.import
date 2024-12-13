@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rr0w40rw3wal"
-path="res://.godot/imported/Layla.png-5fd6bf01d9660f3b2883a58223a5965a.ctex"
+uid="uid://bs0b1tuthuf81"
+path="res://.godot/imported/Pulgem.png-741bc8c0507e3c85b737914e03e2450c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Layla.png"
-dest_files=["res://.godot/imported/Layla.png-5fd6bf01d9660f3b2883a58223a5965a.ctex"]
+source_file="res://Actors/Pulgem.png"
+dest_files=["res://.godot/imported/Pulgem.png-741bc8c0507e3c85b737914e03e2450c.ctex"]
 
 [params]
 

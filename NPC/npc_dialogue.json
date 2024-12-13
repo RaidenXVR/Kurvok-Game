@@ -947,14 +947,14 @@
 			}
 		]
 	},
-	"Imetta": {
+	"Borin": {
 		"actors": [
 
 			{
 				"Layla": "female"
 			},
 						{
-				"Imetta": "female"
+				"Borin": "male"
 			}
 		],
 		"non-quest-dialogue": [
@@ -964,7 +964,7 @@
 				"options": {}
 			},
 			{
-				"char": "Imetta",
+				"char": "Borin",
 				"dialogue": "(Sunlight reflected off the axe's blade, revealing the intricate carved patterns along the hilt. Borin, with muscles clearly visible under his metal dust-soiled shirt, checked the balance of the weapon attentively)",
 				"options": {}
 			}

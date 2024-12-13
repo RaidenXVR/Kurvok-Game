@@ -205,7 +205,7 @@ func _input(event):
 		type_timer.wait_time = 0.01
 	elif event.is_action_released("run"):
 		type_timer.wait_time = type_speed
-	if event.is_action_released("interact") and type_timer.is_stopped() and !is_finished_talking and !is_option:
+	if (event.is_action_released("interact") or event.is_action_released("attack")) and type_timer.is_stopped() and !is_finished_talking and !is_option:
 		current_dialog_index +=1
 		if current_dialog_index == len(lines):
 			close()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rr0w40rw3wal"
-path="res://.godot/imported/Layla.png-5fd6bf01d9660f3b2883a58223a5965a.ctex"
+uid="uid://dvfu38wtnhg10"
+path="res://.godot/imported/Jinmica.png-72b3796c0f995a0009e81715711014e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Layla.png"
-dest_files=["res://.godot/imported/Layla.png-5fd6bf01d9660f3b2883a58223a5965a.ctex"]
+source_file="res://Actors/Jinmica.png"
+dest_files=["res://.godot/imported/Jinmica.png-72b3796c0f995a0009e81715711014e5.ctex"]
 
 [params]
 

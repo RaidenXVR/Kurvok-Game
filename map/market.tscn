@@ -65,7 +65,7 @@ map_destination = "TownSquare"
 entry_point_destination = "eastPoint"
 self_out_offset = 3
 
-[node name="Imetta" parent="." instance=ExtResource("4_x0rw3")]
+[node name="Borin" parent="." instance=ExtResource("4_x0rw3")]
 position = Vector2(551, 2142)
 texture_img = ExtResource("5_w3kll")
 isNPCCanMove = false

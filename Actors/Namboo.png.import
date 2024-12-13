@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rr0w40rw3wal"
-path="res://.godot/imported/Layla.png-5fd6bf01d9660f3b2883a58223a5965a.ctex"
+uid="uid://cw2x7atwqgr4a"
+path="res://.godot/imported/Namboo.png-c1f09b50f062c978f80a9fcf15b1ea30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Layla.png"
-dest_files=["res://.godot/imported/Layla.png-5fd6bf01d9660f3b2883a58223a5965a.ctex"]
+source_file="res://Actors/Namboo.png"
+dest_files=["res://.godot/imported/Namboo.png-c1f09b50f062c978f80a9fcf15b1ea30.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rr0w40rw3wal"
-path="res://.godot/imported/Layla.png-5fd6bf01d9660f3b2883a58223a5965a.ctex"
+uid="uid://c6wwdbpkq7dl7"
+path="res://.godot/imported/Remmie.png-dd0b5e84cb0559aad9380d6abe4cfd61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Layla.png"
-dest_files=["res://.godot/imported/Layla.png-5fd6bf01d9660f3b2883a58223a5965a.ctex"]
+source_file="res://Actors/Remmie.png"
+dest_files=["res://.godot/imported/Remmie.png-dd0b5e84cb0559aad9380d6abe4cfd61.ctex"]
 
 [params]
 
